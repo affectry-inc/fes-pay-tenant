@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CA1EAB240600FF88C6 /* AppDelegate.swift */; };
+		458861CD1EAB240600FF88C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CC1EAB240600FF88C6 /* ViewController.swift */; };
+		458861D01EAB240600FF88C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861CE1EAB240600FF88C6 /* Main.storyboard */; };
+		458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458861D11EAB240600FF88C6 /* Assets.xcassets */; };
+		458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */; };
+		458861E01EAB240700FF88C6 /* fespayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861DF1EAB240700FF88C6 /* fespayTests.swift */; };
+		458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861EA1EAB240700FF88C6 /* fespayUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		458861DC1EAB240700FF88C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 458861BF1EAB240600FF88C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 458861C61EAB240600FF88C6;
+			remoteInfo = fespay;
+		};
+		458861E71EAB240700FF88C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 458861BF1EAB240600FF88C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 458861C61EAB240600FF88C6;
+			remoteInfo = fespay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		458861C71EAB240600FF88C6 /* fespay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fespay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		458861CA1EAB240600FF88C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		458861CC1EAB240600FF88C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		458861CF1EAB240600FF88C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		458861D11EAB240600FF88C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		458861D41EAB240600FF88C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		458861D61EAB240600FF88C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		458861DB1EAB240700FF88C6 /* fespayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fespayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		458861DF1EAB240700FF88C6 /* fespayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fespayTests.swift; sourceTree = "<group>"; };
+		458861E11EAB240700FF88C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		458861E61EAB240700FF88C6 /* fespayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fespayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		458861EA1EAB240700FF88C6 /* fespayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fespayUITests.swift; sourceTree = "<group>"; };
+		458861EC1EAB240700FF88C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		458861C41EAB240600FF88C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861D81EAB240700FF88C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861E31EAB240700FF88C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		458861BE1EAB240600FF88C6 = {
+			isa = PBXGroup;
+			children = (
+				458861C91EAB240600FF88C6 /* fespay */,
+				458861DE1EAB240700FF88C6 /* fespayTests */,
+				458861E91EAB240700FF88C6 /* fespayUITests */,
+				458861C81EAB240600FF88C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		458861C81EAB240600FF88C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				458861C71EAB240600FF88C6 /* fespay.app */,
+				458861DB1EAB240700FF88C6 /* fespayTests.xctest */,
+				458861E61EAB240700FF88C6 /* fespayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		458861C91EAB240600FF88C6 /* fespay */ = {
+			isa = PBXGroup;
+			children = (
+				458861CA1EAB240600FF88C6 /* AppDelegate.swift */,
+				458861CC1EAB240600FF88C6 /* ViewController.swift */,
+				458861CE1EAB240600FF88C6 /* Main.storyboard */,
+				458861D11EAB240600FF88C6 /* Assets.xcassets */,
+				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
+				458861D61EAB240600FF88C6 /* Info.plist */,
+			);
+			path = fespay;
+			sourceTree = "<group>";
+		};
+		458861DE1EAB240700FF88C6 /* fespayTests */ = {
+			isa = PBXGroup;
+			children = (
+				458861DF1EAB240700FF88C6 /* fespayTests.swift */,
+				458861E11EAB240700FF88C6 /* Info.plist */,
+			);
+			path = fespayTests;
+			sourceTree = "<group>";
+		};
+		458861E91EAB240700FF88C6 /* fespayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				458861EA1EAB240700FF88C6 /* fespayUITests.swift */,
+				458861EC1EAB240700FF88C6 /* Info.plist */,
+			);
+			path = fespayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		458861C61EAB240600FF88C6 /* fespay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 458861EF1EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespay" */;
+			buildPhases = (
+				458861C31EAB240600FF88C6 /* Sources */,
+				458861C41EAB240600FF88C6 /* Frameworks */,
+				458861C51EAB240600FF88C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fespay;
+			productName = fespay;
+			productReference = 458861C71EAB240600FF88C6 /* fespay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		458861DA1EAB240700FF88C6 /* fespayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 458861F21EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayTests" */;
+			buildPhases = (
+				458861D71EAB240700FF88C6 /* Sources */,
+				458861D81EAB240700FF88C6 /* Frameworks */,
+				458861D91EAB240700FF88C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				458861DD1EAB240700FF88C6 /* PBXTargetDependency */,
+			);
+			name = fespayTests;
+			productName = fespayTests;
+			productReference = 458861DB1EAB240700FF88C6 /* fespayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		458861E51EAB240700FF88C6 /* fespayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 458861F51EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayUITests" */;
+			buildPhases = (
+				458861E21EAB240700FF88C6 /* Sources */,
+				458861E31EAB240700FF88C6 /* Frameworks */,
+				458861E41EAB240700FF88C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				458861E81EAB240700FF88C6 /* PBXTargetDependency */,
+			);
+			name = fespayUITests;
+			productName = fespayUITests;
+			productReference = 458861E61EAB240700FF88C6 /* fespayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		458861BF1EAB240600FF88C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = KakimotoShizuka;
+				TargetAttributes = {
+					458861C61EAB240600FF88C6 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					458861DA1EAB240700FF88C6 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 458861C61EAB240600FF88C6;
+					};
+					458861E51EAB240700FF88C6 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 458861C61EAB240600FF88C6;
+					};
+				};
+			};
+			buildConfigurationList = 458861C21EAB240600FF88C6 /* Build configuration list for PBXProject "fespay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 458861BE1EAB240600FF88C6;
+			productRefGroup = 458861C81EAB240600FF88C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				458861C61EAB240600FF88C6 /* fespay */,
+				458861DA1EAB240700FF88C6 /* fespayTests */,
+				458861E51EAB240700FF88C6 /* fespayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		458861C51EAB240600FF88C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
+				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
+				458861D01EAB240600FF88C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861D91EAB240700FF88C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861E41EAB240700FF88C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		458861C31EAB240600FF88C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				458861CD1EAB240600FF88C6 /* ViewController.swift in Sources */,
+				458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861D71EAB240700FF88C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				458861E01EAB240700FF88C6 /* fespayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		458861E21EAB240700FF88C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		458861DD1EAB240700FF88C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 458861C61EAB240600FF88C6 /* fespay */;
+			targetProxy = 458861DC1EAB240700FF88C6 /* PBXContainerItemProxy */;
+		};
+		458861E81EAB240700FF88C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 458861C61EAB240600FF88C6 /* fespay */;
+			targetProxy = 458861E71EAB240700FF88C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		458861CE1EAB240600FF88C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				458861CF1EAB240600FF88C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				458861D41EAB240600FF88C6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		458861ED1EAB240700FF88C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		458861EE1EAB240700FF88C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		458861F01EAB240700FF88C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fespay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		458861F11EAB240700FF88C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = fespay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		458861F31EAB240700FF88C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = fespayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fespay.app/fespay";
+			};
+			name = Debug;
+		};
+		458861F41EAB240700FF88C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = fespayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fespay.app/fespay";
+			};
+			name = Release;
+		};
+		458861F61EAB240700FF88C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = fespayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = fespay;
+			};
+			name = Debug;
+		};
+		458861F71EAB240700FF88C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = fespayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = fespay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		458861C21EAB240600FF88C6 /* Build configuration list for PBXProject "fespay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				458861ED1EAB240700FF88C6 /* Debug */,
+				458861EE1EAB240700FF88C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		458861EF1EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				458861F01EAB240700FF88C6 /* Debug */,
+				458861F11EAB240700FF88C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		458861F21EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				458861F31EAB240700FF88C6 /* Debug */,
+				458861F41EAB240700FF88C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		458861F51EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				458861F61EAB240700FF88C6 /* Debug */,
+				458861F71EAB240700FF88C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 458861BF1EAB240600FF88C6 /* Project object */;
+}
