@@ -11,26 +11,23 @@ import XCTest
 
 class fespayTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    //MARK: PayInfo Class Tests    
+    
+    // Confirm that the PayInfo initializer returns a PayInfo object when passed valid parameters.
+    func testPayInfoInitializationSucceeds() {
+        
+        // One price
+        let onePricePayInfo = PayInfo.init(price: 1, paid_at: Date(), payer: "")
+        XCTAssertNotNil(onePricePayInfo)
+        
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    // Confirm that the Meal initialier returns nil when passed a negative rating or an empty name.
+    func testPayInfoInitializationFails() {
+        
+        // Zero price
+        let zeroPricePayInfo = PayInfo.init(price: 0, paid_at: Date(), payer: "")
+        XCTAssertNil(zeroPricePayInfo)
+        
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
