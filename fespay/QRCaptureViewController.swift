@@ -12,9 +12,11 @@ import os.log
 
 class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
-    //MARK: Properties
+    // MARK: - Properties
 
     @IBOutlet weak var cameraView: UIView!
+    
+    var payInfo: PayInfo?
     
     var captureSesssion: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput?

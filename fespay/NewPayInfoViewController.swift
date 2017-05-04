@@ -1,5 +1,5 @@
 //
-//  PayInfoViewController.swift
+//  NewPayInfoViewController.swift
 //  fespay
 //
 //  Created by KakimotoShizuka on 2017/04/22.
@@ -9,19 +9,19 @@
 import UIKit
 import os.log
 
-class PayInfoViewController: UIViewController, UITextFieldDelegate {
+class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
-    //MARK: Properties
+    // MARK: - Properties
+    
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var captureButton: UIButton!
     
     var payInfo: PayInfo?
     
-    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
-    }
+    // MARK: - Events
     
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        updatePayButtonState()
+    override func viewWillAppear(_ animated: Bool) {
+        priceTextField.becomeFirstResponder()
     }
     
     override func viewDidLoad() {
@@ -38,8 +38,13 @@ class PayInfoViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        updatePayButtonState()
+    }
 
-    //MARK: Navigation
+    // MARK: - Navigation
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -60,18 +65,18 @@ class PayInfoViewController: UIViewController, UITextFieldDelegate {
         payInfo = PayInfo(price: price, paid_at: Date(), payer: "")
     }
     
-    //MARK: UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
     }
     
-    //MARK: Actions
+    // MARK: - Actions
     @IBAction func goToCapture(_ sender: UIButton) {
     }
     
-    //MARK: Private Methods
+    // MARK: - Private Methods
     
     private func updatePayButtonState() {
         // Disable the Pay button if the text field is empty.

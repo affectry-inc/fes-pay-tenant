@@ -11,8 +11,10 @@
 		4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
 		4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */; };
+		454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */; };
+		454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454162611EBB803A00DD0F7B /* ConfirmViewController.swift */; };
 		458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CA1EAB240600FF88C6 /* AppDelegate.swift */; };
-		458861CD1EAB240600FF88C6 /* PayInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CC1EAB240600FF88C6 /* PayInfoViewController.swift */; };
+		458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */; };
 		458861D01EAB240600FF88C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861CE1EAB240600FF88C6 /* Main.storyboard */; };
 		458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458861D11EAB240600FF88C6 /* Assets.xcassets */; };
 		458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */; };
@@ -41,10 +43,12 @@
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewController.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
-		4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCaptureViewController.swift; path = ../QRCaptureViewController.swift; sourceTree = "<group>"; };
+		4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCaptureViewController.swift; sourceTree = "<group>"; };
+		4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		454162611EBB803A00DD0F7B /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		458861C71EAB240600FF88C6 /* fespay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fespay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458861CA1EAB240600FF88C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		458861CC1EAB240600FF88C6 /* PayInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInfoViewController.swift; sourceTree = "<group>"; };
+		458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPayInfoViewController.swift; sourceTree = "<group>"; };
 		458861CF1EAB240600FF88C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		458861D11EAB240600FF88C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458861D41EAB240600FF88C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,9 +112,11 @@
 				458861CA1EAB240600FF88C6 /* AppDelegate.swift */,
 				4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */,
 				4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */,
-				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
-				458861CC1EAB240600FF88C6 /* PayInfoViewController.swift */,
+				458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */,
 				4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */,
+				4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */,
+				454162611EBB803A00DD0F7B /* ConfirmViewController.swift */,
+				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
@@ -274,7 +280,9 @@
 			files = (
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
 				4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */,
-				458861CD1EAB240600FF88C6 /* PayInfoViewController.swift in Sources */,
+				454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */,
+				454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */,
+				458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */,
 				458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */,
 				4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */,
 				4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */,

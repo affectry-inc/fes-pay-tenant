@@ -10,7 +10,7 @@ import UIKit
 
 class PayInfoTableViewController: UITableViewController {
     
-    //MARK: Properties
+    // MARK: - Properties
     
     var payInfos = [PayInfo]()
 
@@ -47,10 +47,11 @@ class PayInfoTableViewController: UITableViewController {
         let payInfo = payInfos[indexPath.row]
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         
-        cell.paidAtLabel.text = dateFormatter.string(from:payInfo.paid_at)
-        cell.priceLabel.text = String(format: "%.0f", payInfo.price)
+        cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paid_at)
+        cell.payerLabel.text = "ID: " + payInfo.payer
+        cell.priceLabel.text = "¥" + String(format: "%.0f", payInfo.price)
         
         return cell
     }
@@ -100,21 +101,32 @@ class PayInfoTableViewController: UITableViewController {
     }
     */
     
-    //MARK: Actions
+    // MARK: - Actions
     
-    //MARK: Private Methods
+    @IBAction func unwindToTop(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ConfirmViewController, let payInfo = sourceViewController.payInfo {
+            
+            // Add a new meal.
+            let newIndexPath = IndexPath(row: payInfos.count, section: 0)
+            
+            payInfos.append(payInfo)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    // MARK: - Private Methods
     
     private func loadSamplePayInfos() {
         
-        guard let payInfo1 = PayInfo(price: 100.11, paid_at: Date(), payer: "John") else {
+        guard let payInfo1 = PayInfo(price: 100.11, paid_at: Date(), payer: "A0001") else {
             fatalError("Unable to instantiate payInfo1")
         }
         
-        guard let payInfo2 = PayInfo(price: 200.22, paid_at: Date(), payer: "Jessy") else {
+        guard let payInfo2 = PayInfo(price: 200.22, paid_at: Date(), payer: "A0002") else {
             fatalError("Unable to instantiate payInfo2")
         }
 
-        guard let payInfo3 = PayInfo(price: 300.33, paid_at: Date(), payer: "Joseph") else {
+        guard let payInfo3 = PayInfo(price: 300.33, paid_at: Date(), payer: "A0003") else {
             fatalError("Unable to instantiate payInfo3")
         }
         
