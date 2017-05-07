@@ -16,7 +16,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var captureButton: UIButton!
     
-    var payInfo: PayInfo?
+    // var payInfo: PayInfo?
     
     // MARK: - Events
     
@@ -53,9 +53,17 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
+        if segue.identifier == "CaptureView" {
+            guard let captureView = segue.destination as? QRCaptureViewController else {
+                os_log("The destination is not a CaptureView", log: OSLog.default, type: .debug)
+                return
+            }
+            captureView.price = Double(priceTextField.text!)!
+        }
         // Configure the destination view controller only when the pay button is pressed.
-        guard let button = sender as? UIBarButtonItem, button === captureButton else {
-            os_log("The pay button was not pressed, cancelling", log: OSLog.default, type: .debug)
+        /*
+        guard let button = sender as? UIButton, button === captureButton else {
+            os_log("The capture button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
         
@@ -63,6 +71,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         
         // Set the payInfo to be passed to PayInfoTableViewController after the unwind segue.
         payInfo = PayInfo(price: price, paid_at: Date(), payer: "")
+        */
     }
     
     // MARK: - UITextFieldDelegate

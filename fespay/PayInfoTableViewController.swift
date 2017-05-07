@@ -117,16 +117,18 @@ class PayInfoTableViewController: UITableViewController {
     // MARK: - Private Methods
     
     private func loadSamplePayInfos() {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        guard let payInfo1 = PayInfo(price: 100.11, paid_at: Date(), payer: "A0001") else {
+        guard let payInfo1 = PayInfo(price: 2700, paid_at: fmt.date(from: "2017-5-12 10:10:10")!, payer: "AA001") else {
             fatalError("Unable to instantiate payInfo1")
         }
         
-        guard let payInfo2 = PayInfo(price: 200.22, paid_at: Date(), payer: "A0002") else {
+        guard let payInfo2 = PayInfo(price: 1500, paid_at: fmt.date(from: "2017-5-12 11:11:11")!, payer: "AA002") else {
             fatalError("Unable to instantiate payInfo2")
         }
 
-        guard let payInfo3 = PayInfo(price: 300.33, paid_at: Date(), payer: "A0003") else {
+        guard let payInfo3 = PayInfo(price: 3400, paid_at: fmt.date(from: "2017-5-12 12:12:12")!, payer: "AA003") else {
             fatalError("Unable to instantiate payInfo3")
         }
         

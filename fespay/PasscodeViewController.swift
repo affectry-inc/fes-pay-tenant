@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import os.log
 
-class PasscodeViewController: UIViewController {
+class PasscodeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Properties
     
     @IBOutlet weak var passcodeTextField: UITextField!
     @IBOutlet weak var settleButton: UIButton!
+    @IBOutlet weak var summaryTable: UITableView!
     
-    var payInfo: PayInfo?
+    // var payInfo: PayInfo?
+    var price: Double?
+    var payer: String?
     
     // MARK: - Events
     
@@ -29,6 +33,12 @@ class PasscodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Delegate設定
+        summaryTable.delegate = self
+        
+        // DataSource設定
+        summaryTable.dataSource = self
 
         updateSettleButtonState()
     }
@@ -37,16 +47,55 @@ class PasscodeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // セルを作る
+        
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        if (indexPath.row == 0) {
+            cell.textLabel?.text = "ID"
+            cell.detailTextLabel?.text = self.payer
+        }
+        else if (indexPath.row == 1) {
+            cell.textLabel?.text = "金額"
+            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", self.price!)
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // セルの数を設定
+        return 2
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // セルの高さを設定
+        return 50
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "ConfirmView" {
+            guard
+                let navCon = segue.destination as? UINavigationController,
+                let confirmView = navCon.topViewController as? ConfirmViewController
+            else {
+                os_log("The destination is not a ConfirmView", log: OSLog.default, type: .debug)
+                return
+            }
+            
+            confirmView.payInfo = PayInfo(price: self.price!, paid_at: Date(), payer: self.payer!)
+        }
     }
-    */
     
     // MARK: - Private Methods
     
