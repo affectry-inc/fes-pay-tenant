@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EE139BF6B2044ECB29089C5 /* Pods_fespayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */; };
+		4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */; };
+		4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */; };
 		4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */; };
 		4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
 		4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */; };
 		454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */; };
 		454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454162611EBB803A00DD0F7B /* ConfirmViewController.swift */; };
+		454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454815961EDC182800A453E4 /* CompleteViewController.swift */; };
+		456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
+		456CDF281EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
+		456CDF291EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
 		458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CA1EAB240600FF88C6 /* AppDelegate.swift */; };
 		458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */; };
 		458861D01EAB240600FF88C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861CE1EAB240600FF88C6 /* Main.storyboard */; };
@@ -20,6 +27,8 @@
 		458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */; };
 		458861E01EAB240700FF88C6 /* fespayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861DF1EAB240700FF88C6 /* fespayTests.swift */; };
 		458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861EA1EAB240700FF88C6 /* fespayUITests.swift */; };
+		45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */; };
+		9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F69931FBB206E916A638757 /* Pods_fespay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureViewController.swift; sourceTree = "<group>"; };
+		4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceConfirmViewController.swift; sourceTree = "<group>"; };
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewController.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
 		4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCaptureViewController.swift; sourceTree = "<group>"; };
 		4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		454162611EBB803A00DD0F7B /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		454815961EDC182800A453E4 /* CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		458861C71EAB240600FF88C6 /* fespay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fespay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458861CA1EAB240600FF88C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPayInfoViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +73,14 @@
 		458861E61EAB240700FF88C6 /* fespayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fespayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		458861EA1EAB240700FF88C6 /* fespayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fespayUITests.swift; sourceTree = "<group>"; };
 		458861EC1EAB240700FF88C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4990684102F33833A6DA7470 /* Pods-fespay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespay.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespay/Pods-fespay.release.xcconfig"; sourceTree = "<group>"; };
+		4F69931FBB206E916A638757 /* Pods_fespay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespay/Pods-fespay.debug.xcconfig"; sourceTree = "<group>"; };
+		FD746A59F60FC17E6889E99C /* Pods-fespayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +104,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE139BF6B2044ECB29089C5 /* Pods_fespayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FD511B4325A9604AD628EA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F69931FBB206E916A638757 /* Pods_fespay.framework */,
+				1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */,
+				577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		458861BE1EAB240600FF88C6 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +128,8 @@
 				458861DE1EAB240700FF88C6 /* fespayTests */,
 				458861E91EAB240700FF88C6 /* fespayUITests */,
 				458861C81EAB240600FF88C6 /* Products */,
+				5CF6E0687B300C0959667A8B /* Pods */,
+				1FD511B4325A9604AD628EA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,12 +151,16 @@
 				4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */,
 				458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */,
 				4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */,
+				4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */,
+				4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */,
+				454815961EDC182800A453E4 /* CompleteViewController.swift */,
 				4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */,
 				454162611EBB803A00DD0F7B /* ConfirmViewController.swift */,
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
+				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
 				458861D61EAB240600FF88C6 /* Info.plist */,
 			);
 			path = fespay;
@@ -143,6 +184,19 @@
 			path = fespayUITests;
 			sourceTree = "<group>";
 		};
+		5CF6E0687B300C0959667A8B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */,
+				4990684102F33833A6DA7470 /* Pods-fespay.release.xcconfig */,
+				9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */,
+				FD746A59F60FC17E6889E99C /* Pods-fespayTests.release.xcconfig */,
+				AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */,
+				6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458861EF1EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespay" */;
 			buildPhases = (
+				4E88CFC8754710CFFCDD9E65 /* [CP] Check Pods Manifest.lock */,
 				458861C31EAB240600FF88C6 /* Sources */,
 				458861C41EAB240600FF88C6 /* Frameworks */,
 				458861C51EAB240600FF88C6 /* Resources */,
+				F41C158A80A5F662D21717CE /* [CP] Embed Pods Frameworks */,
+				52C3E917A7D29A169C5728B3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458861F21EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayTests" */;
 			buildPhases = (
+				079300044D27CD2F1AE47F14 /* [CP] Check Pods Manifest.lock */,
 				458861D71EAB240700FF88C6 /* Sources */,
 				458861D81EAB240700FF88C6 /* Frameworks */,
 				458861D91EAB240700FF88C6 /* Resources */,
+				C0082A82799F9FF39B165706 /* [CP] Embed Pods Frameworks */,
+				7685BBFB826A017A16E094BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,9 +245,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458861F51EAB240700FF88C6 /* Build configuration list for PBXNativeTarget "fespayUITests" */;
 			buildPhases = (
+				27BB2219C32202D859BE817E /* [CP] Check Pods Manifest.lock */,
 				458861E21EAB240700FF88C6 /* Sources */,
 				458861E31EAB240700FF88C6 /* Frameworks */,
 				458861E41EAB240700FF88C6 /* Resources */,
+				5EEC745B9C9F1CA33DEB4ADF /* [CP] Embed Pods Frameworks */,
+				D59EB18DDCF9C784CC570FB7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
+				456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
 				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
 				458861D01EAB240600FF88C6 /* Main.storyboard in Resources */,
 			);
@@ -261,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456CDF281EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,10 +333,149 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456CDF291EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		079300044D27CD2F1AE47F14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		27BB2219C32202D859BE817E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4E88CFC8754710CFFCDD9E65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52C3E917A7D29A169C5728B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespay/Pods-fespay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EEC745B9C9F1CA33DEB4ADF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7685BBFB826A017A16E094BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0082A82799F9FF39B165706 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D59EB18DDCF9C784CC570FB7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F41C158A80A5F662D21717CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fespay/Pods-fespay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		458861C31EAB240600FF88C6 /* Sources */ = {
@@ -282,10 +486,13 @@
 				4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */,
 				454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */,
 				454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */,
+				454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */,
+				4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */,
 				458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */,
 				458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */,
 				4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */,
 				4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */,
+				4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,12 +642,13 @@
 		};
 		458861F01EAB240700FF88C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 89JE6S34N2;
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespay;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -448,12 +656,13 @@
 		};
 		458861F11EAB240700FF88C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4990684102F33833A6DA7470 /* Pods-fespay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 89JE6S34N2;
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.co.affectry.fespay;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -461,6 +670,7 @@
 		};
 		458861F31EAB240700FF88C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +685,7 @@
 		};
 		458861F41EAB240700FF88C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD746A59F60FC17E6889E99C /* Pods-fespayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -489,6 +700,7 @@
 		};
 		458861F61EAB240700FF88C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = fespayUITests/Info.plist;
@@ -502,6 +714,7 @@
 		};
 		458861F71EAB240700FF88C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = fespayUITests/Info.plist;

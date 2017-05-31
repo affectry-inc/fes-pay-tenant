@@ -103,7 +103,8 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                     let str = metadata.stringValue!
                     self.payer = str.substring(from: str.index(str.endIndex, offsetBy: -5))
                     
-                    performSegue(withIdentifier: "PasscodeView", sender: nil)
+                    // performSegue(withIdentifier: "PasscodeView", sender: nil)
+                    performSegue(withIdentifier: "FaceCaptureView", sender: nil)
                     
                     DispatchQueue.global(qos: .userInitiated).async {
                         self.captureSesssion.stopRunning()
@@ -126,6 +127,14 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
             }
             passcodeView.price = self.price
             passcodeView.payer = self.payer
+        }
+        else if segue.identifier == "FaceCaptureView" {
+            guard let faceCaptureView = segue.destination as? FaceCaptureViewController else {
+                os_log("The destination is not a FaceCaptureView", log: OSLog.default, type: .debug)
+                return
+            }
+            faceCaptureView.price = self.price
+            faceCaptureView.payer = self.payer
         }
     }
 
