@@ -18,7 +18,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     // var payInfo: PayInfo?
     var price: Double?
     var payer: String?
-    var image: UIImage?
+    var capturedImage: UIImage?
+    var registeredImage: UIImage?
     
     @IBOutlet weak var cameraView: UIView!
     var captureSesssion: AVCaptureSession!
@@ -88,7 +89,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         if (previewLayer != nil) { // TODO: 消す
             stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
         } else {
-            self.image = UIImage(named: "katosan")
+            self.capturedImage = UIImage(named: "katosan")
             execVerify()
         }
     }
@@ -100,7 +101,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             // JPEG形式で画像データを取得
             let photoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
             
-            self.image = UIImage(data: photoData!)
+            self.capturedImage = UIImage(data: photoData!)
             
             execVerify()
         }
@@ -113,7 +114,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         let ts = Int(Date().timeIntervalSince1970)
         let fileName = "\(ts)_\(self.payer!).JPG"
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("fespay").appendingPathExtension(fileName)
-        let imageData = UIImageJPEGRepresentation(self.image!, 0.5)
+        let imageData = UIImageJPEGRepresentation(self.capturedImage!, 0.5)
         do {
             try imageData!.write(to: fileURL, options: .atomic)
         } catch {
@@ -142,51 +143,96 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         print("buyer: \(buyerPhoto)")
         
         // MARK: Get URL of band holder's photo from Firebase
-        var url = "default_url"
+        var registeredPhoto = "default_url"
         let fbRef = Database.database().reference()
         fbRef.child("bands").child(self.payer!).child("faces").observeSingleEvent(of: .value, with: { (snapshot) in
             for (_, child) in snapshot.children.enumerated() {
                 
                 let key: String = (child as AnyObject).key
                 
-                fbRef.child("faces").child(key).observeSingleEvent(of: .value, with: { (ss) in
-                    if let snap = ss.value as? [String:AnyObject] {
-                        url = snap["photoUrl"] as! String
+                fbRef.child("faces").child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let snap = snapshot.value as? [String:AnyObject] {
+                        registeredPhoto = snap["photoUrl"] as! String
                         
-                        print("registered: \(url)")
+                        print("registered: \(registeredPhoto)")
                         
                         // MARK: Verification
+                        // MARK: detect 1
                         var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect")!)
                         request.httpMethod = "POST"
                         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                         request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
                         request.httpBody = "{\"url\":\"\(buyerPhoto)\"}".data(using: String.Encoding.utf8)
                         
-                        
                         let task = URLSession.shared.dataTask(with: request){
                             data, response, error in
                             
                             if error != nil {
-                                print("step1: \(error)")
+                                print("detect1 error: \(error!)")
                                 return
                             }
                             
-                            print("response1: \(response!)")
-                            print("rawdata1: \(data!)")
-                            
                             let data1 = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
-                            print("data1: \(data1)")
                             let faceId1 = data1[0]["faceId"] as! String
                             print("faceId1: \(faceId1)")
                             
-                            // MARK: Navigate to confirm
-                            let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
+                            // MARK: detect 2
+                            var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect")!)
+                            request.httpMethod = "POST"
+                            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                            request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+                            request.httpBody = "{\"url\":\"\(registeredPhoto)\"}".data(using: String.Encoding.utf8)
                             
-                            next.price = self.price
-                            next.payer = self.payer
-                            next.image = self.image
-                            
-                            self.navigationController?.pushViewController(next, animated: true)
+                            let task = URLSession.shared.dataTask(with: request){
+                                data, response, error in
+                                
+                                if error != nil {
+                                    print("detect2 error: \(error!)")
+                                    return
+                                }
+                                
+                                let data2 = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
+                                let faceId2 = data2[0]["faceId"] as! String
+                                print("faceId2: \(faceId2)")
+                                
+                                // MARK: verify
+                                var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/verify")!)
+                                request.httpMethod = "POST"
+                                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                                request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+                                request.httpBody = "{\"faceId1\":\"\(faceId1)\",\"faceId2\":\"\(faceId2)\"}".data(using: String.Encoding.utf8)
+                                
+                                let task = URLSession.shared.dataTask(with: request){
+                                    data, response, error in
+                                    
+                                    if error != nil {
+                                        print("verify error: \(error!)")
+                                        return
+                                    }
+                                    
+                                    let data3 = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+                                    print("verify: \(data3)")
+                                    
+                                    // MARK: Navigate to confirm
+                                    let url = URL(string: registeredPhoto)!
+                                    let imageData = try? Data(contentsOf: url, options: .mappedIfSafe)
+                                    
+                                    let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
+                                    
+                                    next.price = self.price
+                                    next.payer = self.payer
+                                    next.capImg = self.capturedImage
+                                    next.regImg = UIImage(data:imageData!)
+                                    next.conf = (data3["confidence"] as! Double) * 100
+                                    next.equal = data3["isIdentical"] as! Bool
+                                    
+                                    DispatchQueue.main.async {
+                                        self.navigationController?.pushViewController(next, animated: true)
+                                    }
+                                }
+                                task.resume()
+                            }
+                            task.resume()
                         }
                         task.resume()
                     }
@@ -195,8 +241,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -210,7 +254,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             }
             faceConfirmView.price = self.price
             faceConfirmView.payer = self.payer
-            faceConfirmView.image = self.image
+            faceConfirmView.capImg = self.capturedImage
         }
     }
 

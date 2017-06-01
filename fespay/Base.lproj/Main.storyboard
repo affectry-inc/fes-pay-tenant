@@ -338,6 +338,9 @@
                     <navigationItem key="navigationItem" title="確認" id="NWN-RD-TSs"/>
                     <connections>
                         <outlet property="capturedImage" destination="zWm-WF-4C9" id="hxW-Cp-CJf"/>
+                        <outlet property="confidenceLabel" destination="VTc-MY-0Db" id="ggf-TP-Jmi"/>
+                        <outlet property="equalLabel" destination="3fU-Ql-mCU" id="zan-YI-LI8"/>
+                        <outlet property="registeredImage" destination="uWg-Kh-gSH" id="3Oq-rn-NFm"/>
                         <outlet property="summaryTable" destination="ExY-SK-sJv" id="R9c-1c-2ZZ"/>
                     </connections>
                 </viewController>

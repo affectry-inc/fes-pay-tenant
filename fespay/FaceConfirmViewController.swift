@@ -15,9 +15,15 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
     // var payInfo: PayInfo?
     var price: Double?
     var payer: String?
-    var image: UIImage?
+    var capImg: UIImage?
+    var regImg: UIImage?
+    var conf: Double?
+    var equal: Bool = false
     
+    @IBOutlet weak var registeredImage: UIImageView!
     @IBOutlet weak var capturedImage: UIImageView!
+    @IBOutlet weak var equalLabel: UILabel!
+    @IBOutlet weak var confidenceLabel: UILabel!
     @IBOutlet weak var summaryTable: UITableView!
     
     // MARK: - Events
@@ -31,7 +37,10 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
         // DataSource設定
         summaryTable.dataSource = self
 
-        capturedImage.image = self.image
+        capturedImage.image = self.capImg
+        registeredImage.image = self.regImg
+        confidenceLabel.text = "\(String(format: "%.1f", self.conf!))%"
+        equalLabel.text = self.equal ? "=" : "≠"
     }
 
     override func didReceiveMemoryWarning() {
