@@ -93,7 +93,10 @@ class PasscodeViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            confirmView.payInfo = PayInfo(price: self.price!, paid_at: Date(), payer: self.payer!)
+            let payInfo = PayInfo(key: self.payer!, payer: self.payer!)
+            payInfo?.price = self.price!
+            payInfo?.paid_at = Date()
+            confirmView.payInfo = payInfo
         }
     }
     

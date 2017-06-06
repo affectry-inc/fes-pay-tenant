@@ -18,7 +18,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
     
     // var payInfo: PayInfo?
     var price: Double?
-    var payer: String? = "AA001"
+    var payer: String? = "a001"
     
     var captureSesssion: AVCaptureSession!
     // var stillImageOutput: AVCapturePhotoOutput?

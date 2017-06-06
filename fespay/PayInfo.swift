@@ -12,22 +12,24 @@ class PayInfo {
     
     //MARK: Properties
     
+    var key: String
+    var payer: String
     var price: Double
     var paid_at: Date
-    var payer: String
     
     //MARK: Initialization
     
-    init?(price: Double, paid_at: Date, payer: String) {
+    init?(key: String, payer: String) {
         
-        // Initialization should fail if the price is zero or negative.
-        if price <= 0  {
+        // Initialization should fail if the key is nil.
+        if key == ""  {
             return nil
         }
         
-        self.price = price
-        self.paid_at = paid_at
+        self.key = key
         self.payer = payer
+        self.price = 0
+        self.paid_at = Date()
         
     }
     

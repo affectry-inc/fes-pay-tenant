@@ -52,7 +52,9 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
         if (execPayment()) {
             let next = self.storyboard?.instantiateViewController(withIdentifier: "CompleteView") as! CompleteViewController
             
-            next.payInfo = PayInfo(price: self.price!, paid_at: Date(), payer: self.payer!)
+            let payInfo = PayInfo(key: self.payer!, payer: self.payer!)
+            payInfo?.price = self.price!
+            next.payInfo = payInfo
             
             self.present(next, animated: true, completion: nil)
         } else {

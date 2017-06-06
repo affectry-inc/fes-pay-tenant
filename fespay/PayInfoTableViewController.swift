@@ -120,17 +120,24 @@ class PayInfoTableViewController: UITableViewController {
         let fmt = DateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        guard let payInfo1 = PayInfo(price: 2700, paid_at: fmt.date(from: "2017-5-12 10:10:10")!, payer: "AA001") else {
+        guard let payInfo1 = PayInfo(key: "aa001", payer: "aa001") else {
             fatalError("Unable to instantiate payInfo1")
         }
+        payInfo1.price = 2700
+        payInfo1.paid_at = fmt.date(from: "2017-5-12 10:10:10")!
         
-        guard let payInfo2 = PayInfo(price: 1500, paid_at: fmt.date(from: "2017-5-12 11:11:11")!, payer: "AA002") else {
+        guard let payInfo2 = PayInfo(key: "aa002", payer: "aa002") else {
             fatalError("Unable to instantiate payInfo2")
         }
+        payInfo2.price = 1500
+        payInfo2.paid_at = fmt.date(from: "2017-5-12 11:11:11")!
 
-        guard let payInfo3 = PayInfo(price: 3400, paid_at: fmt.date(from: "2017-5-12 12:12:12")!, payer: "AA003") else {
+        guard let payInfo3 = PayInfo(key: "aa003", payer: "aa003") else {
             fatalError("Unable to instantiate payInfo3")
         }
+        payInfo3.price = 3400
+        payInfo3.paid_at = fmt.date(from: "2017-5-12 12:12:12")!
+
         
         payInfos += [payInfo1, payInfo2, payInfo3]
 

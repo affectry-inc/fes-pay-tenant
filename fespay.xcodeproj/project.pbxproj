@@ -10,6 +10,7 @@
 		3EE139BF6B2044ECB29089C5 /* Pods_fespayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */; };
 		4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */; };
 		4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */; };
+		4505F2411EE688230078605B /* TenantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* TenantInfo.swift */; };
 		4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */; };
 		4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
@@ -52,6 +53,7 @@
 		1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureViewController.swift; sourceTree = "<group>"; };
 		4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceConfirmViewController.swift; sourceTree = "<group>"; };
+		4505F2401EE688230078605B /* TenantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantInfo.swift; sourceTree = "<group>"; };
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewController.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */,
 				454162611EBB803A00DD0F7B /* ConfirmViewController.swift */,
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
+				4505F2401EE688230078605B /* TenantInfo.swift */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
+				4505F2411EE688230078605B /* TenantInfo.swift in Sources */,
 				4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */,
 				454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */,
 				454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */,
