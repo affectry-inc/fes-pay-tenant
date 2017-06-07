@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 import os.log
-import AWSS3
-import Firebase
+// import AWSS3
+// import Firebase
 
 class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
@@ -108,221 +108,48 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         }
     }
     
-    func uploadPhoto() {
-        let fmt = DateFormatter()
-        fmt.dateFormat = "yyyyMMddHHmmss"
-        let ts = fmt.string(from: Date())
-        // let ts = Int(Date().timeIntervalSince1970)
-        let fileName = "\(ts)_\(self.payer!).JPG"
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("fespay").appendingPathExtension(fileName)
-        let imageData = UIImageJPEGRepresentation(self.capturedImage!, 0.5)
-        do {
-            try imageData!.write(to: fileURL, options: .atomic)
-        } catch {
-            print(error)
-        }
-        
-        let uploadRequest = AWSS3TransferManagerUploadRequest()
-        uploadRequest?.bucket = "fespay-dev"
-        uploadRequest?.key = "buyer_photos/\(self.fesId)/\(fileName)"
-        uploadRequest?.body = fileURL
-        uploadRequest?.acl = .publicRead
-        uploadRequest?.contentType = "image/jpeg"
-        
-        let transferManager = AWSS3TransferManager.default()
-        transferManager.upload(uploadRequest!).continueWith { (task: AWSTask) -> Any? in
-            if let error = task.error as NSError? {
-                print("Error: \(error)")
-                return nil
+    func verify(faceId: String, personGroupId: String, personId: String, photoUrl: String) {
+        AzureClient.verify(faceId: faceId, personGroupId: self.payer!, personId: personId, onVerify: {
+            (veriRes: [String: Any]) in
+            
+            let url = URL(string: photoUrl)!
+            let imageData = try? Data(contentsOf: url, options: .mappedIfSafe)
+            
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
+            
+            next.price = self.price
+            next.payer = self.payer
+            next.capImg = self.capturedImage
+            next.regImg = UIImage(data:imageData!)
+            next.conf = (veriRes["confidence"] as! Double) * 100
+            next.equal = veriRes["isIdentical"] as! Bool
+            
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(next, animated: true)
             }
-            
-            let buyerPhoto = "https://s3-ap-northeast-1.amazonaws.com/fespay-dev/buyer_photos/\(self.fesId)/\(fileName)"
-            print("buyer: \(buyerPhoto)")
-            
-            return self.detectBuyer(photoUrl: buyerPhoto)
+        })
+    }
+    
+    func onDetect(photoUrl: String, faces: [[String: Any]]) {
+        if faces.count == 1 {
+            // 正常処理
+            let faceId = faces[0]["faceId"] as! String
+            FirebaseClient.findPerson(bandId: self.payer!, onFind: { (personId: String, photoUrl: String) in
+                self.verify(faceId: faceId, personGroupId:  self.payer!, personId: personId, photoUrl: photoUrl)
+            })
+        } else if faces.count == 0 {
+            // TODO: ０件ですよ
+        } else {
+            // TODO: 顔選択からのfaceId投げ
         }
     }
     
-    func detectBuyer(photoUrl: String) {
-        var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
-        request.httpBody = "{\"url\":\"\(photoUrl)\"}".data(using: .utf8)
-        
-        let task = URLSession.shared.dataTask(with: request){ data, response, error in
-            
-            if error != nil {
-                print("detectBuyer error: \(error!)")
-                return
-            }
-            
-            let data = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
-            let faceId = data[0]["faceId"] as! String
-            print("faceId: \(faceId)")
-            
-            return self.verifyPerson(faceId: faceId)
-        }
-        task.resume()
-    }
-    
-    func verifyPerson(faceId: String) {
-        // MARK: get personId from Firebase
-        let fbRef = Database.database().reference()
-        fbRef.child("bands").child(self.payer!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let person = snapshot.value as? [String: Any]
-            let persons = person?["persons"] as! [String: Bool]
-            let personId = persons.first!.key
-            let registeredPhoto = person?["photoUrl"] as! String
-            print("personId: \(personId)")
-            
-            // MARK: verify
-            var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/verify")!)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
-            request.httpBody = "{\"faceId\":\"\(faceId)\",\"personGroupId\":\"\(self.payer!)\",\"personId\":\"\(personId)\"}".data(using: String.Encoding.utf8)
-            
-            let task = URLSession.shared.dataTask(with: request){ data, response, error in
-                
-                if error != nil {
-                    print("verify error: \(error!)")
-                    return
-                }
-                
-                let veriRes = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-                print("verify: \(veriRes)")
-                
-                // MARK: Navigate to confirm
-                let url = URL(string: registeredPhoto)!
-                let imageData = try? Data(contentsOf: url, options: .mappedIfSafe)
-                
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
-                
-                next.price = self.price
-                next.payer = self.payer
-                next.capImg = self.capturedImage
-                next.regImg = UIImage(data:imageData!)
-                next.conf = (veriRes["confidence"] as! Double) * 100
-                next.equal = veriRes["isIdentical"] as! Bool
-                
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(next, animated: true)
-                }
-            }
-            task.resume()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+    func detect(photoUrl: String) {
+        AzureClient.detectFace(photoUrl: photoUrl, onDetect: self.onDetect)
     }
     
     func execVerify() {
-        self.uploadPhoto()
-        // MARK: Upload to S3
-        /*
-        let ts = Int(Date().timeIntervalSince1970)
-        let fileName = "\(ts)_\(self.payer!).JPG"
-        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("fespay").appendingPathExtension(fileName)
-        let imageData = UIImageJPEGRepresentation(self.capturedImage!, 0.5)
-        do {
-            try imageData!.write(to: fileURL, options: .atomic)
-        } catch {
-            print(error)
-        }
-        
-        let uploadRequest = AWSS3TransferManagerUploadRequest()
-        uploadRequest?.bucket = "fespay-dev"
-        uploadRequest?.key = "buyer_photos/\(ts)_\(self.payer!)/\(fileName)"
-        uploadRequest?.body = fileURL
-        uploadRequest?.acl = .publicRead
-        uploadRequest?.contentType = "image/jpeg"
-        
-        let transferManager = AWSS3TransferManager.default()
-        transferManager.upload(uploadRequest!).continueWith { (task: AWSTask) -> Any? in
-            if let error = task.error as NSError? {
-                print("Error: \(error)")
-                return nil
-            }
-            
-            return nil
-        }
-        
-        let buyerPhoto = "https://s3-ap-northeast-1.amazonaws.com/fespay-dev/buyer_photos/\(ts)_\(self.payer!)/\(fileName)"
-        
-        print("buyer: \(buyerPhoto)")
-        
-        // MARK: Get personId of band holder from Firebase
-        let fbRef = Database.database().reference()
-        fbRef.child("bands").child(self.payer!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let person = snapshot.value as? [String: Any]
-            let persons = person?["persons"] as! [String: Bool]
-            let personId = persons.first!.key 
-            let registeredPhoto = person?["photoUrl"] as! String
-            print("personId: \(personId)")
-            
-            // MARK: Verification
-            // MARK: detect 1
-            var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect")!)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
-            request.httpBody = "{\"url\":\"\(buyerPhoto)\"}".data(using: String.Encoding.utf8)
-            
-            let task = URLSession.shared.dataTask(with: request){
-                data, response, error in
-                
-                if error != nil {
-                    print("detect1 error: \(error!)")
-                    return
-                }
-                
-                let data1 = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
-                let faceId1 = data1[0]["faceId"] as! String
-                print("faceId1: \(faceId1)")
-                
-                // MARK: verify
-                var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/verify")!)
-                request.httpMethod = "POST"
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("ba8c31c918864b969eb1601590167f93", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
-                // request.httpBody = "{\"faceId1\":\"\(faceId1)\",\"faceId2\":\"\(faceId2)\"}".data(using: String.Encoding.utf8)
-                request.httpBody = "{\"faceId\":\"\(faceId1)\",\"personGroupId\":\"\(self.payer!)\",\"personId\":\"\(personId)\"}".data(using: String.Encoding.utf8)
-            
-                let task = URLSession.shared.dataTask(with: request){
-                    data, response, error in
-                    
-                    if error != nil {
-                        print("verify error: \(error!)")
-                        return
-                    }
-                    
-                    let data3 = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-                    print("verify: \(data3)")
-                    
-                    // MARK: Navigate to confirm
-                    let url = URL(string: registeredPhoto)!
-                    let imageData = try? Data(contentsOf: url, options: .mappedIfSafe)
-                    
-                    let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
-                    
-                    next.price = self.price
-                    next.payer = self.payer
-                    next.capImg = self.capturedImage
-                    next.regImg = UIImage(data:imageData!)
-                    next.conf = (data3["confidence"] as! Double) * 100
-                    next.equal = data3["isIdentical"] as! Bool
-                    
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(next, animated: true)
-                    }
-                }
-                task.resume()
-            }
-            task.resume()
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        */
+        S3Client.uploadBuyerPhoto(fesId: self.fesId, bandId: self.payer!, image: self.capturedImage!, onUpload: self.detect)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

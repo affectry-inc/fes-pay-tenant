@@ -11,6 +11,7 @@
 		4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */; };
 		4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */; };
 		4505F2411EE688230078605B /* TenantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* TenantInfo.swift */; };
+		4505F2431EE7A1DF0078605B /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2421EE7A1DF0078605B /* S3Client.swift */; };
 		4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */; };
 		4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
@@ -18,6 +19,8 @@
 		454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */; };
 		454162621EBB803B00DD0F7B /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454162611EBB803A00DD0F7B /* ConfirmViewController.swift */; };
 		454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454815961EDC182800A453E4 /* CompleteViewController.swift */; };
+		456467311EE7C5D6001DC574 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456467301EE7C5D6001DC574 /* AzureClient.swift */; };
+		456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456467321EE7DED8001DC574 /* FirebaseClient.swift */; };
 		456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
 		456CDF281EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
 		456CDF291EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */; };
@@ -54,6 +57,7 @@
 		4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureViewController.swift; sourceTree = "<group>"; };
 		4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceConfirmViewController.swift; sourceTree = "<group>"; };
 		4505F2401EE688230078605B /* TenantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantInfo.swift; sourceTree = "<group>"; };
+		4505F2421EE7A1DF0078605B /* S3Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Client.swift; sourceTree = "<group>"; };
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4451EB481A2000C72D6 /* PayInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewController.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 		4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		454162611EBB803A00DD0F7B /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		454815961EDC182800A453E4 /* CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		456467301EE7C5D6001DC574 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
+		456467321EE7DED8001DC574 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		458861C71EAB240600FF88C6 /* fespay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fespay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458861CA1EAB240600FF88C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				454815961EDC182800A453E4 /* CompleteViewController.swift */,
 				4541625F1EBB752200DD0F7B /* PasscodeViewController.swift */,
 				454162611EBB803A00DD0F7B /* ConfirmViewController.swift */,
+				4505F2421EE7A1DF0078605B /* S3Client.swift */,
+				456467301EE7C5D6001DC574 /* AzureClient.swift */,
+				456467321EE7DED8001DC574 /* FirebaseClient.swift */,
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
 				4505F2401EE688230078605B /* TenantInfo.swift */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
@@ -485,7 +494,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456467311EE7C5D6001DC574 /* AzureClient.swift in Sources */,
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
+				456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */,
 				4505F2411EE688230078605B /* TenantInfo.swift in Sources */,
 				4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */,
 				454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */,
@@ -497,6 +508,7 @@
 				4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */,
 				4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */,
 				4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */,
+				4505F2431EE7A1DF0078605B /* S3Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
