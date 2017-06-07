@@ -10,7 +10,7 @@ import Foundation
 import os.log
 import Firebase
 
-class FirebaseClient {
+class FirebaseClient: NSObject {
     
     class func findPerson(bandId: String, onFind: @escaping (String, String) -> ()) {
         let fbRef = Database.database().reference()
@@ -26,6 +26,11 @@ class FirebaseClient {
         }) { (error) in
             os_log("getPersonId Error: %@", log: .default, type: .error, error.localizedDescription)
         }
+    }
+    
+    class func createPayKey() -> String {
+        let fbRef = Database.database().reference()
+        return fbRef.child("pays").childByAutoId().key
     }
     
 }

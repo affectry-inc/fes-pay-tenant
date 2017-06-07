@@ -12,13 +12,7 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
 
     // MARK: - Properties
     
-    // var payInfo: PayInfo?
-    var price: Double?
-    var payer: String?
-    var capImg: UIImage?
-    var regImg: UIImage?
-    var conf: Double?
-    var equal: Bool = false
+    var payInfo: PayInfo?
     
     @IBOutlet weak var registeredImage: UIImageView!
     @IBOutlet weak var capturedImage: UIImageView!
@@ -37,10 +31,10 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
         // DataSource設定
         summaryTable.dataSource = self
 
-        capturedImage.image = self.capImg
-        registeredImage.image = self.regImg
-        confidenceLabel.text = "\(String(format: "%.1f", self.conf!))%"
-        equalLabel.text = self.equal ? "=" : "≠"
+        capturedImage.image = self.payInfo?.buyerImage
+        registeredImage.image = self.payInfo?.personImage
+        confidenceLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+        equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +46,7 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
         if (execPayment()) {
             let next = self.storyboard?.instantiateViewController(withIdentifier: "CompleteView") as! CompleteViewController
             
-            let payInfo = PayInfo(key: self.payer!, payer: self.payer!)
-            payInfo?.price = self.price!
-            next.payInfo = payInfo
+            next.payInfo = self.payInfo
             
             self.present(next, animated: true, completion: nil)
         } else {
@@ -71,11 +63,11 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         if (indexPath.row == 0) {
             cell.textLabel?.text = "ID"
-            cell.detailTextLabel?.text = self.payer
+            cell.detailTextLabel?.text = self.payInfo?.bandId
         }
         else if (indexPath.row == 1) {
             cell.textLabel?.text = "金額"
-            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", self.price!)
+            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
         }
         
         return cell

@@ -8,25 +8,14 @@
 
 import Foundation
 
-class TenantInfo {
+class TenantInfo: NSObject {
+    
+    // Singleton (Unique on app)
+    static let sharedInstance = TenantInfo()
     
     //MARK: Properties
     
-    var fesId: String
-    var tenantId: String
-    
-    //MARK: Initialization
-    
-    init?(fesId: String, tenantId: String) {
-        
-        // Initialization should fail if the key is nil.
-        if fesId == "" || tenantId == "" {
-            return nil
-        }
-        
-        self.fesId = fesId
-        self.tenantId = tenantId
-        
-    }
+    var fesId: String = ""
+    var tenantId: String = ""
 
 }

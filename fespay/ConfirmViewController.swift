@@ -13,6 +13,7 @@ class ConfirmViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Properties
     
     var payInfo: PayInfo?
+    
     @IBOutlet weak var summaryTable: UITableView!
     
     // MARK: - Events
@@ -40,7 +41,7 @@ class ConfirmViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         if (indexPath.row == 0) {
             cell.textLabel?.text = "ID"
-            cell.detailTextLabel?.text = self.payInfo?.payer
+            cell.detailTextLabel?.text = self.payInfo?.bandId
         }
         else if (indexPath.row == 1) {
             cell.textLabel?.text = "金額"
@@ -54,7 +55,7 @@ class ConfirmViewController: UIViewController, UITableViewDelegate, UITableViewD
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             cell.textLabel?.text = "決済時刻"
-            cell.detailTextLabel?.text = dateFormatter.string(from: (self.payInfo?.paid_at)!)
+            cell.detailTextLabel?.text = dateFormatter.string(from: (self.payInfo?.paidAt)!)
         }
         
         return cell

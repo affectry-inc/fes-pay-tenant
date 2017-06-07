@@ -16,12 +16,9 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
 
     @IBOutlet weak var cameraView: UIView!
     
-    // var payInfo: PayInfo?
-    var price: Double?
-    var payer: String? = "a001"
+    var payInfo: PayInfo?
     
     var captureSesssion: AVCaptureSession!
-    // var stillImageOutput: AVCapturePhotoOutput?
     var stillImageOutput: AVCaptureMetadataOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
     
@@ -40,7 +37,6 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
         view.addSubview(qrView)
 
         captureSesssion = AVCaptureSession()
-        // stillImageOutput = AVCapturePhotoOutput()
         stillImageOutput = AVCaptureMetadataOutput()
         
         // 解像度の設定
@@ -101,7 +97,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                 if metadata.stringValue != nil {
                     // 検出データを取得
                     let str = metadata.stringValue!
-                    self.payer = str.substring(from: str.index(str.endIndex, offsetBy: -5))
+                    self.payInfo?.bandId = str.substring(from: str.index(str.endIndex, offsetBy: -5))
                     
                     // performSegue(withIdentifier: "PasscodeView", sender: nil)
                     performSegue(withIdentifier: "FaceCaptureView", sender: nil)
@@ -125,16 +121,14 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                 os_log("The destination is not a PasscodeView", log: OSLog.default, type: .debug)
                 return
             }
-            passcodeView.price = self.price
-            passcodeView.payer = self.payer
+            passcodeView.payInfo  = self.payInfo
         }
         else if segue.identifier == "FaceCaptureView" {
             guard let faceCaptureView = segue.destination as? FaceCaptureViewController else {
                 os_log("The destination is not a FaceCaptureView", log: OSLog.default, type: .debug)
                 return
             }
-            faceCaptureView.price = self.price
-            faceCaptureView.payer = self.payer
+            faceCaptureView.payInfo  = self.payInfo
         }
     }
 

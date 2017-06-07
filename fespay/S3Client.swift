@@ -10,7 +10,7 @@ import Foundation
 import os.log
 import AWSS3
 
-class S3Client {
+class S3Client: NSObject {
     
     class func uploadBuyerPhoto(fesId: String, bandId: String, image: UIImage, onUpload: @escaping (String) -> ()) {
         let fmt = DateFormatter()
@@ -40,10 +40,10 @@ class S3Client {
                 return nil
             }
             
-            let buyerPhoto = "https://s3-ap-northeast-1.amazonaws.com/fespay-dev/buyer_photos/\(fesId)/\(fileName)"
-            os_log("photoUrl: %@", log: .default, type: .debug, buyerPhoto)
+            let buyerPhotoUrl = "https://s3-ap-northeast-1.amazonaws.com/fespay-dev/buyer_photos/\(fesId)/\(fileName)"
+            os_log("photoUrl: %@", log: .default, type: .debug, buyerPhotoUrl)
             
-            onUpload(buyerPhoto)
+            onUpload(buyerPhotoUrl)
             
             return nil
         }

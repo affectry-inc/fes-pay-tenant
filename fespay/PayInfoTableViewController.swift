@@ -13,10 +13,15 @@ class PayInfoTableViewController: UITableViewController {
     // MARK: - Properties
     
     var payInfos = [PayInfo]()
+    var tenantInfo = TenantInfo.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // TODO: set TenantInfo on login
+        tenantInfo.fesId = "FES_A"
+        tenantInfo.tenantId = "TENANT_A"
+        
         loadSamplePayInfos()
     }
 
@@ -49,9 +54,9 @@ class PayInfoTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         
-        cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paid_at)
-        cell.payerLabel.text = "ID: " + payInfo.payer
-        cell.priceLabel.text = "¥" + String(format: "%.0f", payInfo.price)
+        cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paidAt!)
+        cell.payerLabel.text = "ID: " + payInfo.bandId!
+        cell.priceLabel.text = "¥" + String(format: "%.0f", payInfo.price!)
         
         return cell
     }
@@ -120,24 +125,20 @@ class PayInfoTableViewController: UITableViewController {
         let fmt = DateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        guard let payInfo1 = PayInfo(key: "aa001", payer: "aa001") else {
-            fatalError("Unable to instantiate payInfo1")
-        }
+        let payInfo1 = PayInfo()
         payInfo1.price = 2700
-        payInfo1.paid_at = fmt.date(from: "2017-5-12 10:10:10")!
+        payInfo1.bandId = "aa001"
+        payInfo1.paidAt = Date()
         
-        guard let payInfo2 = PayInfo(key: "aa002", payer: "aa002") else {
-            fatalError("Unable to instantiate payInfo2")
-        }
+        let payInfo2 = PayInfo()
         payInfo2.price = 1500
-        payInfo2.paid_at = fmt.date(from: "2017-5-12 11:11:11")!
-
-        guard let payInfo3 = PayInfo(key: "aa003", payer: "aa003") else {
-            fatalError("Unable to instantiate payInfo3")
-        }
+        payInfo2.bandId = "aa002"
+        payInfo2.paidAt = Date()
+        
+        let payInfo3 = PayInfo()
         payInfo3.price = 3400
-        payInfo3.paid_at = fmt.date(from: "2017-5-12 12:12:12")!
-
+        payInfo3.bandId = "aa003"
+        payInfo3.paidAt = Date()
         
         payInfos += [payInfo1, payInfo2, payInfo3]
 

@@ -8,29 +8,29 @@
 
 import UIKit
 
-class PayInfo {
+class PayInfo: NSObject {
     
     //MARK: Properties
     
     var key: String
-    var payer: String
-    var price: Double
-    var paid_at: Date
+    var bandId: String?
+    var price: Double?
+    var personId: String?
+    var personPhotoUrl: String?
+    var personImage: UIImage?
+    var buyerPhotoUrl: String?
+    var buyerImage: UIImage?
+    var paidAt: Date?
+    var confidence: Double?
     
     //MARK: Initialization
     
-    init?(key: String, payer: String) {
-        
-        // Initialization should fail if the key is nil.
-        if key == ""  {
-            return nil
-        }
-        
-        self.key = key
-        self.payer = payer
-        self.price = 0
-        self.paid_at = Date()
-        
+    override init() {
+        self.key = FirebaseClient.createPayKey()
+    }
+    
+    func verified() -> Bool {
+        return confidence != nil && confidence! > 50.0
     }
     
 }

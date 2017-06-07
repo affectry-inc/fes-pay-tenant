@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-class AzureClient {
+class AzureClient: NSObject {
     
     private static let SUBSCRIPTION_KEY = "ba8c31c918864b969eb1601590167f93"
     

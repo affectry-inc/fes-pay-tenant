@@ -17,9 +17,7 @@ class PasscodeViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var settleButton: UIButton!
     @IBOutlet weak var summaryTable: UITableView!
     
-    // var payInfo: PayInfo?
-    var price: Double?
-    var payer: String?
+    var payInfo: PayInfo?
     
     // MARK: - Events
     
@@ -56,11 +54,11 @@ class PasscodeViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         if (indexPath.row == 0) {
             cell.textLabel?.text = "ID"
-            cell.detailTextLabel?.text = self.payer
+            cell.detailTextLabel?.text = self.payInfo?.bandId
         }
         else if (indexPath.row == 1) {
             cell.textLabel?.text = "金額"
-            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", self.price!)
+            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
         }
         
         return cell
@@ -93,9 +91,6 @@ class PasscodeViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-            let payInfo = PayInfo(key: self.payer!, payer: self.payer!)
-            payInfo?.price = self.price!
-            payInfo?.paid_at = Date()
             confirmView.payInfo = payInfo
         }
     }

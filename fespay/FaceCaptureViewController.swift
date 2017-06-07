@@ -9,18 +9,13 @@
 import UIKit
 import AVFoundation
 import os.log
-// import AWSS3
-// import Firebase
 
 class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     // MARK: - Properties
-    // var payInfo: PayInfo?
-    var price: Double?
-    var payer: String?
-    var capturedImage: UIImage?
-    var registeredImage: UIImage?
-    let fesId: String = "FES_A"
+    var payInfo: PayInfo?
+    
+    let tenantInfo = TenantInfo.sharedInstance
     
     @IBOutlet weak var cameraView: UIView!
     var captureSesssion: AVCaptureSession!
@@ -90,7 +85,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         if (previewLayer != nil) { // TODO: 消す
             stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
         } else {
-            self.capturedImage = UIImage(named: "katosan")
+            self.payInfo?.buyerImage = UIImage(named: "katosan")
             execVerify()
         }
     }
@@ -102,27 +97,23 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             // JPEG形式で画像データを取得
             let photoData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
             
-            self.capturedImage = UIImage(data: photoData!)
+            self.payInfo?.buyerImage = UIImage(data: photoData!)
             
             execVerify()
         }
     }
     
-    func verify(faceId: String, personGroupId: String, personId: String, photoUrl: String) {
-        AzureClient.verify(faceId: faceId, personGroupId: self.payer!, personId: personId, onVerify: {
+    func verify(faceId: String, personGroupId: String, personId: String) {
+        AzureClient.verify(faceId: faceId, personGroupId: (payInfo?.bandId)!, personId: personId, onVerify: {
             (veriRes: [String: Any]) in
             
-            let url = URL(string: photoUrl)!
-            let imageData = try? Data(contentsOf: url, options: .mappedIfSafe)
+            self.payInfo?.confidence = (veriRes["confidence"] as! Double) * 100
             
             let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
             
-            next.price = self.price
-            next.payer = self.payer
-            next.capImg = self.capturedImage
-            next.regImg = UIImage(data:imageData!)
-            next.conf = (veriRes["confidence"] as! Double) * 100
-            next.equal = veriRes["isIdentical"] as! Bool
+            next.payInfo = self.payInfo
+            // next.conf = (veriRes["confidence"] as! Double) * 100
+            // next.equal = veriRes["isIdentical"] as! Bool
             
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(next, animated: true)
@@ -134,8 +125,15 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         if faces.count == 1 {
             // 正常処理
             let faceId = faces[0]["faceId"] as! String
-            FirebaseClient.findPerson(bandId: self.payer!, onFind: { (personId: String, photoUrl: String) in
-                self.verify(faceId: faceId, personGroupId:  self.payer!, personId: personId, photoUrl: photoUrl)
+            FirebaseClient.findPerson(bandId: (self.payInfo?.bandId)!, onFind: { (personId: String, personPhotoUrl: String) in
+                
+                let personImageData = try? Data(contentsOf: URL(string: personPhotoUrl)!, options: .mappedIfSafe)
+                
+                self.payInfo?.personId = personId
+                self.payInfo?.personPhotoUrl = personPhotoUrl
+                self.payInfo?.personImage = UIImage(data: personImageData!)
+                
+                self.verify(faceId: faceId, personGroupId:  (self.payInfo?.bandId)!, personId: personId)
             })
         } else if faces.count == 0 {
             // TODO: ０件ですよ
@@ -144,27 +142,19 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         }
     }
     
-    func detect(photoUrl: String) {
-        AzureClient.detectFace(photoUrl: photoUrl, onDetect: self.onDetect)
+    func onUpload(buyerPhotoUrl: String) {
+        self.payInfo?.buyerPhotoUrl = buyerPhotoUrl
+        
+        AzureClient.detectFace(photoUrl: buyerPhotoUrl, onDetect: self.onDetect)
     }
     
     func execVerify() {
-        S3Client.uploadBuyerPhoto(fesId: self.fesId, bandId: self.payer!, image: self.capturedImage!, onUpload: self.detect)
+        S3Client.uploadBuyerPhoto(fesId: self.tenantInfo.fesId, bandId: (self.payInfo?.bandId)!, image: (self.payInfo?.buyerImage)!, onUpload: self.onUpload)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
-        if segue.identifier == "FaceConfirmView" {
-            guard let faceConfirmView = segue.destination as? FaceConfirmViewController else {
-                os_log("The destination is not a FaceConfirmView", log: OSLog.default, type: .debug)
-                return
-            }
-            faceConfirmView.price = self.price
-            faceConfirmView.payer = self.payer
-            faceConfirmView.capImg = self.capturedImage
-        }
     }
 
 }
