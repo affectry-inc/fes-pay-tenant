@@ -10,11 +10,13 @@ import UIKit
 import AWSCognito
 import Firebase
 
+let primary1Color = UIColor(red: 146.0/255.0, green: 208.0/255.0, blue: 80.0/255.0, alpha:1)
+let title1Color = UIColor(red: 255.0/255.0, green: 225.0/255.0, blue: 255.0/255.0, alpha:1)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -28,6 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Init Firebase
         FirebaseApp.configure()
+        
+        // Design navigation bar
+        let attributes: [String: AnyObject] = [
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20),
+            NSForegroundColorAttributeName: title1Color
+        ]
+        UINavigationBar.appearance().barTintColor = primary1Color
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().tintColor = title1Color
         
         return true
     }

@@ -89,6 +89,8 @@ class FaceConfirmViewController: UIViewController, UITableViewDelegate, UITableV
     
     func execPayment() -> Bool {
         // TODO: Firebaseに保存&決済実行
+        self.payInfo?.paidAt = Date()
+        
         return true
     }
 

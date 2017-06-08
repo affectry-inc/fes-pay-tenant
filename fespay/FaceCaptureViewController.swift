@@ -103,8 +103,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         }
     }
     
-    func verify(faceId: String, personGroupId: String, personId: String) {
-        AzureClient.verify(faceId: faceId, personGroupId: (payInfo?.bandId)!, personId: personId, onVerify: {
+    func verify(faceId: String, personId: String) {
+        AzureClient.verify(faceId: faceId, personGroupId: (self.payInfo?.bandId)!, personId: personId, onVerify: {
             (veriRes: [String: Any]) in
             
             self.payInfo?.confidence = (veriRes["confidence"] as! Double) * 100
@@ -112,8 +112,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
             
             next.payInfo = self.payInfo
-            // next.conf = (veriRes["confidence"] as! Double) * 100
-            // next.equal = veriRes["isIdentical"] as! Bool
             
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(next, animated: true)
@@ -129,11 +127,11 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 
                 let personImageData = try? Data(contentsOf: URL(string: personPhotoUrl)!, options: .mappedIfSafe)
                 
+                self.payInfo?.personImage = UIImage(data: personImageData!)
                 self.payInfo?.personId = personId
                 self.payInfo?.personPhotoUrl = personPhotoUrl
-                self.payInfo?.personImage = UIImage(data: personImageData!)
                 
-                self.verify(faceId: faceId, personGroupId:  (self.payInfo?.bandId)!, personId: personId)
+                self.verify(faceId: faceId, personId: personId)
             })
         } else if faces.count == 0 {
             // TODO: ０件ですよ
@@ -144,7 +142,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     func onUpload(buyerPhotoUrl: String) {
         self.payInfo?.buyerPhotoUrl = buyerPhotoUrl
-        
         AzureClient.detectFace(photoUrl: buyerPhotoUrl, onDetect: self.onDetect)
     }
     
