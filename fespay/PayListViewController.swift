@@ -12,6 +12,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - Properties
     
+    @IBOutlet weak var summaryButton: UIButton!
+    @IBOutlet weak var summaryTitleLabel: UILabel!
+    @IBOutlet weak var summaryTotalLabel: UILabel!
     @IBOutlet weak var historyTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tabBar: UITabBar!
@@ -35,9 +38,25 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         // UINavigationBarDelegate setting
         navBar.delegate = self
         
+        // Navigation bar setting
+        navBar.topItem?.titleView = UIImageView(image: UIImage(named: "logoWhite"))
+        
+        // Tab bar setting
         tabBar.tintColor = primary1Color
         tabBar.selectedItem = tabBar.items?[0]
         tabBar.delegate = self
+        
+        // Summary button setting
+        summaryButton.layer.borderWidth = 1;
+        summaryButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        // History table setting
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: 0, width:  historyTable.frame.size.width, height: width)
+        border.borderWidth = width
+        historyTable.layer.addSublayer(border)
         
         loadSamplePayInfos()
     }
@@ -100,9 +119,11 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Actions
     
     @IBAction func unwindToPayList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ConfirmViewController, let payInfo = sourceViewController.payInfo {
+        if let sourceViewController = sender.source as? CompleteViewController, let payInfo = sourceViewController.payInfo {
             
-            // Add a new meal.
+            tabBar.selectedItem = tabBar.items?[0]
+            
+            // Add a new payment
             let newIndexPath = IndexPath(row: payInfos.count, section: 0)
             
             payInfos.append(payInfo)
@@ -113,9 +134,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Private Methods
     
     private func loadSamplePayInfos() {
-        let fmt = DateFormatter()
-        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
         let payInfo1 = PayInfo()
         payInfo1.price = 2700
         payInfo1.bandId = "aa001"
