@@ -100,7 +100,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.present(next, animated: true, completion: nil)
         case 2:
-            print("2")
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "SettingsView") as! SettingsViewController
+            
+            self.present(next, animated: true, completion: nil)
         default :
             return
         }
@@ -111,14 +113,14 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func unwindToPayList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? CompleteViewController, let payInfo = sourceViewController.payInfo {
             
-            tabBar.selectedItem = tabBar.items?[0]
-            
             // Add a new payment
             let newIndexPath = IndexPath(row: payInfos.count, section: 0)
             
             payInfos.append(payInfo)
             historyTable.insertRows(at: [newIndexPath], with: .automatic)
         }
+        
+        tabBar.selectedItem = tabBar.items?[0]
     }
     
     // MARK: - Private Methods

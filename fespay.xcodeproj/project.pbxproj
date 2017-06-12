@@ -21,6 +21,7 @@
 		454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454815961EDC182800A453E4 /* CompleteViewController.swift */; };
 		4549EB1C1EEA83CB00C38694 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549EB1B1EEA83CB00C38694 /* AnalyticsViewController.swift */; };
 		455E32AC1EEE64B7009AC2D3 /* PayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E32AB1EEE64B7009AC2D3 /* PayDetailViewController.swift */; };
+		455E32AE1EEE9915009AC2D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E32AD1EEE9914009AC2D3 /* SettingsViewController.swift */; };
 		456467311EE7C5D6001DC574 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456467301EE7C5D6001DC574 /* AzureClient.swift */; };
 		456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456467321EE7DED8001DC574 /* FirebaseClient.swift */; };
 		456467351EE92137001DC574 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456467341EE92137001DC574 /* LoginViewController.swift */; };
@@ -71,6 +72,7 @@
 		454815961EDC182800A453E4 /* CompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4549EB1B1EEA83CB00C38694 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		455E32AB1EEE64B7009AC2D3 /* PayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayDetailViewController.swift; sourceTree = "<group>"; };
+		455E32AD1EEE9914009AC2D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		456467301EE7C5D6001DC574 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		456467321EE7DED8001DC574 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		456467341EE92137001DC574 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */,
 				4549EB1B1EEA83CB00C38694 /* AnalyticsViewController.swift */,
 				455E32AB1EEE64B7009AC2D3 /* PayDetailViewController.swift */,
+				455E32AD1EEE9914009AC2D3 /* SettingsViewController.swift */,
 				458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */,
 				4541625D1EB98B7900DD0F7B /* QRCaptureViewController.swift */,
 				4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */,
@@ -509,6 +512,7 @@
 				456467311EE7C5D6001DC574 /* AzureClient.swift in Sources */,
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
 				456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */,
+				455E32AE1EEE9915009AC2D3 /* SettingsViewController.swift in Sources */,
 				4505F2411EE688230078605B /* TenantInfo.swift in Sources */,
 				4535C4461EB481A2000C72D6 /* PayInfoTableViewController.swift in Sources */,
 				454162601EBB752200DD0F7B /* PasscodeViewController.swift in Sources */,
