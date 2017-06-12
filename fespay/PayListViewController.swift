@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UITabBarDelegate {
+class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
 
     // MARK: - Properties
     
@@ -16,7 +16,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var summaryTitleLabel: UILabel!
     @IBOutlet weak var summaryTotalLabel: UILabel!
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tabBar: UITabBar!
     
     var payInfos = [PayInfo]()
@@ -35,12 +34,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         // UITableViewDataSource setting
         historyTable.dataSource = self
         
-        // UINavigationBarDelegate setting
-        navBar.delegate = self
-        
         // Navigation bar setting
-        navBar.topItem?.titleView = UIImageView(image: UIImage(named: "logoWhite"))
-        
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logoWhite"))
+
         // Tab bar setting
         tabBar.tintColor = primary1Color
         tabBar.selectedItem = tabBar.items?[0]
@@ -64,12 +60,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - UINavigationBarDelegate
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
     }
     
     // MARK: - Table view data source

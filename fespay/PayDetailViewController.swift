@@ -1,27 +1,32 @@
 //
-//  AnalyticsViewController.swift
+//  PayDetailViewController.swift
 //  fespay
 //
-//  Created by KakimotoShizuka on 2017/06/09.
+//  Created by KakimotoShizuka on 2017/06/12.
 //  Copyright © 2017年 KakimotoShizuka. All rights reserved.
 //
 
 import UIKit
 
-class AnalyticsViewController: UIViewController, UITabBarDelegate {
+class PayDetailViewController: UIViewController, UITabBarDelegate {
 
     // MARK: - Properties
-    
-    @IBOutlet weak var fesNameLabel: UILabel!
-    @IBOutlet weak var tenantNameLabel: UILabel!
-    @IBOutlet weak var dateButton: UIButton!
-    @IBOutlet weak var graphView: UIView!
-    @IBOutlet weak var totalTitleLabel: UILabel!
-    @IBOutlet weak var totalValueLabel: UILabel!
-    @IBOutlet weak var totalBorderLabel: UILabel!
-    @IBOutlet weak var countTitleLabel: UILabel!
-    @IBOutlet weak var countValueLabel: UILabel!
-    @IBOutlet weak var countBorderLabel: UILabel!
+    @IBOutlet weak var personImageLabel: UILabel!
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var buyerImageLabel: UILabel!
+    @IBOutlet weak var buyerImageView: UIImageView!
+    @IBOutlet weak var equalLabel: UILabel!
+    @IBOutlet weak var confidenceTitleLabel: UILabel!
+    @IBOutlet weak var confidenceValueLabel: UILabel!
+    @IBOutlet weak var wristbandBorderLabel: UILabel!
+    @IBOutlet weak var wristbandTitleLabel: UILabel!
+    @IBOutlet weak var wristbandValueLabel: UILabel!
+    @IBOutlet weak var amountBorderLabel: UILabel!
+    @IBOutlet weak var amountTitleLabel: UILabel!
+    @IBOutlet weak var amountValueLabel: UILabel!
+    @IBOutlet weak var dateBorderLabel: UILabel!
+    @IBOutlet weak var dateTitleLabel: UILabel!
+    @IBOutlet weak var dateValueLabel: UILabel!
     @IBOutlet weak var tabBar: UITabBar!
     
     override func viewDidLoad() {
@@ -36,8 +41,9 @@ class AnalyticsViewController: UIViewController, UITabBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.totalBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        self.countBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.dateBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
 
     override func didReceiveMemoryWarning() {

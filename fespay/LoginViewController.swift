@@ -17,6 +17,15 @@ extension UITextField {
     }
 }
 
+extension UILabel {
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height - height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
@@ -25,7 +34,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
+        // let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListNavigation") as! UINavigationController
         
         self.present(next, animated: true, completion: nil)
     }
