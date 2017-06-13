@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnalyticsViewController: UIViewController, UITabBarDelegate {
+class AnalyticsViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -22,15 +22,10 @@ class AnalyticsViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var countTitleLabel: UILabel!
     @IBOutlet weak var countValueLabel: UILabel!
     @IBOutlet weak var countBorderLabel: UILabel!
-    @IBOutlet weak var tabBar: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Tab bar setting
-        tabBar.tintColor = primary1Color
-        tabBar.selectedItem = tabBar.items?[0]
-        tabBar.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,23 +40,6 @@ class AnalyticsViewController: UIViewController, UITabBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - TabBar delegate
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag{
-        case 0:
-            self.performSegue(withIdentifier: "unwindFromAnalytics", sender: self)
-        case 1:
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "NewPayNavigation") as! UINavigationController
-            
-            self.present(next, animated: true, completion: nil)
-        case 2:
-            print("2")
-        default :
-            return
-        }
-    }
-
     /*
     // MARK: - Navigation
 

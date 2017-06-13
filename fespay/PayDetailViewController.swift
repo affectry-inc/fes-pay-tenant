@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PayDetailViewController: UIViewController, UITabBarDelegate {
+class PayDetailViewController: UIViewController {
 
     // MARK: - Properties
     @IBOutlet weak var personImageLabel: UILabel!
@@ -27,16 +27,11 @@ class PayDetailViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var dateBorderLabel: UILabel!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
-    @IBOutlet weak var tabBar: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Tab bar setting
-        tabBar.tintColor = primary1Color
-        tabBar.selectedItem = tabBar.items?[0]
-        tabBar.delegate = self
-    }
+     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,23 +46,6 @@ class PayDetailViewController: UIViewController, UITabBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - TabBar delegate
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag{
-        case 0:
-            self.performSegue(withIdentifier: "unwindFromAnalytics", sender: self)
-        case 1:
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "NewPayNavigation") as! UINavigationController
-            
-            self.present(next, animated: true, completion: nil)
-        case 2:
-            print("2")
-        default :
-            return
-        }
-    }
-
     /*
     // MARK: - Navigation
 

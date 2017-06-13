@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().tintColor = title1Color
         
+        // Design tab bar
+        UITabBar.appearance().tintColor = primary1Color
+        
         return true
     }
 

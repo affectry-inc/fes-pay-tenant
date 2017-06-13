@@ -99,7 +99,6 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                     let str = metadata.stringValue!
                     self.payInfo?.bandId = str.substring(from: str.index(str.endIndex, offsetBy: -5))
                     
-                    // performSegue(withIdentifier: "PasscodeView", sender: nil)
                     performSegue(withIdentifier: "FaceCaptureView", sender: nil)
                     
                     DispatchQueue.global(qos: .userInitiated).async {
@@ -116,14 +115,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if segue.identifier == "PasscodeView" {
-            guard let passcodeView = segue.destination as? PasscodeViewController else {
-                os_log("The destination is not a PasscodeView", log: OSLog.default, type: .debug)
-                return
-            }
-            passcodeView.payInfo  = self.payInfo
-        }
-        else if segue.identifier == "FaceCaptureView" {
+        if segue.identifier == "FaceCaptureView" {
             guard let faceCaptureView = segue.destination as? FaceCaptureViewController else {
                 os_log("The destination is not a FaceCaptureView", log: OSLog.default, type: .debug)
                 return

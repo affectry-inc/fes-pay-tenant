@@ -26,7 +26,7 @@ extension UILabel {
     }
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         // let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListNavigation") as! UINavigationController
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
         
         self.present(next, animated: true, completion: nil)
     }
@@ -43,7 +43,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Handle the text field’s user input through delegate callbacks.
+        tenantIdTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +63,22 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (tenantIdTextField.isFirstResponder) {
+            tenantIdTextField.resignFirstResponder()
+        }
+        if (passwordTextField.isFirstResponder) {
+            passwordTextField.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 

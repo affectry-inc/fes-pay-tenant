@@ -30,6 +30,9 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         
         // Enable the Pay button only if the text field has a valid Pay info.
         updatePayButtonState()
+        
+        // Reset objects
+        priceTextField.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +44,6 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         updatePayButtonState()
     }
 
-    // MARK: - Navigation
-    
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -59,6 +56,9 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
             captureView.payInfo = PayInfo()
             captureView.payInfo?.price = Double(priceTextField.text!)!
             captureView.payInfo?.bandId = "a001"
+        }
+        else if segue.identifier == "UnwindToPayList" {
+            self.priceTextField.text = ""
         }
     }
     

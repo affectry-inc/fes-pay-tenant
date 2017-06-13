@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
+class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Properties
     
@@ -16,7 +16,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var summaryTitleLabel: UILabel!
     @IBOutlet weak var summaryTotalLabel: UILabel!
     @IBOutlet weak var historyTable: UITableView!
-    @IBOutlet weak var tabBar: UITabBar!
     
     var payInfos = [PayInfo]()
     var tenantInfo = TenantInfo.sharedInstance
@@ -37,11 +36,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Navigation bar setting
         navigationItem.titleView = UIImageView(image: UIImage(named: "logoWhite"))
 
-        // Tab bar setting
-        tabBar.tintColor = primary1Color
-        tabBar.selectedItem = tabBar.items?[0]
-        tabBar.delegate = self
-        
         // Summary button setting
         summaryButton.layer.borderWidth = 1;
         summaryButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -89,25 +83,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    // MARK: - TabBar delegate
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag{
-        case 0:
-            print("0")
-        case 1:
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "NewPayNavigation") as! UINavigationController
-            
-            self.present(next, animated: true, completion: nil)
-        case 2:
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "SettingsView") as! SettingsViewController
-            
-            self.present(next, animated: true, completion: nil)
-        default :
-            return
-        }
-    }
-    
     // MARK: - Actions
     
     @IBAction func unwindToPayList(sender: UIStoryboardSegue) {
@@ -120,7 +95,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             historyTable.insertRows(at: [newIndexPath], with: .automatic)
         }
         
-        tabBar.selectedItem = tabBar.items?[0]
     }
     
     // MARK: - Private Methods
