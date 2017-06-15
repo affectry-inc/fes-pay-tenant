@@ -14,12 +14,15 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties
     
     @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var priceBorderLabel: UILabel!
+    @IBOutlet weak var goNextButton: UIButton!
     
     // MARK: - Events
     
     override func viewWillAppear(_ animated: Bool) {
         priceTextField.becomeFirstResponder()
+        
+        priceBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
     
     override func viewDidLoad() {
@@ -30,9 +33,6 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         
         // Enable the Pay button only if the text field has a valid Pay info.
         updatePayButtonState()
-        
-        // Reset objects
-        priceTextField.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,14 +63,11 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
-    }
-    
-    // MARK: - Actions
-    @IBAction func goToCapture(_ sender: UIButton) {
     }
     
     // MARK: - Private Methods
@@ -78,7 +75,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     private func updatePayButtonState() {
         // Disable the Pay button if the text field is empty.
         let text = priceTextField.text ?? ""
-        captureButton.isEnabled = !text.isEmpty
+        goNextButton.isEnabled = !text.isEmpty
     }
 }
 
