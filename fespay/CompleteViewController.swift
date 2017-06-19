@@ -8,29 +8,56 @@
 
 import UIKit
 
-class CompleteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate {
+class CompleteViewController: UIViewController, UINavigationBarDelegate {
 
     // MARK: - Properties
     
     var payInfo: PayInfo?
     
-    @IBOutlet weak var capturedImage: UIImageView!
-    @IBOutlet weak var summaryTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var personImageLabel: UILabel!
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var buyerImageLabel: UILabel!
+    @IBOutlet weak var buyerImageView: UIImageView!
+    @IBOutlet weak var equalLabel: UILabel!
+    @IBOutlet weak var confidenceTitleLabel: UILabel!
+    @IBOutlet weak var confidenceValueLabel: UILabel!
+    @IBOutlet weak var wristbandBorderLabel: UILabel!
+    @IBOutlet weak var wristbandTitleLabel: UILabel!
+    @IBOutlet weak var wristbandValueLabel: UILabel!
+    @IBOutlet weak var amountBorderLabel: UILabel!
+    @IBOutlet weak var amountTitleLabel: UILabel!
+    @IBOutlet weak var amountValueLabel: UILabel!
+    @IBOutlet weak var dateBorderLabel: UILabel!
+    @IBOutlet weak var dateTitleLabel: UILabel!
+    @IBOutlet weak var dateValueLabel: UILabel!
     
     // MARK: - Events
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // UITableViewDelegate setting
-        summaryTable.delegate = self
-        
-        // UITableViewDataSource setting
-        summaryTable.dataSource = self
-        
         // UINavigationBarDelegate setting
         navBar.delegate = self
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        
+        personImageView.image = self.payInfo?.personImage
+        buyerImageView.image = self.payInfo?.buyerImage
+        equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
+        confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+        wristbandValueLabel.text = self.payInfo?.bandId
+        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
+        dateValueLabel.text = dateFormatter.string(from: (self.payInfo?.paidAt)!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.dateBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,42 +71,6 @@ class CompleteViewController: UIViewController, UITableViewDelegate, UITableView
         return .topAttached
     }
     
-    // MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを作る
-        
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-        if (indexPath.row == 0) {
-            cell.textLabel?.text = "ID"
-            cell.detailTextLabel?.text = self.payInfo?.bandId
-        }
-        else if (indexPath.row == 1) {
-            cell.textLabel?.text = "金額"
-            cell.detailTextLabel?.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
-        }
-        else if (indexPath.row == 3) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            cell.textLabel?.text = "決済時刻"
-            cell.detailTextLabel?.text = dateFormatter.string(from: (self.payInfo?.paidAt)!)
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // セルの数を設定
-        return 4
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // セルの高さを設定
-        return 50
-    }
-
     /*
     // MARK: - Navigation
 
