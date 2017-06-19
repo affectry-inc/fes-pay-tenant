@@ -64,7 +64,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conf." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYu-oe-d62">
-                                <rect key="frame" x="164" y="259" width="48" height="24"/>
+                                <rect key="frame" x="163" y="259" width="48" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -694,7 +694,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="決済実行"/>
+                                <state key="normal" title="Execute"/>
                                 <connections>
                                     <action selector="execPayButtonTapped:" destination="OIC-vT-xqL" eventType="touchUpInside" id="rsx-eQ-TeX"/>
                                 </connections>
@@ -867,7 +867,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="決済一覧へ"/>
+                                <state key="normal" title="Back to Top"/>
                                 <connections>
                                     <segue destination="Pp9-7I-Vuz" kind="unwind" unwindAction="unwindToPayListWithSender:" id="9Gv-Yl-ahk"/>
                                 </connections>
@@ -875,7 +875,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFM-IE-roH">
                                 <rect key="frame" x="0.0" y="26" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="決済完了" id="3Jl-Ul-alJ"/>
+                                    <navigationItem title="Complete" id="3Jl-Ul-alJ"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNY-bH-zdV">
@@ -1037,7 +1037,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tenant ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2Y-VZ-90e">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2Y-VZ-90e">
                                 <rect key="frame" x="26" y="348.5" width="323" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1075,8 +1075,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="pSL-SD-VPN" id="A7W-ub-TG3"/>
                         <outlet property="passwordTextField" destination="53k-tn-Mb0" id="0WI-f8-PsR"/>
-                        <outlet property="tenantIdTextField" destination="F2Y-VZ-90e" id="FVE-Nf-7QT"/>
+                        <outlet property="shopIdTextField" destination="F2Y-VZ-90e" id="umf-Ma-l9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p36-4I-nhw" userLabel="First Responder" sceneMemberID="firstResponder"/>

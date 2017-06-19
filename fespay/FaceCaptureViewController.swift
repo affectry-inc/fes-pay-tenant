@@ -15,7 +15,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     // MARK: - Properties
     var payInfo: PayInfo?
     
-    let tenantInfo = TenantInfo.sharedInstance
+    let tenantInfo = ShopInfo.sharedInstance
     
     @IBOutlet weak var cameraView: UIView!
     var captureSesssion: AVCaptureSession!

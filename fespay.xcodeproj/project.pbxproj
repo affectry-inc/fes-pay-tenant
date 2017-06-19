@@ -10,7 +10,7 @@
 		3EE139BF6B2044ECB29089C5 /* Pods_fespayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */; };
 		4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */; };
 		4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */; };
-		4505F2411EE688230078605B /* TenantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* TenantInfo.swift */; };
+		4505F2411EE688230078605B /* ShopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* ShopInfo.swift */; };
 		4505F2431EE7A1DF0078605B /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2421EE7A1DF0078605B /* S3Client.swift */; };
 		4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
@@ -35,6 +35,9 @@
 		458861E01EAB240700FF88C6 /* fespayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861DF1EAB240700FF88C6 /* fespayTests.swift */; };
 		458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861EA1EAB240700FF88C6 /* fespayUITests.swift */; };
 		45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */; };
+		79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B8FE2C1EF8208000E6122B /* Localizable.strings */; };
+		79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79D27DA81EF82F8F007B13B9 /* LoginView.strings */; };
+		79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D27DAA1EF830AD007B13B9 /* I18n.swift */; };
 		9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F69931FBB206E916A638757 /* Pods_fespay.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +62,7 @@
 		1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureViewController.swift; sourceTree = "<group>"; };
 		4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceConfirmViewController.swift; sourceTree = "<group>"; };
-		4505F2401EE688230078605B /* TenantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantInfo.swift; sourceTree = "<group>"; };
+		4505F2401EE688230078605B /* ShopInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopInfo.swift; sourceTree = "<group>"; };
 		4505F2421EE7A1DF0078605B /* S3Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Client.swift; sourceTree = "<group>"; };
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
@@ -91,6 +94,11 @@
 		4F69931FBB206E916A638757 /* Pods_fespay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		79B8FE2B1EF8208000E6122B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		79B8FE2D1EF8209D00E6122B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		79D27DA71EF82F8F007B13B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/LoginView.strings; sourceTree = "<group>"; };
+		79D27DA91EF82F95007B13B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LoginView.strings; sourceTree = "<group>"; };
+		79D27DAA1EF830AD007B13B9 /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
 		9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespay/Pods-fespay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,12 +185,15 @@
 				456467301EE7C5D6001DC574 /* AzureClient.swift */,
 				456467321EE7DED8001DC574 /* FirebaseClient.swift */,
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
-				4505F2401EE688230078605B /* TenantInfo.swift */,
+				4505F2401EE688230078605B /* ShopInfo.swift */,
+				79D27DAA1EF830AD007B13B9 /* I18n.swift */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
 				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
 				458861D61EAB240600FF88C6 /* Info.plist */,
+				79B8FE2C1EF8208000E6122B /* Localizable.strings */,
+				79D27DA81EF82F8F007B13B9 /* LoginView.strings */,
 			);
 			path = fespay;
 			sourceTree = "<group>";
@@ -317,6 +328,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 458861BE1EAB240600FF88C6;
 			productRefGroup = 458861C81EAB240600FF88C6 /* Products */;
@@ -335,8 +347,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */,
 				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
 				456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
+				79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */,
 				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
 				458861D01EAB240600FF88C6 /* Main.storyboard in Resources */,
 			);
@@ -504,10 +518,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				456467311EE7C5D6001DC574 /* AzureClient.swift in Sources */,
+				79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */,
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
 				456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */,
 				455E32AE1EEE9915009AC2D3 /* SettingsViewController.swift in Sources */,
-				4505F2411EE688230078605B /* TenantInfo.swift in Sources */,
+				4505F2411EE688230078605B /* ShopInfo.swift in Sources */,
 				454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */,
 				4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */,
 				458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */,
@@ -572,6 +587,25 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		79B8FE2C1EF8208000E6122B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79B8FE2B1EF8208000E6122B /* Base */,
+				79B8FE2D1EF8209D00E6122B /* ja */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		79D27DA81EF82F8F007B13B9 /* LoginView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79D27DA71EF82F8F007B13B9 /* Base */,
+				79D27DA91EF82F95007B13B9 /* ja */,
+			);
+			name = LoginView.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -579,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -629,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

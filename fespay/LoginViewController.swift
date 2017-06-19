@@ -30,8 +30,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     
-    @IBOutlet weak var tenantIdTextField: UITextField!
+    let i18n = I18n(tableName: "LoginView")
+    @IBOutlet weak var shopIdTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         // let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
@@ -44,17 +46,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Handle the text field’s user input through delegate callbacks.
-        tenantIdTextField.delegate = self
+        shopIdTextField.delegate = self
         passwordTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let shopIdPh: String = i18n.localize(key: "shopIdPh")
+        let passwordPh: String = i18n.localize(key: "passwordPh")
+        loginButton.setTitle(i18n.localize(key: "login"), for: .normal)
+        
         self.view.backgroundColor = primary1Color
-        self.tenantIdTextField.attributedPlaceholder = NSAttributedString(string: "Tenant ID", attributes: [NSForegroundColorAttributeName: UIColor.lightText])
-        self.tenantIdTextField.addBorderBottom(height: 1.0, color: UIColor.white)
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.lightText])
+        
+        self.shopIdTextField.attributedPlaceholder = NSAttributedString(string: shopIdPh, attributes: [NSForegroundColorAttributeName: UIColor.lightText])
+        self.shopIdTextField.addBorderBottom(height: 1.0, color: UIColor.white)
+        
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordPh, attributes: [NSForegroundColorAttributeName: UIColor.lightText])
         self.passwordTextField.addBorderBottom(height: 1.0, color: UIColor.white)
     }
     
@@ -64,8 +72,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (tenantIdTextField.isFirstResponder) {
-            tenantIdTextField.resignFirstResponder()
+        if (shopIdTextField.isFirstResponder) {
+            shopIdTextField.resignFirstResponder()
         }
         if (passwordTextField.isFirstResponder) {
             passwordTextField.resignFirstResponder()

@@ -1,5 +1,5 @@
 //
-//  TenantInfo.swift
+//  ShopInfo.swift
 //  fespay
 //
 //  Created by KakimotoShizuka on 2017/06/06.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-class TenantInfo: NSObject {
+class ShopInfo: NSObject {
     
     // Singleton (Unique on app)
-    static let sharedInstance = TenantInfo()
+    static let sharedInstance = ShopInfo()
     
     //MARK: Properties
     
     var fesId: String = ""
-    var tenantId: String = ""
+    var shopId: String = ""
 
 }
