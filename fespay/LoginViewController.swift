@@ -28,9 +28,10 @@ extension UILabel {
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    let i18n = I18n(tableName: "LoginView")
+    
     // MARK: - Properties
     
-    let i18n = I18n(tableName: "LoginView")
     @IBOutlet weak var shopIdTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!

@@ -36,6 +36,15 @@
 		458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861EA1EAB240700FF88C6 /* fespayUITests.swift */; };
 		45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */; };
 		79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B8FE2C1EF8208000E6122B /* Localizable.strings */; };
+		79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A501EF92D03002572D7 /* PayListView.strings */; };
+		79C10A541EF92F21002572D7 /* AnalyticsView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A561EF92F21002572D7 /* AnalyticsView.strings */; };
+		79C10A5A1EF93115002572D7 /* PayDetailView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A5C1EF93115002572D7 /* PayDetailView.strings */; };
+		79C10A601EF9331B002572D7 /* NewPayInfoView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A621EF9331B002572D7 /* NewPayInfoView.strings */; };
+		79C10A661EF93644002572D7 /* SettingsView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A681EF93644002572D7 /* SettingsView.strings */; };
+		79C10A6C1EF93B09002572D7 /* QRCaptureView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A6E1EF93B09002572D7 /* QRCaptureView.strings */; };
+		79C10A721EF93C02002572D7 /* FaceCaptureView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A741EF93C02002572D7 /* FaceCaptureView.strings */; };
+		79C10A781EF93DAA002572D7 /* FaceConfirmView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A7A1EF93DAA002572D7 /* FaceConfirmView.strings */; };
+		79C10A7E1EF93F69002572D7 /* CompleteView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A801EF93F69002572D7 /* CompleteView.strings */; };
 		79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79D27DA81EF82F8F007B13B9 /* LoginView.strings */; };
 		79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D27DAA1EF830AD007B13B9 /* I18n.swift */; };
 		9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F69931FBB206E916A638757 /* Pods_fespay.framework */; };
@@ -96,6 +105,24 @@
 		6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		79B8FE2B1EF8208000E6122B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79B8FE2D1EF8209D00E6122B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		79C10A4F1EF92D03002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/PayListView.strings; sourceTree = "<group>"; };
+		79C10A511EF92D07002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PayListView.strings; sourceTree = "<group>"; };
+		79C10A551EF92F21002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AnalyticsView.strings; sourceTree = "<group>"; };
+		79C10A571EF92F23002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AnalyticsView.strings; sourceTree = "<group>"; };
+		79C10A5B1EF93115002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/PayDetailView.strings; sourceTree = "<group>"; };
+		79C10A5D1EF93117002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PayDetailView.strings; sourceTree = "<group>"; };
+		79C10A611EF9331B002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/NewPayInfoView.strings; sourceTree = "<group>"; };
+		79C10A631EF9331D002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/NewPayInfoView.strings; sourceTree = "<group>"; };
+		79C10A671EF93644002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/SettingsView.strings; sourceTree = "<group>"; };
+		79C10A691EF93646002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingsView.strings; sourceTree = "<group>"; };
+		79C10A6D1EF93B09002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/QRCaptureView.strings; sourceTree = "<group>"; };
+		79C10A6F1EF93B0B002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/QRCaptureView.strings; sourceTree = "<group>"; };
+		79C10A731EF93C02002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FaceCaptureView.strings; sourceTree = "<group>"; };
+		79C10A751EF93C04002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FaceCaptureView.strings; sourceTree = "<group>"; };
+		79C10A791EF93DAA002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FaceConfirmView.strings; sourceTree = "<group>"; };
+		79C10A7B1EF93DAC002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FaceConfirmView.strings; sourceTree = "<group>"; };
+		79C10A7F1EF93F69002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/CompleteView.strings; sourceTree = "<group>"; };
+		79C10A811EF93F6A002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CompleteView.strings; sourceTree = "<group>"; };
 		79D27DA71EF82F8F007B13B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DA91EF82F95007B13B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DAA1EF830AD007B13B9 /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
@@ -187,13 +214,22 @@
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
 				4505F2401EE688230078605B /* ShopInfo.swift */,
 				79D27DAA1EF830AD007B13B9 /* I18n.swift */,
-				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
+				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
 				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
 				458861D61EAB240600FF88C6 /* Info.plist */,
 				79B8FE2C1EF8208000E6122B /* Localizable.strings */,
 				79D27DA81EF82F8F007B13B9 /* LoginView.strings */,
+				79C10A501EF92D03002572D7 /* PayListView.strings */,
+				79C10A561EF92F21002572D7 /* AnalyticsView.strings */,
+				79C10A5C1EF93115002572D7 /* PayDetailView.strings */,
+				79C10A681EF93644002572D7 /* SettingsView.strings */,
+				79C10A621EF9331B002572D7 /* NewPayInfoView.strings */,
+				79C10A6E1EF93B09002572D7 /* QRCaptureView.strings */,
+				79C10A741EF93C02002572D7 /* FaceCaptureView.strings */,
+				79C10A7A1EF93DAA002572D7 /* FaceConfirmView.strings */,
+				79C10A801EF93F69002572D7 /* CompleteView.strings */,
 			);
 			path = fespay;
 			sourceTree = "<group>";
@@ -347,12 +383,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C10A721EF93C02002572D7 /* FaceCaptureView.strings in Resources */,
+				79C10A541EF92F21002572D7 /* AnalyticsView.strings in Resources */,
 				79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */,
+				79C10A5A1EF93115002572D7 /* PayDetailView.strings in Resources */,
 				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
 				456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
+				79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */,
 				79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */,
+				79C10A601EF9331B002572D7 /* NewPayInfoView.strings in Resources */,
+				79C10A661EF93644002572D7 /* SettingsView.strings in Resources */,
 				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
+				79C10A781EF93DAA002572D7 /* FaceConfirmView.strings in Resources */,
 				458861D01EAB240600FF88C6 /* Main.storyboard in Resources */,
+				79C10A7E1EF93F69002572D7 /* CompleteView.strings in Resources */,
+				79C10A6C1EF93B09002572D7 /* QRCaptureView.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +640,87 @@
 			);
 			name = Localizable.strings;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		79C10A501EF92D03002572D7 /* PayListView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A4F1EF92D03002572D7 /* Base */,
+				79C10A511EF92D07002572D7 /* ja */,
+			);
+			name = PayListView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A561EF92F21002572D7 /* AnalyticsView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A551EF92F21002572D7 /* Base */,
+				79C10A571EF92F23002572D7 /* ja */,
+			);
+			name = AnalyticsView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A5C1EF93115002572D7 /* PayDetailView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A5B1EF93115002572D7 /* Base */,
+				79C10A5D1EF93117002572D7 /* ja */,
+			);
+			name = PayDetailView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A621EF9331B002572D7 /* NewPayInfoView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A611EF9331B002572D7 /* Base */,
+				79C10A631EF9331D002572D7 /* ja */,
+			);
+			name = NewPayInfoView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A681EF93644002572D7 /* SettingsView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A671EF93644002572D7 /* Base */,
+				79C10A691EF93646002572D7 /* ja */,
+			);
+			name = SettingsView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A6E1EF93B09002572D7 /* QRCaptureView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A6D1EF93B09002572D7 /* Base */,
+				79C10A6F1EF93B0B002572D7 /* ja */,
+			);
+			name = QRCaptureView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A741EF93C02002572D7 /* FaceCaptureView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A731EF93C02002572D7 /* Base */,
+				79C10A751EF93C04002572D7 /* ja */,
+			);
+			name = FaceCaptureView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A7A1EF93DAA002572D7 /* FaceConfirmView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A791EF93DAA002572D7 /* Base */,
+				79C10A7B1EF93DAC002572D7 /* ja */,
+			);
+			name = FaceConfirmView.strings;
+			sourceTree = "<group>";
+		};
+		79C10A801EF93F69002572D7 /* CompleteView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C10A7F1EF93F69002572D7 /* Base */,
+				79C10A811EF93F6A002572D7 /* ja */,
+			);
+			name = CompleteView.strings;
 			sourceTree = "<group>";
 		};
 		79D27DA81EF82F8F007B13B9 /* LoginView.strings */ = {

@@ -10,6 +10,8 @@ import UIKit
 
 class AnalyticsViewController: UIViewController {
 
+    let i18n = I18n(tableName: "AnalyticsView")
+    
     // MARK: - Properties
     
     @IBOutlet weak var fesNameLabel: UILabel!
@@ -30,6 +32,10 @@ class AnalyticsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "analytics")
+        self.totalTitleLabel.text = i18n.localize(key: "total")
+        self.countTitleLabel.text = i18n.localize(key: "count")
         
         self.totalBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.countBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

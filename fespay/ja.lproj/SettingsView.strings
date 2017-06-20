@@ -1,11 +1,13 @@
 /* 
-  Localizable.strings
+  SettingsView.strings
   fespay
 
   Created by Shizuka Kakimoto on 2017/06/20.
   Copyright © 2017年 KakimotoShizuka. All rights reserved.
 */
 
-"list" = "履歴";
-"new" = "新規";
 "settings" = "設定";
+"event" = "イベント";
+"shopId" = "ショップID";
+"shopName" = "ショップ名";
+"logout" = "ログアウト";

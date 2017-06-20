@@ -1,0 +1,15 @@
+/* 
+  PayDetailView.strings
+  fespay
+
+  Created by Shizuka Kakimoto on 2017/06/20.
+  Copyright © 2017年 KakimotoShizuka. All rights reserved.
+*/
+
+"details" = "詳細";
+"personImage" = "本人画像";
+"buyerImage" = "購入者画像";
+"confidence" = "一致率";
+"wristbandId" = "リストバンドID";
+"amount" = "金額";
+"date" = "購入日時";

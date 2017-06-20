@@ -21,4 +21,8 @@ class I18n: NSObject {
     func localize(key: String) -> String {
         return NSLocalizedString(key, tableName: self.tableName, comment: "")
     }
+    
+    class func localize(key: String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
 }

@@ -1,0 +1,11 @@
+/* 
+  NewPayInfoView.strings
+  fespay
+
+  Created by Shizuka Kakimoto on 2017/06/20.
+  Copyright © 2017年 KakimotoShizuka. All rights reserved.
+*/
+
+"amount" = "金額入力";
+"inputAmountPh" = "購入金額を入力してください";
+"next" = "次へ";

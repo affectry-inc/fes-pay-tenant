@@ -10,6 +10,8 @@ import UIKit
 
 class PayDetailViewController: UIViewController {
 
+    let i18n = I18n(tableName: "PayDetailView")
+    
     // MARK: - Properties
     @IBOutlet weak var personImageLabel: UILabel!
     @IBOutlet weak var personImageView: UIImageView!
@@ -35,6 +37,14 @@ class PayDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "details")
+        self.personImageLabel.text = i18n.localize(key: "personImage")
+        self.buyerImageLabel.text = i18n.localize(key: "buyerImage")
+        self.confidenceTitleLabel.text = i18n.localize(key: "confidence")
+        self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
+        self.amountTitleLabel.text = i18n.localize(key: "amount")
+        self.dateTitleLabel.text = i18n.localize(key: "date")
         
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

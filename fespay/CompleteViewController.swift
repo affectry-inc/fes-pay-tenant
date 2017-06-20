@@ -10,6 +10,8 @@ import UIKit
 
 class CompleteViewController: UIViewController, UINavigationBarDelegate {
 
+    let i18n = I18n(tableName: "CompleteView")
+    
     // MARK: - Properties
     
     var payInfo: PayInfo?
@@ -31,6 +33,7 @@ class CompleteViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var dateBorderLabel: UILabel!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
+    @IBOutlet weak var backToTopButton: UIButton!
     
     // MARK: - Events
     
@@ -54,6 +57,15 @@ class CompleteViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navBar.topItem?.title = i18n.localize(key: "complete")
+        self.personImageLabel.text = i18n.localize(key: "personImage")
+        self.buyerImageLabel.text = i18n.localize(key: "buyerImage")
+        self.confidenceTitleLabel.text = i18n.localize(key: "confidence")
+        self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
+        self.amountTitleLabel.text = i18n.localize(key: "amount")
+        self.dateTitleLabel.text = i18n.localize(key: "date")
+        self.backToTopButton.setTitle(i18n.localize(key: "backToTop"), for: .normal)
         
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

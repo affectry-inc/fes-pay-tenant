@@ -16,6 +16,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBar.items?[0].title = I18n.localize(key: "list")
+        self.tabBar.items?[1].title = I18n.localize(key: "new")
+        self.tabBar.items?[2].title = I18n.localize(key: "settings")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

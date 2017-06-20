@@ -12,12 +12,16 @@ import os.log
 
 class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
+    let i18n = I18n(tableName: "FaceCaptureView")
+    
     // MARK: - Properties
     var payInfo: PayInfo?
     
     let tenantInfo = ShopInfo.sharedInstance
     
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var captureButton: UIButton!
+    
     var captureSesssion: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
@@ -67,6 +71,13 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "captureFace")
+        self.captureButton.setTitle(i18n.localize(key: "capture"), for: .normal)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

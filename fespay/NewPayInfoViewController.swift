@@ -11,6 +11,8 @@ import os.log
 
 class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
+    let i18n = I18n(tableName: "NewPayInfoView")
+    
     // MARK: - Properties
     
     @IBOutlet weak var priceTextField: UITextField!
@@ -18,12 +20,6 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var goNextButton: UIButton!
     
     // MARK: - Events
-    
-    override func viewWillAppear(_ animated: Bool) {
-        priceTextField.becomeFirstResponder()
-        
-        priceBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +31,18 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         updatePayButtonState()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "amount")
+        self.priceTextField.placeholder = i18n.localize(key: "inputAmountPh")
+        self.goNextButton.setTitle(i18n.localize(key: "next"), for: .normal)
+        
+        priceBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        
+        priceTextField.becomeFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

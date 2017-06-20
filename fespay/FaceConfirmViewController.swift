@@ -10,6 +10,8 @@ import UIKit
 
 class FaceConfirmViewController: UIViewController {
 
+    let i18n = I18n(tableName: "FaceConfirmView")
+    
     // MARK: - Properties
     
     var payInfo: PayInfo?
@@ -27,6 +29,7 @@ class FaceConfirmViewController: UIViewController {
     @IBOutlet weak var amountBorderLabel: UILabel!
     @IBOutlet weak var amountTitleLabel: UILabel!
     @IBOutlet weak var amountValueLabel: UILabel!
+    @IBOutlet weak var execPayButton: UIButton!
     
     // MARK: - Events
     
@@ -44,6 +47,14 @@ class FaceConfirmViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "confirm")
+        self.personImageLabel.text = i18n.localize(key: "personImage")
+        self.buyerImageLabel.text = i18n.localize(key: "buyerImage")
+        self.confidenceTitleLabel.text = i18n.localize(key: "confidence")
+        self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
+        self.amountTitleLabel.text = i18n.localize(key: "amount")
+        self.execPayButton.setTitle(i18n.localize(key: "execute"), for: .normal)
         
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

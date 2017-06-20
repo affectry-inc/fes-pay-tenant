@@ -10,6 +10,8 @@ import UIKit
 
 class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let i18n = I18n(tableName: "PayListView")
+    
     // MARK: - Properties
     
     @IBOutlet weak var summaryButton: UIButton!
@@ -34,7 +36,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         historyTable.dataSource = self
         
         // Navigation bar setting
-        navigationItem.titleView = UIImageView(image: UIImage(named: "logoWhite"))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logoWordWhite"))
 
         // Summary button setting
         summaryButton.layer.borderWidth = 1;
@@ -51,6 +53,12 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadSamplePayInfos()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        summaryTitleLabel.text = "\(i18n.localize(key: "total"))(\(i18n.localize(key: "today")))"
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -12,6 +12,8 @@ import os.log
 
 class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVCaptureMetadataOutputObjectsDelegate {
     
+    let i18n = I18n(tableName: "QRCaptureView")
+    
     // MARK: - Properties
 
     @IBOutlet weak var cameraView: UIView!
@@ -81,6 +83,12 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = i18n.localize(key: "qrCode")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
