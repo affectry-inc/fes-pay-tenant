@@ -11,10 +11,11 @@ import os.log
 
 class AzureClient: NSObject {
     
-    private static let SUBSCRIPTION_KEY = "ba8c31c918864b969eb1601590167f93"
+    private static let END_POINT = "https://southeastasia.api.cognitive.microsoft.com/face/v1.0"
+    private static let SUBSCRIPTION_KEY = "81d01ff9b1ec45c1abf3147b0444100f"
     
     class func detectFace(photoUrl: String, onDetect: @escaping (String, [[String:Any]]) -> ()) {
-        var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect")!)
+        var request = URLRequest(url: URL(string: END_POINT + "/detect")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(SUBSCRIPTION_KEY, forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
@@ -35,7 +36,7 @@ class AzureClient: NSObject {
     }
     
     class func verify(faceId: String, personGroupId: String, personId: String, onVerify: @escaping ([String:Any]) -> ()) {
-        var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/face/v1.0/verify")!)
+        var request = URLRequest(url: URL(string: END_POINT + "/verify")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(SUBSCRIPTION_KEY, forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
