@@ -24,13 +24,28 @@ class FirebaseClient: NSObject {
             
             onFind(personId, photoUrl)
         }) { (error) in
-            os_log("getPersonId Error: %@", log: .default, type: .error, error.localizedDescription)
+            os_log("findPerson error: %@", log: .default, type: .error, error.localizedDescription)
         }
     }
     
     class func createPayKey() -> String {
         let fbRef = Database.database().reference()
         return fbRef.child("pays").childByAutoId().key
+    }
+    
+    class func findCardCustomer(bandId: String, onFind: @escaping (String, String) -> ()) {
+        let fbRef = Database.database().reference()
+        fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in
+            let band = snapshot.value as? [String: Any]
+            let cardCustomerId = band?["cardCustomerId"] as! String
+            let cardId = band?["cardId"] as! String
+            os_log("cardCustomerId: %@", log: .default, type: .debug, cardCustomerId)
+            os_log("cardId: %@", log: .default, type: .debug, cardId)
+            
+            onFind(cardCustomerId, cardId)
+        }) { (error) in
+            os_log("findCardCustomer error: %@", log: .default, type: .error, error.localizedDescription)
+        }
     }
     
 }

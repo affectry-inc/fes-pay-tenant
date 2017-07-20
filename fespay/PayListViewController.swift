@@ -20,14 +20,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var historyTable: UITableView!
     
     var payInfos = [PayInfo]()
-    var tenantInfo = ShopInfo.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: set TenantInfo on login
-        tenantInfo.fesId = "FES_A"
-        tenantInfo.shopId = "SHOP_A"
         
         // UITableViewDelegate setting
         historyTable.delegate = self

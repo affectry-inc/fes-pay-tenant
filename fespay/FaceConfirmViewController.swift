@@ -66,27 +66,23 @@ class FaceConfirmViewController: UIViewController {
     }
     
     @IBAction func execPayButtonTapped(_ sender: UIButton) {
-        if (execPayment()) {
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "CompleteView") as! CompleteViewController
-            
-            next.payInfo = self.payInfo
-            
-            self.present(next, animated: true, completion: nil)
-        } else {
-            // TODO: 失敗した時の処理
-        }
-        
+        FirebaseClient.findCardCustomer(bandId: (self.payInfo?.bandId)!, onFind: { (cardCustomerId: String, cardId: String) in
+            OmiseClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.price)!, onCharge: { (paidAt: Date) in
+                self.payInfo?.paidAt = paidAt
+                
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "CompleteView") as! CompleteViewController
+                
+                next.payInfo = self.payInfo
+                
+                self.present(next, animated: true, completion: nil)
+            }, onError: {
+                // TODO: 失敗した時の処理
+            })
+        })
     }
     
     //MARK: - Actions
     
-    func execPayment() -> Bool {
-        // TODO: Firebaseに保存&決済実行
-        self.payInfo?.paidAt = Date()
-        
-        return true
-    }
-
     /*
     // MARK: - Navigation
 

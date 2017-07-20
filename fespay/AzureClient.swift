@@ -28,9 +28,9 @@ class AzureClient: NSObject {
                 return
             }
             
-            let data = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
+            let jsonData = try! JSONSerialization.jsonObject(with: data!, options: []) as! [[String:Any]]
             
-            onDetect(photoUrl, data)
+            onDetect(photoUrl, jsonData)
         }
         task.resume()
     }

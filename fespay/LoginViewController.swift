@@ -36,7 +36,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    var tenantInfo = ShopInfo.sharedInstance
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
+        // TODO: Login処理
+        tenantInfo.fesId = "FES_A"
+        tenantInfo.shopId = "SHOP_A"
+        
         // let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
         let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
         
