@@ -13,7 +13,7 @@ class OmiseClient: NSObject {
     
     private static let SKEY = "skey_test_58mj60m58h9ik5gc021"
     
-    class func charge(customerId: String, amount: Double, onCharge: @escaping (Date) -> (), onError: @escaping () -> ()) {
+    class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         
         let tenantInfo = ShopInfo.sharedInstance
         let skey = (SKEY + ":X").data(using: .utf8, allowLossyConversion: false)
@@ -40,6 +40,8 @@ class OmiseClient: NSObject {
             }
             
             let jsonData = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+            let chargeId = jsonData["id"] as! String
+            let transactionId = jsonData["transaction"] as! String
             let strPaidAt = jsonData["created"] as! String
             
             let formatter = DateFormatter()
@@ -47,7 +49,7 @@ class OmiseClient: NSObject {
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
             let paidAt = formatter.date(from: strPaidAt)!
             
-            onCharge(paidAt)
+            onCharge(paidAt, chargeId, transactionId)
         }
         task.resume()
 

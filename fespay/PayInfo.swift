@@ -20,13 +20,16 @@ class PayInfo: NSObject {
     var personImage: UIImage?
     var buyerPhotoUrl: String?
     var buyerImage: UIImage?
-    var paidAt: Date?
     var confidence: Double?
+    var cardLastDigits: String?
+    var paidAt: Date?
+    var chargeId: String?
+    var transactionId: String?
     
     //MARK: Initialization
     
     override init() {
-        self.key = FirebaseClient.createPayKey()
+        self.key = FirebaseClient.createChargeKey()
     }
     
     func verified() -> Bool {
