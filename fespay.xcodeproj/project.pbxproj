@@ -87,7 +87,7 @@
 		456467341EE92137001DC574 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		456467361EE94E70001DC574 /* PayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayListViewController.swift; sourceTree = "<group>"; };
 		456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		458861C71EAB240600FF88C6 /* fespay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fespay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		458861C71EAB240600FF88C6 /* FesPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FesPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458861CA1EAB240600FF88C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		458861CC1EAB240600FF88C6 /* NewPayInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPayInfoViewController.swift; sourceTree = "<group>"; };
 		458861CF1EAB240600FF88C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		458861C81EAB240600FF88C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				458861C71EAB240600FF88C6 /* fespay.app */,
+				458861C71EAB240600FF88C6 /* FesPay.app */,
 				458861DB1EAB240700FF88C6 /* fespayTests.xctest */,
 				458861E61EAB240700FF88C6 /* fespayUITests.xctest */,
 			);
@@ -288,7 +288,7 @@
 			);
 			name = fespay;
 			productName = fespay;
-			productReference = 458861C71EAB240600FF88C6 /* fespay.app */;
+			productReference = 458861C71EAB240600FF88C6 /* FesPay.app */;
 			productType = "com.apple.product-type.application";
 		};
 		458861DA1EAB240700FF88C6 /* fespayTests */ = {
@@ -843,7 +843,7 @@
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FesPay;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -857,7 +857,7 @@
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FesPay;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
