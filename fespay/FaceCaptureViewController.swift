@@ -145,7 +145,13 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 self.verify(faceId: faceId, personId: personId)
             })
         } else if faces.count == 0 {
-            // TODO: ０件ですよ
+            let msgNoFaceDetected = i18n.localize(key: "noFaceDetected")
+            let msgReCapture = i18n.localize(key: "reCapture")
+
+            let alert: UIAlertController = UIAlertController(title: msgNoFaceDetected, message: msgReCapture, preferredStyle: .alert)
+            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         } else {
             // TODO: 顔選択からのfaceId投げ
         }
