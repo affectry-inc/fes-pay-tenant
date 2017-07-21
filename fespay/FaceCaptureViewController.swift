@@ -24,7 +24,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     var captureSesssion: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
     
     // MARK: - Events
     
@@ -54,15 +53,15 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                     captureSesssion.startRunning()
                     
                     // アスペクト比、カメラの向き(縦)
-                    previewLayer = AVCaptureVideoPreviewLayer(session: captureSesssion)
+                    let previewLayer = AVCaptureVideoPreviewLayer(session: captureSesssion)
                     previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                     previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
-                    
-                    cameraView.layer.addSublayer(previewLayer!)
                     
                     // ビューのサイズの調整
                     previewLayer?.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
                     previewLayer?.bounds = cameraView.frame
+                    
+                    cameraView.layer.addSublayer(previewLayer!)
                 }
             }
         }
@@ -76,6 +75,20 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         
         self.navigationItem.title = i18n.localize(key: "captureFace")
         self.captureButton.setTitle(i18n.localize(key: "capture"), for: .normal)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        captureSesssion.stopRunning()
+        
+        for output in captureSesssion.outputs {
+            captureSesssion.removeOutput(output as? AVCaptureOutput)
+        }
+        
+        for input in captureSesssion.inputs {
+            captureSesssion.removeInput(input as? AVCaptureInput)
+        }
+        
+        captureSesssion = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,7 +106,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         settingsForMonitoring.isHighResolutionPhotoEnabled = false
         
         // 撮影
-        if (previewLayer != nil) { // TODO: 消す
+        if (captureSesssion.isRunning) {// TODO: 消す
             stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
         } else {
             self.payInfo?.buyerImage = UIImage(named: "katosan")
@@ -102,6 +115,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     }
     
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        
+        captureSesssion.stopRunning()
         
         if let photoSampleBuffer = photoSampleBuffer {
             
@@ -151,7 +166,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             let alert: UIAlertController = UIAlertController(title: msgNoFaceDetected, message: msgReCapture, preferredStyle: .alert)
             let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
             alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
         } else {
             // TODO: 顔選択からのfaceId投げ
         }
