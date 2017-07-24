@@ -9,4 +9,5 @@
 "captureFace" = "顔画像";
 "capture" = "撮影";
 "noFaceDetected" = "顔が検出されませんでした";
+"multipleFacesDetected" = "複数の顔が検出されました";
 "reCapture" = "再撮影してください。";

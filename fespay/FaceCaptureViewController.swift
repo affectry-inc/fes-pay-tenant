@@ -169,6 +169,13 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
         } else {
             // TODO: 顔選択からのfaceId投げ
+            let msgMultipleFacesDetected = i18n.localize(key: "multipleFacesDetected")
+            let msgSelectBuyer = i18n.localize(key: "reCapture")
+            
+            let alert: UIAlertController = UIAlertController(title: msgMultipleFacesDetected, message: msgSelectBuyer, preferredStyle: .alert)
+            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
         }
     }
     

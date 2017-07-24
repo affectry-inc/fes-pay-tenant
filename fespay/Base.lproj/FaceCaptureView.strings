@@ -9,4 +9,5 @@
 "captureFace" = "Capture Face";
 "capture" = "Capture";
 "noFaceDetected" = "No face detected";
+"multipleFacesDetected" = "Multiple faces detected";
 "reCapture" = "Please capture a face again.";
