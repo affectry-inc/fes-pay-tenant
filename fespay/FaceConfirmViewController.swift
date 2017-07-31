@@ -67,7 +67,7 @@ class FaceConfirmViewController: UIViewController {
     
     @IBAction func execPayButtonTapped(_ sender: UIButton) {
         FirebaseClient.findCardCustomer(bandId: (self.payInfo?.bandId)!, onFind: { (cardCustomerId: String, cardLastDigits: String) in
-            OmiseClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.price)!, onCharge: { paidAt, chargeId, transactionId in
+            StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.price)!, onCharge: { paidAt, chargeId, transactionId in
                 self.payInfo?.cardLastDigits = cardLastDigits
                 self.payInfo?.paidAt = paidAt
                 self.payInfo?.chargeId = chargeId

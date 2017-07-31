@@ -48,6 +48,7 @@
 		79C10A7E1EF93F69002572D7 /* CompleteView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A801EF93F69002572D7 /* CompleteView.strings */; };
 		79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79D27DA81EF82F8F007B13B9 /* LoginView.strings */; };
 		79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D27DAA1EF830AD007B13B9 /* I18n.swift */; };
+		79E0DDF91F2F3DA300048C74 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0DDF81F2F3DA300048C74 /* StripeClient.swift */; };
 		9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F69931FBB206E916A638757 /* Pods_fespay.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,7 @@
 		79D27DA71EF82F8F007B13B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DA91EF82F95007B13B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DAA1EF830AD007B13B9 /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
+		79E0DDF81F2F3DA300048C74 /* StripeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespay/Pods-fespay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */,
 				454815961EDC182800A453E4 /* CompleteViewController.swift */,
 				7976D36F1F205AF80002B877 /* OmiseClient.swift */,
+				79E0DDF81F2F3DA300048C74 /* StripeClient.swift */,
 				4505F2421EE7A1DF0078605B /* S3Client.swift */,
 				456467301EE7C5D6001DC574 /* AzureClient.swift */,
 				456467321EE7DED8001DC574 /* FirebaseClient.swift */,
@@ -569,6 +572,7 @@
 				79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */,
 				4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */,
 				456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */,
+				79E0DDF91F2F3DA300048C74 /* StripeClient.swift in Sources */,
 				455E32AE1EEE9915009AC2D3 /* SettingsViewController.swift in Sources */,
 				4505F2411EE688230078605B /* ShopInfo.swift in Sources */,
 				454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */,
