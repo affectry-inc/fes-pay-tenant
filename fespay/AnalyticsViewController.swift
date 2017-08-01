@@ -11,10 +11,11 @@ import UIKit
 class AnalyticsViewController: UIViewController {
 
     let i18n = I18n(tableName: "AnalyticsView")
+    let tenantInfo = TenantInfo.sharedInstance
     
     // MARK: - Properties
     
-    @IBOutlet weak var fesNameLabel: UILabel!
+    @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var tenantNameLabel: UILabel!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var graphView: UIView!
@@ -39,6 +40,9 @@ class AnalyticsViewController: UIViewController {
         
         self.totalBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.countBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        
+        self.eventNameLabel.text = tenantInfo.eventName
+        self.tenantNameLabel.text = "\(tenantInfo.tenantName)(\(tenantInfo.tenantId))"
     }
 
     override func didReceiveMemoryWarning() {

@@ -512,7 +512,7 @@
                         <outlet property="countTitleLabel" destination="QEg-uk-5jq" id="tAq-A3-Msa"/>
                         <outlet property="countValueLabel" destination="Vsh-TT-x5b" id="nio-ac-Hmm"/>
                         <outlet property="dateButton" destination="wUD-xJ-5Nb" id="RGs-RX-jjC"/>
-                        <outlet property="fesNameLabel" destination="ifs-9V-rIC" id="hxa-X9-uub"/>
+                        <outlet property="eventNameLabel" destination="ifs-9V-rIC" id="H3S-8w-bDx"/>
                         <outlet property="graphView" destination="ehQ-7h-cjP" id="gRs-ye-mtN"/>
                         <outlet property="tenantNameLabel" destination="fhm-gk-Lr8" id="tbY-um-7UJ"/>
                         <outlet property="totalBorderLabel" destination="5GD-47-fPk" id="sC9-xq-r8I"/>
