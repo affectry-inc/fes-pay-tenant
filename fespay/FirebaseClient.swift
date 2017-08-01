@@ -49,7 +49,7 @@ class FirebaseClient: NSObject {
     }
     
     class func createCharge(_ payInfo: PayInfo, onCreate: @escaping () -> (), onError: @escaping () -> ()) {
-        let tenantInfo = ShopInfo.sharedInstance
+        let tenantInfo = TenantInfo.sharedInstance
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
@@ -57,8 +57,8 @@ class FirebaseClient: NSObject {
         
         let fbRef = Database.database().reference()
         let charge: [String: Any] = [
-            "feses": [tenantInfo.fesId: true],
-            "shops": [tenantInfo.shopId: true],
+            "events": [tenantInfo.eventId: true],
+            "tenants": [tenantInfo.tenantId: true],
             "bands": [payInfo.bandId!: true],
             "amount": payInfo.price!,
             "persons": [payInfo.personId!: true],
@@ -83,6 +83,48 @@ class FirebaseClient: NSObject {
             
             onCreate()
         })
+    }
+    
+    class func signInAsTenant(tenantId: String, password: String, onSignIn: @escaping () -> (), onError: @escaping () -> ()) {
+        Auth.auth().signIn(withEmail: "\(tenantId)@fespay.io", password: password, completion: { user, error in
+            if let error = error {
+                os_log("signInAsTenant Error: %@", log: .default, type: .error, error as CVarArg)
+                onError()
+                return
+            }
+            
+            if let user = user {
+                let tenantInfo = TenantInfo.sharedInstance
+                
+                let fbRef = Database.database().reference()
+                fbRef.child("tenants").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let tenant = snapshot.value as? [String: Any]
+                    
+                    tenantInfo.eventId = tenant?["eventId"] as! String
+                    tenantInfo.eventName = tenant?["eventName"] as! String
+                    tenantInfo.tenantId = tenant?["id"] as! String
+                    tenantInfo.tenantName = tenant?["name"] as! String
+                    
+                    onSignIn()
+                }) { (error) in
+                    os_log("findTenant error: %@", log: .default, type: .error, error.localizedDescription)
+                    onError()
+                }
+            }
+        })
+    }
+    
+    class func signOut(onSignOut: @escaping () -> ()) {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let tenantInfo = TenantInfo.sharedInstance
+        tenantInfo.clear()
+        
+        onSignOut()
     }
     
 }

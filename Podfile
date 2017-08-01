@@ -10,6 +10,7 @@ target 'fespay' do
   pod 'AWSCognito'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
   target 'fespayTests' do
     inherit! :search_paths

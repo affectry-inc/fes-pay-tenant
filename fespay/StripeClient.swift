@@ -15,14 +15,14 @@ class StripeClient: NSObject {
     
     class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         
-        let tenantInfo = ShopInfo.sharedInstance
+        let tenantInfo = TenantInfo.sharedInstance
         
         var request = URLRequest(url: URL(string: "https://api.stripe.com/v1/charges")!)
         request.httpMethod = "POST"
         request.addValue("Bearer \(SKEY)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "amount=\(Int(amount))&currency=jpy&customer=\(customerId)&description=\(tenantInfo.shopId)".data(using: .utf8)
+        request.httpBody = "amount=\(Int(amount))&currency=jpy&customer=\(customerId)&description=\(tenantInfo.tenantId)".data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
             

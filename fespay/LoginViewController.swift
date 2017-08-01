@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 extension UITextField {
     func addBorderBottom(height: CGFloat, color: UIColor) {
@@ -32,42 +33,52 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     
-    @IBOutlet weak var shopIdTextField: UITextField!
+    @IBOutlet weak var tenantIdTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var tenantInfo = ShopInfo.sharedInstance
-    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        // TODO: Login処理
-        tenantInfo.fesId = "FES_A"
-        tenantInfo.shopId = "SHOP_A"
         
-        // let next = self.storyboard?.instantiateViewController(withIdentifier: "PayListView") as! PayListViewController
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        if tenantIdTextField.text?.characters.count == 0 {
+            present(i18n.alert(titleKey: "emptyTenantId", messageKey: "enterTenantId"), animated: true)
+
+            return
+        }
         
-        self.present(next, animated: true, completion: nil)
+        if passwordTextField.text?.characters.count == 0 {
+            present(i18n.alert(titleKey: "emptyPassword", messageKey: "enterPassword"), animated: true)
+            
+            return
+        }
+        
+        FirebaseClient.signInAsTenant(tenantId: tenantIdTextField.text!, password: passwordTextField.text!, onSignIn: {
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            
+            self.present(next, animated: true, completion: nil)
+        }, onError: {
+            self.present(self.i18n.alert(titleKey: "invalidIdOrPassword", messageKey: "tryAgain"), animated: true)
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Handle the text field’s user input through delegate callbacks.
-        shopIdTextField.delegate = self
+        tenantIdTextField.delegate = self
         passwordTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let shopIdPh: String = i18n.localize(key: "shopIdPh")
+        let tenantIdPh: String = i18n.localize(key: "tenantIdPh")
         let passwordPh: String = i18n.localize(key: "passwordPh")
         loginButton.setTitle(i18n.localize(key: "login"), for: .normal)
         
         self.view.backgroundColor = primary1Color
         
-        self.shopIdTextField.attributedPlaceholder = NSAttributedString(string: shopIdPh, attributes: [NSForegroundColorAttributeName: UIColor.lightText])
-        self.shopIdTextField.addBorderBottom(height: 1.0, color: UIColor.white)
+        self.tenantIdTextField.attributedPlaceholder = NSAttributedString(string: tenantIdPh, attributes: [NSForegroundColorAttributeName: UIColor.lightText])
+        self.tenantIdTextField.addBorderBottom(height: 1.0, color: UIColor.white)
         
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordPh, attributes: [NSForegroundColorAttributeName: UIColor.lightText])
         self.passwordTextField.addBorderBottom(height: 1.0, color: UIColor.white)
@@ -79,8 +90,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (shopIdTextField.isFirstResponder) {
-            shopIdTextField.resignFirstResponder()
+        if (tenantIdTextField.isFirstResponder) {
+            tenantIdTextField.resignFirstResponder()
         }
         if (passwordTextField.isFirstResponder) {
             passwordTextField.resignFirstResponder()
@@ -92,6 +103,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         
         return true
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func unwindToLoginView(sender: UIStoryboardSegue) {
+        tenantIdTextField.text = ""
+        passwordTextField.text = ""
     }
     
     /*

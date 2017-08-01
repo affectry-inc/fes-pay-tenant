@@ -15,7 +15,7 @@ class OmiseClient: NSObject {
     
     class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         
-        let tenantInfo = ShopInfo.sharedInstance
+        let tenantInfo = TenantInfo.sharedInstance
         let skey = (SKEY + ":X").data(using: .utf8, allowLossyConversion: false)
         
         guard let encodedKey = skey?.base64EncodedString(options: .lineLength64Characters) else {
@@ -29,7 +29,7 @@ class OmiseClient: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("2015-11-17", forHTTPHeaderField: "Omise-Version")
-        request.httpBody = "{\"amount\":\"\(Int(amount))\",\"currency\":\"jpy\",\"customer\":\"\(customerId)\",\"description\":\"\(tenantInfo.shopId)\"}".data(using: .utf8)
+        request.httpBody = "{\"amount\":\"\(Int(amount))\",\"currency\":\"jpy\",\"customer\":\"\(customerId)\",\"description\":\"\(tenantInfo.tenantId)\"}".data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){ data, response, error in
             

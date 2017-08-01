@@ -17,7 +17,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     // MARK: - Properties
     var payInfo: PayInfo?
     
-    let tenantInfo = ShopInfo.sharedInstance
+    let tenantInfo = TenantInfo.sharedInstance
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var captureButton: UIButton!
@@ -185,7 +185,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     }
     
     func execVerify() {
-        S3Client.uploadBuyerPhoto(fesId: self.tenantInfo.fesId, bandId: (self.payInfo?.bandId)!, image: (self.payInfo?.buyerImage)!, onUpload: self.onUpload)
+        S3Client.uploadBuyerPhoto(fesId: self.tenantInfo.eventId, bandId: (self.payInfo?.bandId)!, image: (self.payInfo?.buyerImage)!, onUpload: self.onUpload)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

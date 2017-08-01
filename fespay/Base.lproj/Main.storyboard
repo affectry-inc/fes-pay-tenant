@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Phc-fC-0Kj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Phc-fC-0Kj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Details-->
         <scene sceneID="48k-J0-xyk">
             <objects>
-                <viewController id="6HG-CZ-cqT" customClass="PayDetailViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6HG-CZ-cqT" customClass="PayDetailViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CZt-nd-5bu"/>
                         <viewControllerLayoutGuide type="bottom" id="uda-IF-as7"/>
@@ -206,7 +206,7 @@
         <!--Pay List View Controller-->
         <scene sceneID="sp8-w0-DEh">
             <objects>
-                <viewController storyboardIdentifier="PayListView" id="1cI-iq-U5h" customClass="PayListViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayListView" id="1cI-iq-U5h" customClass="PayListViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OfF-Qg-UEf"/>
                         <viewControllerLayoutGuide type="bottom" id="Sj0-TU-H5f"/>
@@ -246,7 +246,7 @@
                                 <rect key="frame" x="0.0" y="140" width="375" height="478"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PayInfoTableViewCell" rowHeight="70" id="ZgB-h8-1Sf" customClass="PayInfoTableViewCell" customModule="fespay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PayInfoTableViewCell" rowHeight="70" id="ZgB-h8-1Sf" customClass="PayInfoTableViewCell" customModule="FesPay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZgB-h8-1Sf" id="AvG-W2-9cv">
@@ -316,7 +316,7 @@
         <!--Amount-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="NewPayInfoViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="NewPayInfoViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -400,7 +400,7 @@
         <!--Analytics-->
         <scene sceneID="d6P-8p-IQz">
             <objects>
-                <viewController storyboardIdentifier="AnalyticsView" id="IVx-Kj-wE3" customClass="AnalyticsViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalyticsView" id="IVx-Kj-wE3" customClass="AnalyticsViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BVP-ve-ZlH"/>
                         <viewControllerLayoutGuide type="bottom" id="y7F-B9-8dF"/>
@@ -527,7 +527,7 @@
         <!--QR Code-->
         <scene sceneID="Dqb-QE-V3s">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="r4C-E3-mi0" customClass="QRCaptureViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="r4C-E3-mi0" customClass="QRCaptureViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VQy-NF-6SV"/>
                         <viewControllerLayoutGuide type="bottom" id="Zfq-NT-emN"/>
@@ -570,7 +570,7 @@
         <!--Capture face-->
         <scene sceneID="o25-nP-0oH">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="5HI-mF-aEa" customClass="FaceCaptureViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="5HI-mF-aEa" customClass="FaceCaptureViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9VY-gm-NcA"/>
                         <viewControllerLayoutGuide type="bottom" id="AXK-3x-30v"/>
@@ -621,7 +621,7 @@
         <!--確認-->
         <scene sceneID="THF-Vj-6VT">
             <objects>
-                <viewController storyboardIdentifier="FaceConfirmView" id="OIC-vT-xqL" customClass="FaceConfirmViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FaceConfirmView" id="OIC-vT-xqL" customClass="FaceConfirmViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QbD-dV-hj7"/>
                         <viewControllerLayoutGuide type="bottom" id="vwf-zZ-ohb"/>
@@ -802,7 +802,7 @@
         <!--Complete View Controller-->
         <scene sceneID="MdK-na-imR">
             <objects>
-                <viewController storyboardIdentifier="CompleteView" id="iRQ-xb-sEr" customClass="CompleteViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteView" id="iRQ-xb-sEr" customClass="CompleteViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lfh-Is-qtH"/>
                         <viewControllerLayoutGuide type="bottom" id="x2v-El-6OS"/>
@@ -1025,7 +1025,7 @@
         <!--Login View Controller-->
         <scene sceneID="nE0-BW-iVD">
             <objects>
-                <viewController id="Phc-fC-0Kj" customClass="LoginViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Phc-fC-0Kj" customClass="LoginViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pAy-Vx-jQJ"/>
                         <viewControllerLayoutGuide type="bottom" id="4RM-n4-fRf"/>
@@ -1034,7 +1034,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2Y-VZ-90e">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tenant ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2Y-VZ-90e">
                                 <rect key="frame" x="26" y="348.5" width="323" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1080,7 +1080,7 @@
                     <connections>
                         <outlet property="loginButton" destination="pSL-SD-VPN" id="A7W-ub-TG3"/>
                         <outlet property="passwordTextField" destination="53k-tn-Mb0" id="0WI-f8-PsR"/>
-                        <outlet property="shopIdTextField" destination="F2Y-VZ-90e" id="umf-Ma-l9z"/>
+                        <outlet property="tenantIdTextField" destination="F2Y-VZ-90e" id="rEw-cY-0FD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p36-4I-nhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1109,7 +1109,7 @@
         <!--Settings-->
         <scene sceneID="LrI-nb-J35">
             <objects>
-                <viewController storyboardIdentifier="SettingsView" id="xPF-Hm-V9e" customClass="SettingsViewController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsView" id="xPF-Hm-V9e" customClass="SettingsViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekL-m7-Vil"/>
                         <viewControllerLayoutGuide type="bottom" id="gIn-ki-SkC"/>
@@ -1160,8 +1160,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKn-Cr-KE1">
-                                <rect key="frame" x="16" y="131" width="78" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tenant ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKn-Cr-KE1">
+                                <rect key="frame" x="16" y="131" width="93" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Erl-1P-nji"/>
                                 </constraints>
@@ -1187,8 +1187,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXM-02-qQg">
-                                <rect key="frame" x="16" y="178" width="115" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tenant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXM-02-qQg">
+                                <rect key="frame" x="16" y="178" width="130.5" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Swf-FO-OAK"/>
                                 </constraints>
@@ -1196,8 +1196,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="たくあん焼き屋" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOH-rD-YdX">
-                                <rect key="frame" x="202.5" y="178" width="156.5" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Takuwan Shop" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOH-rD-YdX">
+                                <rect key="frame" x="215" y="178" width="144" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="A7J-HI-ehh"/>
                                 </constraints>
@@ -1257,15 +1257,17 @@
                         <outlet property="eventValueLabel" destination="UR6-VZ-4i9" id="Cbl-7E-JHv"/>
                         <outlet property="logoutButton" destination="ZBd-FG-sxU" id="pXo-cM-bIC"/>
                         <outlet property="navBar" destination="zyp-wA-Iac" id="OKE-cS-2Gj"/>
-                        <outlet property="shopIdBorderLabel" destination="dZ1-0E-oRU" id="jQx-BY-Nzj"/>
-                        <outlet property="shopIdTitleLabel" destination="wKn-Cr-KE1" id="Wok-XF-zU0"/>
-                        <outlet property="shopIdValueLabel" destination="koT-xq-W31" id="aLJ-S3-eaH"/>
-                        <outlet property="shopNameBorderLabel" destination="PWe-qZ-xpv" id="Cyd-AW-Zzi"/>
-                        <outlet property="shopNameTitleLabel" destination="CXM-02-qQg" id="Jgo-ZV-nIK"/>
-                        <outlet property="shopNameValueLabel" destination="mOH-rD-YdX" id="WJl-Yj-RLD"/>
+                        <outlet property="tenantIdBorderLabel" destination="dZ1-0E-oRU" id="Oe0-hu-Olb"/>
+                        <outlet property="tenantIdTitleLabel" destination="wKn-Cr-KE1" id="olv-OI-gxw"/>
+                        <outlet property="tenantIdValueLabel" destination="koT-xq-W31" id="McY-9o-y6X"/>
+                        <outlet property="tenantNameBorderLabel" destination="PWe-qZ-xpv" id="tMe-re-hvE"/>
+                        <outlet property="tenantNameTitleLabel" destination="CXM-02-qQg" id="fI9-R2-d9t"/>
+                        <outlet property="tenantNameValueLabel" destination="mOH-rD-YdX" id="5L9-sg-fDb"/>
+                        <segue destination="JR9-8x-zXc" kind="unwind" identifier="unwindToLoginView" unwindAction="unwindToLoginViewWithSender:" id="8rW-t7-L1P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGP-ts-NqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JR9-8x-zXc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2412" y="512"/>
         </scene>
@@ -1291,7 +1293,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="7H0-Zb-BZF">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="qE1-mh-Wf1" customClass="MainTabBarController" customModule="fespay" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="qE1-mh-Wf1" customClass="MainTabBarController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="F9Y-n4-GOL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

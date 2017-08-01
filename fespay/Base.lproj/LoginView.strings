@@ -6,6 +6,12 @@
   Copyright © 2017年 KakimotoShizuka. All rights reserved.
 */
 
-"shopIdPh" = "Shop ID";
+"tenantIdPh" = "Tenant ID";
 "passwordPh" = "Password";
 "login" = "Login >";
+"emptyTenantId" = "Empty tenant ID";
+"enterTenantId" = "Please enter your tenant ID.";
+"emptyPassword" = "Empty password";
+"enterPassword" = "Please enter the password for your tenant ID.";
+"invalidIdOrPassword" = "Invalid tenant ID or password";
+"tryAgain" = "Please try again.";

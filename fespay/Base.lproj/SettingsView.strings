@@ -8,6 +8,6 @@
 
 "settings" = "Settings";
 "event" = "Event";
-"shopId" = "Shop ID";
-"shopName" = "Shop Name";
+"tenantId" = "Tenant ID";
+"tenantName" = "Tenant Name";
 "logout" = "Logout";

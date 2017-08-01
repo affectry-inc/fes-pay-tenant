@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class I18n: NSObject {
     
@@ -20,6 +21,17 @@ class I18n: NSObject {
     
     func localize(key: String) -> String {
         return NSLocalizedString(key, tableName: self.tableName, comment: "")
+    }
+    
+    func alert(titleKey: String, messageKey: String) -> UIAlertController {
+        let title = localize(key: titleKey)
+        let message = localize(key: messageKey)
+        
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
+        alert.addAction(okAction)
+        
+        return alert
     }
     
     class func localize(key: String) -> String {

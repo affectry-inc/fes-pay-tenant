@@ -10,7 +10,7 @@
 		3EE139BF6B2044ECB29089C5 /* Pods_fespayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */; };
 		4500B3DC1ED80CC3001F8493 /* FaceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */; };
 		4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */; };
-		4505F2411EE688230078605B /* ShopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* ShopInfo.swift */; };
+		4505F2411EE688230078605B /* TenantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2401EE688230078605B /* TenantInfo.swift */; };
 		4505F2431EE7A1DF0078605B /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505F2421EE7A1DF0078605B /* S3Client.swift */; };
 		4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */; };
 		4535C4481EB482B8000C72D6 /* PayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4535C4471EB482B8000C72D6 /* PayInfo.swift */; };
@@ -73,7 +73,7 @@
 		1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4500B3DB1ED80CC3001F8493 /* FaceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCaptureViewController.swift; sourceTree = "<group>"; };
 		4500B3DD1EDBE868001F8493 /* FaceConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceConfirmViewController.swift; sourceTree = "<group>"; };
-		4505F2401EE688230078605B /* ShopInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopInfo.swift; sourceTree = "<group>"; };
+		4505F2401EE688230078605B /* TenantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenantInfo.swift; sourceTree = "<group>"; };
 		4505F2421EE7A1DF0078605B /* S3Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Client.swift; sourceTree = "<group>"; };
 		4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		4535C4471EB482B8000C72D6 /* PayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayInfo.swift; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 				456467301EE7C5D6001DC574 /* AzureClient.swift */,
 				456467321EE7DED8001DC574 /* FirebaseClient.swift */,
 				4535C4471EB482B8000C72D6 /* PayInfo.swift */,
-				4505F2401EE688230078605B /* ShopInfo.swift */,
+				4505F2401EE688230078605B /* TenantInfo.swift */,
 				79D27DAA1EF830AD007B13B9 /* I18n.swift */,
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
@@ -574,7 +574,7 @@
 				456467331EE7DED8001DC574 /* FirebaseClient.swift in Sources */,
 				79E0DDF91F2F3DA300048C74 /* StripeClient.swift in Sources */,
 				455E32AE1EEE9915009AC2D3 /* SettingsViewController.swift in Sources */,
-				4505F2411EE688230078605B /* ShopInfo.swift in Sources */,
+				4505F2411EE688230078605B /* TenantInfo.swift in Sources */,
 				454815971EDC182900A453E4 /* CompleteViewController.swift in Sources */,
 				4500B3DE1EDBE868001F8493 /* FaceConfirmViewController.swift in Sources */,
 				458861CD1EAB240600FF88C6 /* NewPayInfoViewController.swift in Sources */,
