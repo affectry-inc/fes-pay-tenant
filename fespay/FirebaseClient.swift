@@ -70,10 +70,25 @@ class FirebaseClient: NSObject {
             "chargeId": payInfo.chargeId!,
             "transactionId": payInfo.transactionId!
         ]
+        
+        let payCharge: [String: Any] = [
+            "amount": payInfo.price!,
+            "tenantName": tenantInfo.tenantName,
+            "paidAt": dateFormatter.string(from: payInfo.paidAt!)
+        ]
+        
+        let receiptCharge: [String: Any] = [
+            "amount": payInfo.price!,
+            "bandId": payInfo.bandId!,
+            "paidAt": dateFormatter.string(from: payInfo.paidAt!)
+        ]
+        
         let childUpdates = [
             "/charges/\(payInfo.key)": charge,
-            "/pays/\(payInfo.bandId!)/\(payInfo.key)": charge
+            "/pays/\(payInfo.bandId!)/charges/\(payInfo.key)": payCharge,
+            "/receipts/\(tenantInfo.tenantId)/charges/\(payInfo.key)": receiptCharge
         ]
+        
         fbRef.updateChildValues(childUpdates, withCompletionBlock: { error, _ in
             if error != nil {
                 os_log("createCharge Error: %@", log: .default, type: .error, error! as CVarArg)
