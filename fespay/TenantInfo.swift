@@ -19,12 +19,14 @@ class TenantInfo: NSObject {
     var eventName: String = ""
     var tenantId: String = ""
     var tenantName: String = ""
+    var tenantUid: String = ""
     
     func clear() {
         eventId = ""
         eventName = ""
         tenantId = ""
         tenantName = ""
+        tenantUid = ""
     }
 
 }

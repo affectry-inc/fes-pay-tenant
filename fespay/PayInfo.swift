@@ -14,6 +14,7 @@ class PayInfo: NSObject {
     
     var key: String
     var bandId: String?
+    var bandUid: String?
     var price: Double?
     var personId: String?
     var personPhotoUrl: String?

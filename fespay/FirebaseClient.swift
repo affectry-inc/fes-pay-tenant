@@ -12,17 +12,18 @@ import Firebase
 
 class FirebaseClient: NSObject {
     
-    class func findPerson(bandId: String, onFind: @escaping (String, String) -> ()) {
+    class func findPerson(bandId: String, onFind: @escaping (String, String, String) -> ()) {
         let fbRef = Database.database().reference()
         fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in
             let person = snapshot.value as? [String: Any]
             let persons = person?["persons"] as! [String: Bool]
             let personId = persons.first!.key
             let photoUrl = person?["photoUrl"] as! String
+            let uid = person?["uid"] as! String
             os_log("personId: %@", log: .default, type: .debug, personId)
             os_log("photoUrl: %@", log: .default, type: .debug, photoUrl)
             
-            onFind(personId, photoUrl)
+            onFind(personId, photoUrl, uid)
         }) { (error) in
             os_log("findPerson error: %@", log: .default, type: .error, error.localizedDescription)
         }
@@ -58,8 +59,10 @@ class FirebaseClient: NSObject {
         let fbRef = Database.database().reference()
         let charge: [String: Any] = [
             "events": [tenantInfo.eventId: true],
-            "tenants": [tenantInfo.tenantId: true],
-            "bands": [payInfo.bandId!: true],
+            "tenantId": tenantInfo.tenantId,
+            "tenantUid": tenantInfo.tenantUid,
+            "bandId": payInfo.bandId!,
+            "bandUid": payInfo.bandUid!,
             "amount": payInfo.price!,
             "persons": [payInfo.personId!: true],
             "personPhotoUrl": payInfo.personPhotoUrl!,
@@ -73,6 +76,7 @@ class FirebaseClient: NSObject {
         
         let payCharge: [String: Any] = [
             "amount": payInfo.price!,
+            "tenantUid": tenantInfo.tenantUid,
             "tenantName": tenantInfo.tenantName,
             "paidAt": dateFormatter.string(from: payInfo.paidAt!)
         ]
@@ -101,7 +105,7 @@ class FirebaseClient: NSObject {
     }
     
     class func signInAsTenant(tenantId: String, password: String, onSignIn: @escaping () -> (), onError: @escaping () -> ()) {
-        Auth.auth().signIn(withEmail: "\(tenantId)@fespay.io", password: password, completion: { user, error in
+        Auth.auth().signIn(withEmail: "\(tenantId)@tenant.fespay.io", password: password, completion: { user, error in
             if let error = error {
                 os_log("signInAsTenant Error: %@", log: .default, type: .error, error as CVarArg)
                 onError()
@@ -112,13 +116,14 @@ class FirebaseClient: NSObject {
                 let tenantInfo = TenantInfo.sharedInstance
                 
                 let fbRef = Database.database().reference()
-                fbRef.child("tenants").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                fbRef.child("tenants").child(tenantId).observeSingleEvent(of: .value, with: { (snapshot) in
                     let tenant = snapshot.value as? [String: Any]
                     
                     tenantInfo.eventId = tenant?["eventId"] as! String
                     tenantInfo.eventName = tenant?["eventName"] as! String
-                    tenantInfo.tenantId = tenant?["id"] as! String
+                    tenantInfo.tenantId = tenantId
                     tenantInfo.tenantName = tenant?["name"] as! String
+                    tenantInfo.tenantUid = user.uid
                     
                     onSignIn()
                 }) { (error) in
