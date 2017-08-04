@@ -13,7 +13,7 @@ class PayInfoTableViewCell: UITableViewCell {
     //MARK: Properties
     
     @IBOutlet weak var paidAtLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var payerLabel: UILabel!
     
     override func awakeFromNib() {

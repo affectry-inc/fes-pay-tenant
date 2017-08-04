@@ -277,9 +277,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="amountLabel" destination="6fa-2W-FL5" id="mRT-KG-3LY"/>
                                             <outlet property="paidAtLabel" destination="HZD-CG-rZM" id="yiR-X1-T0G"/>
                                             <outlet property="payerLabel" destination="KDg-Hu-mjx" id="xsC-PZ-BV9"/>
-                                            <outlet property="priceLabel" destination="6fa-2W-FL5" id="iqd-kp-By7"/>
                                             <segue destination="6HG-CZ-cqT" kind="show" id="LD1-YS-CsK"/>
                                         </connections>
                                     </tableViewCell>
@@ -387,9 +387,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="amountBorderLabel" destination="DMV-rb-pfb" id="eGd-e1-LpN"/>
+                        <outlet property="amountTextField" destination="4eW-CQ-hOH" id="YfT-ez-hTc"/>
                         <outlet property="goNextButton" destination="xuZ-sW-ClP" id="I6O-E6-ZbP"/>
-                        <outlet property="priceBorderLabel" destination="DMV-rb-pfb" id="HUd-Iw-2LV"/>
-                        <outlet property="priceTextField" destination="4eW-CQ-hOH" id="UoL-hM-Ce6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

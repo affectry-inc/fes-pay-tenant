@@ -51,7 +51,7 @@ class CompleteViewController: UIViewController, UINavigationBarDelegate {
         equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
         confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
         wristbandValueLabel.text = self.payInfo?.bandId
-        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
+        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
         dateValueLabel.text = dateFormatter.string(from: (self.payInfo?.paidAt)!)
     }
     

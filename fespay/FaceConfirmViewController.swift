@@ -41,7 +41,7 @@ class FaceConfirmViewController: UIViewController {
         equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
         confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
         wristbandValueLabel.text = self.payInfo?.bandId
-        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.price)!)
+        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
 
     }
     
@@ -67,7 +67,7 @@ class FaceConfirmViewController: UIViewController {
     
     @IBAction func execPayButtonTapped(_ sender: UIButton) {
         FirebaseClient.findCardCustomer(bandId: (self.payInfo?.bandId)!, onFind: { (cardCustomerId: String, cardLastDigits: String) in
-            StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.price)!, onCharge: { paidAt, chargeId, transactionId in
+            StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.amount)!, onCharge: { paidAt, chargeId, transactionId in
                 self.payInfo?.cardLastDigits = cardLastDigits
                 self.payInfo?.paidAt = paidAt
                 self.payInfo?.chargeId = chargeId

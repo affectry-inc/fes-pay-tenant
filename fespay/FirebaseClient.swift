@@ -63,7 +63,7 @@ class FirebaseClient: NSObject {
             "tenantUid": tenantInfo.tenantUid,
             "bandId": payInfo.bandId!,
             "bandUid": payInfo.bandUid!,
-            "amount": payInfo.price!,
+            "amount": payInfo.amount!,
             "persons": [payInfo.personId!: true],
             "personPhotoUrl": payInfo.personPhotoUrl!,
             "buyerPhotoUrl": payInfo.buyerPhotoUrl!,
@@ -75,14 +75,14 @@ class FirebaseClient: NSObject {
         ]
         
         let payCharge: [String: Any] = [
-            "amount": payInfo.price!,
+            "amount": payInfo.amount!,
             "tenantUid": tenantInfo.tenantUid,
             "tenantName": tenantInfo.tenantName,
             "paidAt": dateFormatter.string(from: payInfo.paidAt!)
         ]
         
         let receiptCharge: [String: Any] = [
-            "amount": payInfo.price!,
+            "amount": payInfo.amount!,
             "bandId": payInfo.bandId!,
             "paidAt": dateFormatter.string(from: payInfo.paidAt!)
         ]

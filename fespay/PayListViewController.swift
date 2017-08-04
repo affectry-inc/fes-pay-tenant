@@ -81,7 +81,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paidAt!)
         cell.payerLabel.text = "ID: " + payInfo.bandId!
-        cell.priceLabel.text = "¥" + String(format: "%.0f", payInfo.price!)
+        cell.amountLabel.text = "¥" + String(format: "%.0f", payInfo.amount!)
         
         return cell
     }
@@ -104,17 +104,17 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func loadSamplePayInfos() {
         let payInfo1 = PayInfo()
-        payInfo1.price = 2700
+        payInfo1.amount = 2700
         payInfo1.bandId = "aa001"
         payInfo1.paidAt = Date()
         
         let payInfo2 = PayInfo()
-        payInfo2.price = 1500
+        payInfo2.amount = 1500
         payInfo2.bandId = "aa002"
         payInfo2.paidAt = Date()
         
         let payInfo3 = PayInfo()
-        payInfo3.price = 3400
+        payInfo3.amount = 3400
         payInfo3.bandId = "aa003"
         payInfo3.paidAt = Date()
         

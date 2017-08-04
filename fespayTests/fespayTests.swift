@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import fespay
+@testable import FesPay
 
 class fespayTests: XCTestCase {
     
@@ -16,18 +16,18 @@ class fespayTests: XCTestCase {
     // Confirm that the PayInfo initializer returns a PayInfo object when passed valid parameters.
     func testPayInfoInitializationSucceeds() {
         
-        // One price
-        let onePricePayInfo = PayInfo.init(price: 1, paid_at: Date(), payer: "")
-        XCTAssertNotNil(onePricePayInfo)
+        // One amount
+        let oneAmountPayInfo = PayInfo.init()
+        XCTAssertNotNil(oneAmountPayInfo)
         
     }
     
     // Confirm that the Meal initialier returns nil when passed a negative rating or an empty name.
     func testPayInfoInitializationFails() {
         
-        // Zero price
-        let zeroPricePayInfo = PayInfo.init(price: 0, paid_at: Date(), payer: "")
-        XCTAssertNil(zeroPricePayInfo)
+        // Zero amount
+        let zeroAmountPayInfo = PayInfo.init()
+        XCTAssertNil(zeroAmountPayInfo)
         
     }
 }

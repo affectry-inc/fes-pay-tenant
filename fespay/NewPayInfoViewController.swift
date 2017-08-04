@@ -15,8 +15,8 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     
-    @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var priceBorderLabel: UILabel!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var amountBorderLabel: UILabel!
     @IBOutlet weak var goNextButton: UIButton!
     
     // MARK: - Events
@@ -25,7 +25,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Handle the text field’s user input through delegate callbacks.
-        priceTextField.delegate = self
+        amountTextField.delegate = self
         
         // Enable the Pay button only if the text field has a valid Pay info.
         updatePayButtonState()
@@ -35,12 +35,12 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "amount")
-        self.priceTextField.placeholder = i18n.localize(key: "inputAmountPh")
+        self.amountTextField.placeholder = i18n.localize(key: "inputAmountPh")
         self.goNextButton.setTitle(i18n.localize(key: "next"), for: .normal)
         
-        priceBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         
-        priceTextField.becomeFirstResponder()
+        amountTextField.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,11 +62,11 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             captureView.payInfo = PayInfo()
-            captureView.payInfo?.price = Double(priceTextField.text!)!
+            captureView.payInfo?.amount = Double(amountTextField.text!)!
             captureView.payInfo?.bandId = "a001"
         }
         else if segue.identifier == "UnwindToPayList" {
-            self.priceTextField.text = ""
+            self.amountTextField.text = ""
         }
     }
     
@@ -82,7 +82,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
     private func updatePayButtonState() {
         // Disable the Pay button if the text field is empty.
-        let text = priceTextField.text ?? ""
+        let text = amountTextField.text ?? ""
         goNextButton.isEnabled = !text.isEmpty
     }
 }
