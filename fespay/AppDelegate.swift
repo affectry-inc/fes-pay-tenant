@@ -43,6 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Design tab bar
         UITabBar.appearance().tintColor = primary1Color
         
+        let user = FirebaseClient.findCurrentUser()
+        
+        if user != nil && TenantInfo.sharedInstance.restore() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 

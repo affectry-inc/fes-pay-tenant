@@ -113,25 +113,31 @@ class FirebaseClient: NSObject {
             }
             
             if let user = user {
-                let tenantInfo = TenantInfo.sharedInstance
-                
-                let fbRef = Database.database().reference()
-                fbRef.child("tenants").child(tenantId).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let tenant = snapshot.value as? [String: Any]
-                    
-                    tenantInfo.eventId = tenant?["eventId"] as! String
-                    tenantInfo.eventName = tenant?["eventName"] as! String
-                    tenantInfo.tenantId = tenantId
-                    tenantInfo.tenantName = tenant?["name"] as! String
-                    tenantInfo.tenantUid = user.uid
-                    
-                    onSignIn()
-                }) { (error) in
-                    os_log("findTenant error: %@", log: .default, type: .error, error.localizedDescription)
-                    onError()
-                }
+                setTenantInfo(user: user, onSuccess: onSignIn, onError: onError)
             }
         })
+    }
+    
+    class func setTenantInfo(user: User, onSuccess: @escaping () -> (), onError: @escaping () -> ()) {
+        let tenantInfo = TenantInfo.sharedInstance
+        
+        let fbRef = Database.database().reference()
+        let tenantId = user.email?.components(separatedBy: "@")[0]
+        fbRef.child("tenants").child(tenantId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let tenant = snapshot.value as? [String: Any]
+            
+            tenantInfo.eventId = tenant?["eventId"] as! String
+            tenantInfo.eventName = tenant?["eventName"] as! String
+            tenantInfo.tenantId = tenantId!
+            tenantInfo.tenantName = tenant?["name"] as! String
+            tenantInfo.tenantUid = user.uid
+            tenantInfo.store()
+            
+            onSuccess()
+        }) { (error) in
+            os_log("findTenant error: %@", log: .default, type: .error, error.localizedDescription)
+            onError()
+        }
     }
     
     class func signOut(onSignOut: @escaping () -> ()) {
@@ -145,6 +151,10 @@ class FirebaseClient: NSObject {
         tenantInfo.clear()
         
         onSignOut()
+    }
+    
+    class func findCurrentUser() -> User? {
+        return Auth.auth().currentUser
     }
     
 }
