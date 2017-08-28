@@ -43,6 +43,7 @@ class FaceConfirmViewController: UIViewController {
         wristbandValueLabel.text = self.payInfo?.bandId
         amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
 
+        LoadingProxy.set(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +72,7 @@ class FaceConfirmViewController: UIViewController {
         
         if let cardCustomerId = self.payInfo?.cardCustomerId {
             // カード登録あり
+            LoadingProxy.on()
             StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.amount)!, onCharge: { paidAt, chargeId, transactionId in
                 self.payInfo?.paidAt = paidAt
                 self.payInfo?.chargeId = chargeId
@@ -82,11 +84,14 @@ class FaceConfirmViewController: UIViewController {
                     next.payInfo = self.payInfo
                     
                     self.present(next, animated: true, completion: nil)
+                    LoadingProxy.off()
                 }, onError: {
                     // TODO: 失敗した時の処理
+                    LoadingProxy.off()
                 })
             }, onError: {
                 // TODO: 失敗した時の処理
+                LoadingProxy.off()
             })
         } else {
             // カード登録なし

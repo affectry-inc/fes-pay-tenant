@@ -68,6 +68,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         catch {
             print(error)
         }
+        
+        LoadingProxy.set(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -106,9 +108,11 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         settingsForMonitoring.isHighResolutionPhotoEnabled = false
         
         // 撮影
-        if (captureSesssion.isRunning) {// TODO: 消す
+        if (captureSesssion.isRunning) {
+            LoadingProxy.on()
             stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
         } else {
+            //  エミュレータの場合
             self.payInfo?.buyerImage = UIImage(named: "katosan")
             execVerify()
         }
@@ -142,6 +146,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(next, animated: true)
             }
+            LoadingProxy.off()
         })
     }
     
@@ -163,6 +168,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 self.verify(faceId: faceId, personId: personId)
             })
         } else if faces.count == 0 {
+            LoadingProxy.off()
             let msgNoFaceDetected = i18n.localize(key: "noFaceDetected")
             let msgReCapture = i18n.localize(key: "reCapture")
 
@@ -171,7 +177,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             alert.addAction(okAction)
             present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
         } else {
-            // TODO: 顔選択からのfaceId投げ
+            // TODO: 顔選択からのfaceId投げにしたい
+            LoadingProxy.off()
             let msgMultipleFacesDetected = i18n.localize(key: "multipleFacesDetected")
             let msgSelectBuyer = i18n.localize(key: "reCapture")
             

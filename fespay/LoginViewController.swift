@@ -51,10 +51,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        LoadingProxy.on()
         FirebaseClient.signInAsTenant(tenantId: tenantIdTextField.text!, password: passwordTextField.text!, onSignIn: {
             let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
             
             self.present(next, animated: true, completion: nil)
+            LoadingProxy.off()
         }, onError: {
             self.present(self.i18n.alert(titleKey: "invalidIdOrPassword", messageKey: "tryAgain"), animated: true)
         })
@@ -66,6 +68,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handle the text field’s user input through delegate callbacks.
         tenantIdTextField.delegate = self
         passwordTextField.delegate = self
+        
+        LoadingProxy.set(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
