@@ -16,6 +16,8 @@ class PayInfo: NSObject {
     var bandId: String?
     var bandUid: String?
     var amount: Double?
+    var amountCoupon: Double?
+    var amountCard: Double?
     var personId: String?
     var personPhotoUrl: String?
     var personImage: UIImage?
@@ -23,6 +25,7 @@ class PayInfo: NSObject {
     var buyerImage: UIImage?
     var confidence: Double?
     var cardLastDigits: String?
+    var cardCustomerId: String?
     var paidAt: Date?
     var chargeId: String?
     var transactionId: String?

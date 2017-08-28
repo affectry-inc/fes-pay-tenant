@@ -66,9 +66,12 @@ class FaceConfirmViewController: UIViewController {
     }
     
     @IBAction func execPayButtonTapped(_ sender: UIButton) {
-        FirebaseClient.findCardCustomer(bandId: (self.payInfo?.bandId)!, onFind: { (cardCustomerId: String, cardLastDigits: String) in
+        self.payInfo?.amountCoupon = Double(0)
+        self.payInfo?.amountCard = self.payInfo?.amount
+        
+        if let cardCustomerId = self.payInfo?.cardCustomerId {
+            // カード登録あり
             StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.amount)!, onCharge: { paidAt, chargeId, transactionId in
-                self.payInfo?.cardLastDigits = cardLastDigits
                 self.payInfo?.paidAt = paidAt
                 self.payInfo?.chargeId = chargeId
                 self.payInfo?.transactionId = transactionId
@@ -85,7 +88,10 @@ class FaceConfirmViewController: UIViewController {
             }, onError: {
                 // TODO: 失敗した時の処理
             })
-        })
+        } else {
+            // カード登録なし
+            self.present(self.i18n.alert(titleKey: "cardNotRegistered", messageKey: "informRegisterCard"), animated: true)
+        }
     }
     
     //MARK: - Actions

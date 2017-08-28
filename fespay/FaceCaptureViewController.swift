@@ -149,7 +149,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         if faces.count == 1 {
             // 正常処理
             let faceId = faces[0]["faceId"] as! String
-            FirebaseClient.findPerson(bandId: (self.payInfo?.bandId)!, onFind: { personId, personPhotoUrl, uid in
+            FirebaseClient.findPerson(bandId: (self.payInfo?.bandId)!, onFind: { personId, personPhotoUrl, uid, cardCustomerId, cardLastDigits in
                 
                 let personImageData = try? Data(contentsOf: URL(string: personPhotoUrl)!, options: .mappedIfSafe)
                 
@@ -157,6 +157,8 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 self.payInfo?.personImage = UIImage(data: personImageData!)
                 self.payInfo?.personId = personId
                 self.payInfo?.personPhotoUrl = personPhotoUrl
+                self.payInfo?.cardCustomerId = cardCustomerId
+                self.payInfo?.cardLastDigits = cardLastDigits
                 
                 self.verify(faceId: faceId, personId: personId)
             })

@@ -12,35 +12,22 @@ import Firebase
 
 class FirebaseClient: NSObject {
     
-    class func findPerson(bandId: String, onFind: @escaping (String, String, String) -> ()) {
-        let fbRef = Database.database().reference()
-        fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in
-            let person = snapshot.value as? [String: Any]
-            let persons = person?["persons"] as! [String: Bool]
-            let personId = persons.first!.key
-            let photoUrl = person?["photoUrl"] as! String
-            let uid = person?["uid"] as! String
-            os_log("personId: %@", log: .default, type: .debug, personId)
-            os_log("photoUrl: %@", log: .default, type: .debug, photoUrl)
-            
-            onFind(personId, photoUrl, uid)
-        }) { (error) in
-            os_log("findPerson error: %@", log: .default, type: .error, error.localizedDescription)
-        }
-    }
-    
-    class func findCardCustomer(bandId: String, onFind: @escaping (String, String) -> ()) {
+    class func findPerson(bandId: String, onFind: @escaping (String, String, String, String?, String?) -> ()) {
         let fbRef = Database.database().reference()
         fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in
             let band = snapshot.value as? [String: Any]
-            let cardCustomerId = band?["cardCustomerId"] as! String
-            let cardLastDigits = band?["cardLastDigits"] as! String
-            os_log("cardCustomerId: %@", log: .default, type: .debug, cardCustomerId)
-            os_log("cardLastDigits: %@", log: .default, type: .debug, cardLastDigits)
+            let persons = band?["persons"] as! [String: Bool]
+            let personId = persons.first!.key
+            let photoUrl = band?["photoUrl"] as! String
+            let cardCustomerId = band?["cardCustomerId"] as? String
+            let cardLastDigits = band?["cardLastDigits"] as? String
+            let uid = band?["uid"] as! String
+            os_log("personId: %@", log: .default, type: .debug, personId)
+            os_log("photoUrl: %@", log: .default, type: .debug, photoUrl)
             
-            onFind(cardCustomerId, cardLastDigits)
+            onFind(personId, photoUrl, uid, cardCustomerId, cardLastDigits)
         }) { (error) in
-            os_log("findCardCustomer error: %@", log: .default, type: .error, error.localizedDescription)
+            os_log("findPerson error: %@", log: .default, type: .error, error.localizedDescription)
         }
     }
     
@@ -48,6 +35,44 @@ class FirebaseClient: NSObject {
         let fbRef = Database.database().reference()
         return fbRef.child("charges").childByAutoId().key
     }
+    
+//    クーポン対応は中断 2017/08/28
+//    class func couponCharge(bandId: String, amount: Double, onCharge: @escaping (Double, Double) -> (), onError: @escaping () -> ()) {
+//        let fbRef = Database.database().reference()
+//        fbRef.child("coupons").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in
+//            if (!snapshot.exists()) {
+//                onCharge(0, amount)
+//            } else {
+//                let coupon = snapshot.value as! [String: Any]
+//                let couponAmount = coupon["amount"] as! Double
+//                let couponAmountUsed = (coupon["amountUsed"] != nil) ? coupon["amountUsed"] as! Double : Double(0)
+//                os_log("couponAmount: %d", log: .default, type: .debug, couponAmount)
+//                os_log("couponAmountUsed: %d", log: .default, type: .debug, couponAmountUsed)
+//                
+//                let couponBalance = couponAmount - couponAmountUsed
+//                var amountCoupon: Double, amountCard: Double
+//                if (couponBalance <= 0) {
+//                    amountCoupon = 0
+//                    amountCard = amount
+//                } else if (couponBalance <= amount) {
+//                    amountCoupon = couponBalance
+//                    amountCard = amount - couponBalance
+//                } else { // if (couponBalance > amount)
+//                    amountCoupon = amount
+//                    amountCard = 0
+//                }
+//                
+//                if (amountCoupon > 0) {
+//                    fbRef.child("coupons/\(bandId)/amountUsed").setValue(couponAmountUsed + amountCoupon)
+//                }
+//                
+//                onCharge(amountCoupon, amountCard)
+//            }
+//            
+//        }) { (error) in
+//            os_log("couponCharge error: %@", log: .default, type: .error, error.localizedDescription)
+//        }
+//    }
     
     class func createCharge(_ payInfo: PayInfo, onCreate: @escaping () -> (), onError: @escaping () -> ()) {
         let tenantInfo = TenantInfo.sharedInstance
@@ -64,6 +89,8 @@ class FirebaseClient: NSObject {
             "bandId": payInfo.bandId!,
             "bandUid": payInfo.bandUid!,
             "amount": payInfo.amount!,
+            "amountCard": payInfo.amountCard!,
+            // "amountCoupon": payInfo.amountCoupon!,
             "persons": [payInfo.personId!: true],
             "personPhotoUrl": payInfo.personPhotoUrl!,
             "buyerPhotoUrl": payInfo.buyerPhotoUrl!,
@@ -76,6 +103,9 @@ class FirebaseClient: NSObject {
         
         let payCharge: [String: Any] = [
             "amount": payInfo.amount!,
+            "amountCard": payInfo.amountCard!,
+            // "amountCoupon": payInfo.amountCoupon!,
+            "cardLastDigits": payInfo.cardLastDigits!,
             "tenantUid": tenantInfo.tenantUid,
             "tenantName": tenantInfo.tenantName,
             "paidAt": dateFormatter.string(from: payInfo.paidAt!)
