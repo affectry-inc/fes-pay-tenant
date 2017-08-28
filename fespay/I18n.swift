@@ -34,6 +34,25 @@ class I18n: NSObject {
         return alert
     }
     
+    func actionSheet(titleKey: String, messageKey: String, action1Key: String, handler1: @escaping () -> ()) -> UIAlertController {
+        let title = localize(key: titleKey)
+        let message = localize(key: messageKey)
+        
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: localize(key: action1Key), style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
+            handler1()
+        })
+        alert.addAction(action1)
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel", tableName: "", comment: ""), style: .cancel, handler: { action in
+            /* Do nothing. Just close. */
+        })
+        alert.addAction(cancel)
+        
+        return alert
+    }
+    
     class func localize(key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

@@ -11,3 +11,4 @@
 "tenantId" = "テナントID";
 "tenantName" = "テナント名";
 "logout" = "ログアウト";
+"msgSureToLogout" = "ログアウトしますか？";

@@ -11,3 +11,4 @@
 "tenantId" = "Tenant ID";
 "tenantName" = "Tenant Name";
 "logout" = "Logout";
+"msgSureToLogout" = "Are you sure to logout?";

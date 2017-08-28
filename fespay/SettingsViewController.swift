@@ -27,9 +27,13 @@ class SettingsViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
-        FirebaseClient.signOut(onSignOut: {
-            self.performSegue(withIdentifier: "unwindToLoginView", sender: self)
-        })
+        let actionSheet = i18n.actionSheet(titleKey: "", messageKey: "msgSureToLogout", action1Key: "logout") {
+            FirebaseClient.signOut(onSignOut: {
+                self.performSegue(withIdentifier: "unwindToLoginView", sender: self)
+            })
+        }
+        
+        present(actionSheet, animated: true)
     }
     
     override func viewDidLoad() {
