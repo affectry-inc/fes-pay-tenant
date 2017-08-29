@@ -280,7 +280,7 @@
                                             <outlet property="amountLabel" destination="6fa-2W-FL5" id="mRT-KG-3LY"/>
                                             <outlet property="paidAtLabel" destination="HZD-CG-rZM" id="yiR-X1-T0G"/>
                                             <outlet property="payerLabel" destination="KDg-Hu-mjx" id="xsC-PZ-BV9"/>
-                                            <segue destination="6HG-CZ-cqT" kind="show" id="LD1-YS-CsK"/>
+                                            <segue destination="6HG-CZ-cqT" kind="show" identifier="DetailsView" id="LD1-YS-CsK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

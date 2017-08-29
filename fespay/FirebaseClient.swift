@@ -150,6 +150,13 @@ class FirebaseClient: NSObject {
         })
     }
     
+    class func findCharge(key: String, onLoad: @escaping ([String: Any]) -> ()) {
+        let refCharges = Database.database().reference().child("charges/\(key)")
+        refCharges.observeSingleEvent(of: .value, with: { snapshot in
+            onLoad(snapshot.value as! [String: Any])
+        })
+    }
+    
     class func signInAsTenant(tenantId: String, password: String, onSignIn: @escaping () -> (), onError: @escaping () -> ()) {
         Auth.auth().signIn(withEmail: "\(tenantId)@tenant.fespay.io", password: password, completion: { user, error in
             if let error = error {

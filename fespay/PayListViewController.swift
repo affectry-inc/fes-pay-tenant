@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -147,6 +148,33 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         payInfos += [payInfo1, payInfo2, payInfo3]
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "DetailsView":
+            guard let detailsView = segue.destination as? PayDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedCell = sender as? PayInfoTableViewCell else {
+                fatalError("Unexpected sender: \(sender!)")
+            }
+            
+            guard let indexPath = historyTable.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedPayInfo = payInfos[indexPath.row]
+            
+            detailsView.chargeKey = selectedPayInfo.key
+            
+        default:
+            fatalError("Unexpected Segue Identifier: \(segue.identifier!)")
+        }
     }
 
 }

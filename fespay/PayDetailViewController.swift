@@ -12,6 +12,8 @@ class PayDetailViewController: UIViewController {
 
     let i18n = I18n(tableName: "PayDetailView")
     
+    var chargeKey: String?
+    
     // MARK: - Properties
     @IBOutlet weak var personImageLabel: UILabel!
     @IBOutlet weak var personImageView: UIImageView!
@@ -33,7 +35,24 @@ class PayDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     }
+        FirebaseClient.findCharge(key: chargeKey!, onLoad: { charge in
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            let paidAtDate = formatter.date(from: charge["paidAt"] as! String)
+            
+            let personImageData = try? Data(contentsOf: URL(string: charge["personPhotoUrl"] as! String)!, options: .mappedIfSafe)
+            let buyerImageData = try? Data(contentsOf: URL(string: charge["buyerPhotoUrl"] as! String)!, options: .mappedIfSafe)
+            
+            self.personImageView.image = UIImage(data: personImageData!)
+            self.buyerImageView.image = UIImage(data: buyerImageData!)
+            self.confidenceValueLabel.text = "\(String(format: "%.1f", charge["confidence"] as! CVarArg))%"
+            self.wristbandValueLabel.text = charge["bandId"] as? String
+            self.amountValueLabel.text = "¥" + String(format: "%.0f", charge["amount"] as! Double)
+            self.dateValueLabel.text = formatter.string(from: paidAtDate!)
+        })
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
