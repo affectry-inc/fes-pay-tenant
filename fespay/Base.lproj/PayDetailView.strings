@@ -13,3 +13,14 @@
 "wristbandId" = "Wristband ID";
 "amount" = "Amount";
 "date" = "Date";
+"refund"="Refund";
+"refunded"="Refunded";
+"caution"="Caution";
+"msgSureToRefund"="A refund can NOT be canceled. Are you sure to refund?";
+"execRefund"="Execute Refund";
+"titleRefundSuccess"="Refund successful";
+"msgRefundSuccess"="A refund is finished successfully.";
+"titleRefundIncomplete"="Refund incomplete";
+"msgRefundIncomplete"="A refund is NOT finished. Please contact the FesPay admin.";
+"titleRefundFailure"="Refund failed";
+"msgRefundFailure"="A refund operation failed. Please try again.";

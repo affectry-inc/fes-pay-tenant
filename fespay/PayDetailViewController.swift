@@ -13,6 +13,9 @@ class PayDetailViewController: UIViewController {
     let i18n = I18n(tableName: "PayDetailView")
     
     var chargeKey: String?
+    var chargeId: String?
+    var bandId: String?
+    var isRefunded: Bool?
     
     // MARK: - Properties
     @IBOutlet weak var personImageLabel: UILabel!
@@ -31,11 +34,35 @@ class PayDetailViewController: UIViewController {
     @IBOutlet weak var dateBorderLabel: UILabel!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
+    @IBOutlet weak var refundButton: UIButton!
+    
+    @IBAction func refundButtonTapped(_ sender: UIButton) {
+        let actionSheet = i18n.actionSheet(titleKey: "caution", messageKey: "msgSureToRefund", action1Key: "execRefund") {
+            StripeClient.refund(chargeId: self.chargeId!, onRefund: { refundedAt, refundId in
+                FirebaseClient.refundCharge(key: self.chargeKey!, bandId: self.bandId!, refundedAt: refundedAt, refundId: refundId, onRefund: {
+                    self.present(self.i18n.alert(titleKey: "titleRefundSuccess", messageKey: "msgRefundSuccess"), animated: true)
+                    
+                    self.refundButton.isEnabled = false
+                    self.refundButton.alpha = 0.2
+                }, onError: {
+                    self.present(self.i18n.alert(titleKey: "titleRefundIncomplete", messageKey: "msgRefundIncomplete"), animated: true)
+                })
+            }, onError: {
+                self.present(self.i18n.alert(titleKey: "titleRefundFailure", messageKey: "msgRefundFailure"), animated: true)
+            })
+        }
+        
+        present(actionSheet, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         FirebaseClient.findCharge(key: chargeKey!, onLoad: { charge in
+            
+            self.chargeId = charge["chargeId"] as? String
+            self.bandId = charge["bandId"] as? String
+            self.isRefunded = charge["isRefunded"] != nil && charge["isRefunded"] as! Bool
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
@@ -49,9 +76,13 @@ class PayDetailViewController: UIViewController {
             self.personImageView.image = UIImage(data: personImageData!)
             self.buyerImageView.image = UIImage(data: buyerImageData!)
             self.confidenceValueLabel.text = "\(String(format: "%.1f", charge["confidence"] as! Double))%"
-            self.wristbandValueLabel.text = charge["bandId"] as? String
+            self.wristbandValueLabel.text = self.bandId
             self.amountValueLabel.text = "¥" + String(format: "%.0f", charge["amount"] as! Double)
             self.dateValueLabel.text = formatter.string(from: paidAtDate!)
+            if self.isRefunded! {
+                self.refundButton.isEnabled = false
+                self.refundButton.alpha = 0.2
+            }
         })
     }
 
@@ -65,6 +96,8 @@ class PayDetailViewController: UIViewController {
         self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
         self.amountTitleLabel.text = i18n.localize(key: "amount")
         self.dateTitleLabel.text = i18n.localize(key: "date")
+        self.refundButton.setTitle(self.i18n.localize(key: "refund"), for: .normal)
+        self.refundButton.setTitle(self.i18n.localize(key: "refunded"), for: .disabled)
         
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

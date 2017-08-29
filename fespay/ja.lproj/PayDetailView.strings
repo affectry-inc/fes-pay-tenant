@@ -13,3 +13,14 @@
 "wristbandId" = "リストバンドID";
 "amount" = "金額";
 "date" = "購入日時";
+"refund"="返金";
+"refunded"="返金済み";
+"caution"="注意してください";
+"msgSureToRefund"="返金すると元には戻せません。返金しますか？";
+"execRefund"="返金実行";
+"titleRefundSuccess"="返金完了";
+"msgRefundSuccess"="返金処理が完了しました。";
+"titleRefundIncomplete"="返金未完了";
+"msgRefundIncomplete"="返金処理が未完了です。フェスペイ管理者に連絡してください。";
+"titleRefundFailure"="返金失敗";
+"msgRefundFailure"="返金処理に失敗しました。再度返金処理を実行してください。";

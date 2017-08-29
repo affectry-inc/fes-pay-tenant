@@ -134,6 +134,37 @@ class FirebaseClient: NSObject {
         })
     }
     
+    class func refundCharge(key: String, bandId: String, refundedAt: Date, refundId: String, onRefund: @escaping () -> (), onError: @escaping () -> ()) {
+        let tenantInfo = TenantInfo.sharedInstance
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        let fbRef = Database.database().reference()
+        let childUpdates: [String: Any] = [
+            "/charges/\(key)/isRefunded": true,
+            "/charges/\(key)/refundedAt": dateFormatter.string(from: refundedAt),
+            "/charges/\(key)/refundId": refundId,
+            "/pays/\(bandId)/charges/\(key)/isRefunded": true,
+            "/pays/\(bandId)/charges/\(key)/refundedAt": dateFormatter.string(from: refundedAt),
+            "/pays/\(bandId)/charges/\(key)/refundId": refundId,
+            "/receipts/\(tenantInfo.tenantId)/charges/\(key)/isRefunded": true,
+            "/receipts/\(tenantInfo.tenantId)/charges/\(key)/refundedAt": dateFormatter.string(from: refundedAt),
+            "/receipts/\(tenantInfo.tenantId)/charges/\(key)/refundId": refundId,
+        ]
+        
+        fbRef.updateChildValues(childUpdates, withCompletionBlock: { error, _ in
+            if error != nil {
+                os_log("refundCharge Error: %@", log: .default, type: .error, error! as CVarArg)
+                onError()
+                return
+            }
+            
+            onRefund()
+        })
+    }
+    
     class func loadReceiptSummaries(tenantId: String, onLoad: @escaping ([String: Double]) -> ()) {
         let refSum = Database.database().reference().child("receipts/\(tenantId)/summary")
         refSum.observeSingleEvent(of: .value, with: { snapshot in
