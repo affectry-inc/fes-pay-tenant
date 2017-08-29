@@ -63,7 +63,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
             }
             captureView.payInfo = PayInfo()
             captureView.payInfo?.amount = Double(amountTextField.text!)!
-            captureView.payInfo?.bandId = "a001"
+            captureView.payInfo?.bandId = "a002"
         }
         else if segue.identifier == "UnwindToPayList" {
             self.amountTextField.text = ""

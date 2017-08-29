@@ -22,6 +22,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var historyTable: UITableView!
     
     var payInfos = [PayInfo]()
+    var totalAmount = Double(0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         border.borderWidth = width
         historyTable.layer.addSublayer(border)
         
-        //loadSamplePayInfos()
         loadOrders()
     }
     
@@ -82,7 +82,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         
-        let refundedText = payInfo.isRefunded! ? ("  " + i18n.localize(key: "refunded")) : ""
+        let refundedText = payInfo.isRefunded ? ("  " + i18n.localize(key: "refunded")) : ""
         
         cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paidAt!)
         cell.payerLabel.text = "ID: " + payInfo.bandId!
@@ -101,6 +101,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             payInfos.append(payInfo)
             historyTable.insertRows(at: [newIndexPath], with: .automatic)
+            
+            self.totalAmount += payInfo.amount!
+            self.summaryTotalLabel.text = String(format: "%.0f", totalAmount)
         }
         
     }
@@ -109,7 +112,16 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func loadOrders() {
         FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
-            self.summaryTotalLabel.text = String(format: "%.0f", (summaries.first?.value)!)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+            let dateKey = dateFormatter.string(from: Date())
+            
+            if let summary = summaries?[dateKey] as? [String: Any] {
+                self.totalAmount = summary["totalAmount"] as! Double
+            }
+            
+            self.summaryTotalLabel.text = "¥ " + String(format: "%.0f", self.totalAmount)
         })
         
         FirebaseClient.loadOrders(tenantId: tenantInfo.tenantId, onLoad: { snapshots in
@@ -131,26 +143,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             self.historyTable.reloadData()
         })
-    }
-    
-    private func loadSamplePayInfos() {
-        let payInfo1 = PayInfo()
-        payInfo1.amount = 2700
-        payInfo1.bandId = "aa001"
-        payInfo1.paidAt = Date()
-        
-        let payInfo2 = PayInfo()
-        payInfo2.amount = 1500
-        payInfo2.bandId = "aa002"
-        payInfo2.paidAt = Date()
-        
-        let payInfo3 = PayInfo()
-        payInfo3.amount = 3400
-        payInfo3.bandId = "aa003"
-        payInfo3.paidAt = Date()
-        
-        payInfos += [payInfo1, payInfo2, payInfo3]
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

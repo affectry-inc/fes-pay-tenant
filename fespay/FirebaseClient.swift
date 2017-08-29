@@ -130,8 +130,54 @@ class FirebaseClient: NSObject {
                 return
             }
             
+            summarizePay(bandId: payInfo.bandId!, amount: payInfo.amount!)
+            summarizeReceipt(tenantId: tenantInfo.tenantId, date: payInfo.paidAt!, amount: payInfo.amount!)
+            
             onCreate()
         })
+    }
+    
+    class func summarizePay(bandId: String, amount: Double) {
+        let fbRef = Database.database().reference()
+        fbRef.child("pays/\(bandId)/summary").observeSingleEvent(of: .value, with: { (snapshot) in
+            let summary = snapshot.value as? [String: Any]
+            let oldTotalAmount = summary?["totalAmount"] != nil ? summary?["totalAmount"] as! Double : Double(0)
+            
+            fbRef.child("pays/\(bandId)/summary/totalAmount").setValue(oldTotalAmount + amount)
+        }) { (error) in
+            os_log("summaryPay error: %@", log: .default, type: .error, error.localizedDescription)
+        }
+    }
+    
+    class func summarizeReceipt(tenantId: String, date: Date, amount: Double) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        let dateKey = dateFormatter.string(from: date)
+        
+        let fbRef = Database.database().reference()
+        fbRef.child("receipts/\(tenantId)/summaries/\(dateKey)").observeSingleEvent(of: .value, with: { (snapshot) in
+            var oldTotalAmount = Double(0)
+            var oldTotalCount = Double(0)
+            
+            if let summary = snapshot.value as? [String: Any] {
+                oldTotalAmount = summary["totalAmount"] as! Double
+                oldTotalCount = summary["totalCount"] as! Double
+            }
+            
+            let updates = [
+                "totalAmount": oldTotalAmount + amount,
+                "totalCount": oldTotalCount + 1,
+            ]
+            
+            fbRef.child("receipts/\(tenantId)/summaries/\(dateKey)").updateChildValues(updates, withCompletionBlock: { error, _ in
+                if error != nil {
+                    os_log("summaryReceipt Error: %@", log: .default, type: .error, error! as CVarArg)
+                }
+            })
+        }) { (error) in
+            os_log("summaryReceipt error: %@", log: .default, type: .error, error.localizedDescription)
+        }
     }
     
     class func refundCharge(key: String, bandId: String, refundedAt: Date, refundId: String, onRefund: @escaping () -> (), onError: @escaping () -> ()) {
@@ -165,10 +211,10 @@ class FirebaseClient: NSObject {
         })
     }
     
-    class func loadReceiptSummaries(tenantId: String, onLoad: @escaping ([String: Double]) -> ()) {
-        let refSum = Database.database().reference().child("receipts/\(tenantId)/summary")
+    class func loadReceiptSummaries(tenantId: String, onLoad: @escaping ([String: Any]?) -> ()) {
+        let refSum = Database.database().reference().child("receipts/\(tenantId)/summaries")
         refSum.observeSingleEvent(of: .value, with: { snapshot in
-            let summaries = snapshot.value as! [String: Double]
+            let summaries = snapshot.value as? [String: Any]
             
             onLoad(summaries)
         })
