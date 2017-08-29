@@ -41,13 +41,14 @@ class PayDetailViewController: UIViewController {
             formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
             let paidAtDate = formatter.date(from: charge["paidAt"] as! String)
+            formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
             
             let personImageData = try? Data(contentsOf: URL(string: charge["personPhotoUrl"] as! String)!, options: .mappedIfSafe)
             let buyerImageData = try? Data(contentsOf: URL(string: charge["buyerPhotoUrl"] as! String)!, options: .mappedIfSafe)
             
             self.personImageView.image = UIImage(data: personImageData!)
             self.buyerImageView.image = UIImage(data: buyerImageData!)
-            self.confidenceValueLabel.text = "\(String(format: "%.1f", charge["confidence"] as! CVarArg))%"
+            self.confidenceValueLabel.text = "\(String(format: "%.1f", charge["confidence"] as! Double))%"
             self.wristbandValueLabel.text = charge["bandId"] as? String
             self.amountValueLabel.text = "¥" + String(format: "%.0f", charge["amount"] as! Double)
             self.dateValueLabel.text = formatter.string(from: paidAtDate!)
