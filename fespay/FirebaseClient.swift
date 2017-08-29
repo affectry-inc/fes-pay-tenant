@@ -134,6 +134,22 @@ class FirebaseClient: NSObject {
         })
     }
     
+    class func loadReceiptSummaries(tenantId: String, onLoad: @escaping ([String: Double]) -> ()) {
+        let refSum = Database.database().reference().child("receipts/\(tenantId)/summary")
+        refSum.observeSingleEvent(of: .value, with: { snapshot in
+            let summaries = snapshot.value as! [String: Double]
+            
+            onLoad(summaries)
+        })
+    }
+    
+    class func loadOrders(tenantId: String, onLoad: @escaping ([DataSnapshot]) -> ()) {
+        let refCharges = Database.database().reference().child("receipts/\(tenantId)/charges")
+        refCharges.queryOrdered(byChild: "paidAt").observeSingleEvent(of: .value, with: { snapshot in
+            onLoad(snapshot.children.allObjects as! [DataSnapshot])
+        })
+    }
+    
     class func signInAsTenant(tenantId: String, password: String, onSignIn: @escaping () -> (), onError: @escaping () -> ()) {
         Auth.auth().signIn(withEmail: "\(tenantId)@tenant.fespay.io", password: password, completion: { user, error in
             if let error = error {

@@ -11,6 +11,7 @@ import UIKit
 class PayListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let i18n = I18n(tableName: "PayListView")
+    let tenantInfo = TenantInfo.sharedInstance
     
     // MARK: - Properties
     
@@ -45,7 +46,8 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         border.borderWidth = width
         historyTable.layer.addSublayer(border)
         
-        loadSamplePayInfos()
+        //loadSamplePayInfos()
+        loadOrders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,31 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     // MARK: - Private Methods
+    
+    private func loadOrders() {
+        FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
+            self.summaryTotalLabel.text = String(format: "%.0f", (summaries.first?.value)!)
+        })
+        
+        FirebaseClient.loadOrders(tenantId: tenantInfo.tenantId, onLoad: { snapshots in
+            for childSnapshot in snapshots {
+                let charge = childSnapshot.value as! [String: Any]
+
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                formatter.timeZone = TimeZone(secondsFromGMT: 0)
+
+                let payInfo = PayInfo()
+                payInfo.key = childSnapshot.key
+                payInfo.amount = charge["amount"] as? Double
+                payInfo.bandId = charge["bandId"] as? String
+                payInfo.paidAt = formatter.date(from: charge["paidAt"] as! String)
+                
+                self.payInfos.insert(payInfo, at: 0)
+            }
+            self.historyTable.reloadData()
+        })
+    }
     
     private func loadSamplePayInfos() {
         let payInfo1 = PayInfo()
