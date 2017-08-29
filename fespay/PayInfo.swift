@@ -29,6 +29,8 @@ class PayInfo: NSObject {
     var paidAt: Date?
     var chargeId: String?
     var transactionId: String?
+    var isRefunded: Bool?
+    var refundedAt: Date?
     
     //MARK: Initialization
     

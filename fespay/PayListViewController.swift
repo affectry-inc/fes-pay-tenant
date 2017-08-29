@@ -82,9 +82,11 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         
+        let refundedText = payInfo.isRefunded! ? ("  " + i18n.localize(key: "refunded")) : ""
+        
         cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paidAt!)
         cell.payerLabel.text = "ID: " + payInfo.bandId!
-        cell.amountLabel.text = "¥" + String(format: "%.0f", payInfo.amount!)
+        cell.amountLabel.text = "¥" + String(format: "%.0f", payInfo.amount!) + refundedText
         
         return cell
     }
@@ -123,6 +125,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
                 payInfo.amount = charge["amount"] as? Double
                 payInfo.bandId = charge["bandId"] as? String
                 payInfo.paidAt = formatter.date(from: charge["paidAt"] as! String)
+                payInfo.isRefunded = charge["isRefunded"] != nil && charge["isRefunded"] as! Bool
                 
                 self.payInfos.insert(payInfo, at: 0)
             }
