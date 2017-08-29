@@ -167,7 +167,7 @@ class FirebaseClient: NSObject {
             
             let updates = [
                 "totalAmount": oldTotalAmount + amount,
-                "totalCount": oldTotalCount + 1,
+                "totalCount": amount < 0 ? oldTotalCount - 1 : oldTotalCount + 1,
             ]
             
             fbRef.child("receipts/\(tenantId)/summaries/\(dateKey)").updateChildValues(updates, withCompletionBlock: { error, _ in
@@ -180,8 +180,11 @@ class FirebaseClient: NSObject {
         }
     }
     
-    class func refundCharge(key: String, bandId: String, refundedAt: Date, refundId: String, onRefund: @escaping () -> (), onError: @escaping () -> ()) {
+    class func refundCharge(payInfo: PayInfo, refundedAt: Date, refundId: String, onRefund: @escaping () -> (), onError: @escaping () -> ()) {
         let tenantInfo = TenantInfo.sharedInstance
+        
+        let key = payInfo.key
+        let bandId = payInfo.bandId!
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
@@ -206,6 +209,9 @@ class FirebaseClient: NSObject {
                 onError()
                 return
             }
+            
+            summarizePay(bandId: payInfo.bandId!, amount: -1 * payInfo.amount!)
+            summarizeReceipt(tenantId: tenantInfo.tenantId, date: payInfo.paidAt!, amount: -1 * payInfo.amount!)
             
             onRefund()
         })

@@ -97,13 +97,18 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let sourceViewController = sender.source as? CompleteViewController, let payInfo = sourceViewController.payInfo {
             
             // Add a new payment
-            let newIndexPath = IndexPath(row: payInfos.count, section: 0)
+            let newIndexPath = IndexPath(row: 0, section: 0)
             
-            payInfos.append(payInfo)
+            payInfos.insert(payInfo, at: 0)
             historyTable.insertRows(at: [newIndexPath], with: .automatic)
             
             self.totalAmount += payInfo.amount!
             self.summaryTotalLabel.text = String(format: "%.0f", totalAmount)
+        } else if let sourceViewController = sender.source as? PayDetailViewController, let payInfo = sourceViewController.payInfo {
+            if let selectedIndexPath = historyTable.indexPathForSelectedRow {
+                payInfos[selectedIndexPath.row] = payInfo
+                historyTable.reloadRows(at: [selectedIndexPath], with: .none)
+            }
         }
         
     }
@@ -165,10 +170,11 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let selectedPayInfo = payInfos[indexPath.row]
             
-            detailsView.chargeKey = selectedPayInfo.key
+            detailsView.payInfo = selectedPayInfo
             
         default:
-            fatalError("Unexpected Segue Identifier: \(segue.identifier!)")
+            // fatalError("Unexpected Segue Identifier: \(segue.identifier!)")
+            break
         }
     }
 

@@ -12,12 +12,10 @@ class PayDetailViewController: UIViewController {
 
     let i18n = I18n(tableName: "PayDetailView")
     
-    var chargeKey: String?
-    var chargeId: String?
-    var bandId: String?
-    var isRefunded: Bool?
+    var payInfo: PayInfo?
     
     // MARK: - Properties
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var personImageLabel: UILabel!
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var buyerImageLabel: UILabel!
@@ -37,20 +35,29 @@ class PayDetailViewController: UIViewController {
     @IBOutlet weak var refundButton: UIButton!
     
     @IBAction func refundButtonTapped(_ sender: UIButton) {
-        let actionSheet = i18n.actionSheet(titleKey: "caution", messageKey: "msgSureToRefund", action1Key: "execRefund") {
-            StripeClient.refund(chargeId: self.chargeId!, onRefund: { refundedAt, refundId in
-                FirebaseClient.refundCharge(key: self.chargeKey!, bandId: self.bandId!, refundedAt: refundedAt, refundId: refundId, onRefund: {
+        let actionSheet = i18n.actionSheet(titleKey: "caution", messageKey: "msgSureToRefund", action1Key: "execRefund", handler1: {
+            LoadingProxy.on()
+            StripeClient.refund(chargeId: (self.payInfo?.chargeId)!, onRefund: { refundedAt, refundId in
+                FirebaseClient.refundCharge(payInfo: self.payInfo!, refundedAt: refundedAt, refundId: refundId, onRefund: {
+                    self.payInfo?.isRefunded = true
+                    self.payInfo?.refundedAt = refundedAt
+                    
+                    LoadingProxy.off()
+                    
                     self.present(self.i18n.alert(titleKey: "titleRefundSuccess", messageKey: "msgRefundSuccess"), animated: true)
                     
                     self.refundButton.isEnabled = false
                     self.refundButton.alpha = 0.2
                 }, onError: {
+                    LoadingProxy.off()
+                    
                     self.present(self.i18n.alert(titleKey: "titleRefundIncomplete", messageKey: "msgRefundIncomplete"), animated: true)
                 })
             }, onError: {
+                LoadingProxy.off()
                 self.present(self.i18n.alert(titleKey: "titleRefundFailure", messageKey: "msgRefundFailure"), animated: true)
             })
-        }
+        })
         
         present(actionSheet, animated: true)
     }
@@ -58,38 +65,39 @@ class PayDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        FirebaseClient.findCharge(key: chargeKey!, onLoad: { charge in
+        FirebaseClient.findCharge(key: payInfo!.key, onLoad: { charge in
             
-            self.chargeId = charge["chargeId"] as? String
-            self.bandId = charge["bandId"] as? String
-            self.isRefunded = charge["isRefunded"] != nil && charge["isRefunded"] as! Bool
+            self.payInfo?.chargeId = charge["chargeId"] as? String
+            self.payInfo?.personPhotoUrl = charge["personPhotoUrl"] as? String
+            self.payInfo?.buyerPhotoUrl = charge["buyerPhotoUrl"] as? String
+            self.payInfo?.personImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.personPhotoUrl)!)!, options: .mappedIfSafe))
+            self.payInfo?.buyerImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.buyerPhotoUrl)!)!, options: .mappedIfSafe))
+            self.payInfo?.confidence = charge["confidence"] as? Double
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            formatter.timeZone = TimeZone(secondsFromGMT: 0)
-            let paidAtDate = formatter.date(from: charge["paidAt"] as! String)
             formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
             
-            let personImageData = try? Data(contentsOf: URL(string: charge["personPhotoUrl"] as! String)!, options: .mappedIfSafe)
-            let buyerImageData = try? Data(contentsOf: URL(string: charge["buyerPhotoUrl"] as! String)!, options: .mappedIfSafe)
-            
-            self.personImageView.image = UIImage(data: personImageData!)
-            self.buyerImageView.image = UIImage(data: buyerImageData!)
-            self.confidenceValueLabel.text = "\(String(format: "%.1f", charge["confidence"] as! Double))%"
-            self.wristbandValueLabel.text = self.bandId
-            self.amountValueLabel.text = "¥" + String(format: "%.0f", charge["amount"] as! Double)
-            self.dateValueLabel.text = formatter.string(from: paidAtDate!)
-            if self.isRefunded! {
+            self.personImageView.image = self.payInfo?.personImage
+            self.buyerImageView.image = self.payInfo?.buyerImage
+            self.confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+            self.wristbandValueLabel.text = self.payInfo?.bandId
+            self.amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
+            self.dateValueLabel.text = formatter.string(from: (self.payInfo?.paidAt)!)
+            if (self.payInfo?.isRefunded)! {
                 self.refundButton.isEnabled = false
                 self.refundButton.alpha = 0.2
             }
         })
+        
+        LoadingProxy.set(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "details")
+        self.backButton.title = i18n.localize(key: "back")
         self.personImageLabel.text = i18n.localize(key: "personImage")
         self.buyerImageLabel.text = i18n.localize(key: "buyerImage")
         self.confidenceTitleLabel.text = i18n.localize(key: "confidence")

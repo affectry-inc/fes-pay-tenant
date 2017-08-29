@@ -195,11 +195,18 @@
                             <constraint firstItem="8fx-97-4T6" firstAttribute="top" secondItem="CZt-nd-5bu" secondAttribute="bottom" constant="110" id="zvb-qO-6ew"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="dj8-7g-rhb"/>
+                    <navigationItem key="navigationItem" title="Details" id="dj8-7g-rhb">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="8Pj-I4-WHH">
+                            <connections>
+                                <segue destination="tfH-sW-UbQ" kind="unwind" unwindAction="unwindToPayListWithSender:" id="66E-B3-z4l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountBorderLabel" destination="Eu6-mX-tlp" id="DqQ-Oa-hgb"/>
                         <outlet property="amountTitleLabel" destination="lNy-3a-Gwk" id="BzB-OL-CNe"/>
                         <outlet property="amountValueLabel" destination="Ql7-3f-mhR" id="9uc-fT-Bv7"/>
+                        <outlet property="backButton" destination="8Pj-I4-WHH" id="C18-Ve-q80"/>
                         <outlet property="buyerImageLabel" destination="wgf-Kz-wme" id="3dt-o7-L0F"/>
                         <outlet property="buyerImageView" destination="W4k-tQ-Zoa" id="XTT-jg-uFM"/>
                         <outlet property="confidenceTitleLabel" destination="CYu-oe-d62" id="d4R-ur-iXy"/>
@@ -217,6 +224,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ckd-hX-DzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tfH-sW-UbQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3831.1999999999998" y="-802.848575712144"/>
         </scene>
