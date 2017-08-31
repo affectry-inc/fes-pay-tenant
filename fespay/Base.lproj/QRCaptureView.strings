@@ -7,3 +7,7 @@
 */
 
 "qrCode" = "QR Code";
+"titleNotActive" = "Invalid QR Code";
+"msgNotActive" = "QR code is NOT ACTIVATED or is NOT LINKED with a valid credit card.";
+"titleCaptureError" = "Error";
+"msgCaptureError" = "A problem occurs. Please recapture again.";

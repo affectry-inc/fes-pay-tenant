@@ -12,6 +12,20 @@ import Firebase
 
 class FirebaseClient: NSObject {
     
+    class func isActiveBand(bandId: String, onActive: @escaping () -> (), onNotActive: @escaping () -> (), onError: @escaping () -> ()) {
+        let fbRef = Database.database().reference()
+        fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { snapshot in
+            if let band = snapshot.value as? [String: Any], let isActive = band["isActive"] as? Bool {
+                isActive && band["cardCustomerId"] != nil ? onActive() : onNotActive()
+            } else {
+                onNotActive()
+            }
+        }) { (error) in
+            os_log("isActiveBand error: %@", log: .default, type: .error, error.localizedDescription)
+            onError()
+        }
+    }
+    
     class func findPerson(bandId: String, onFind: @escaping (String, String, String, String?, String?) -> ()) {
         let fbRef = Database.database().reference()
         fbRef.child("bands").child(bandId).observeSingleEvent(of: .value, with: { (snapshot) in

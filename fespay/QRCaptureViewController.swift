@@ -81,6 +81,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
         catch {
             print(error)
         }
+        LoadingProxy.set(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,17 +102,44 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
             if metadata.type == AVMetadataObjectTypeQRCode {
                 // 検出位置を取得
                 let barCode = previewLayer?.transformedMetadataObject(for: metadata) as! AVMetadataMachineReadableCodeObject
+                let navHeight = self.navigationController?.navigationBar.bounds.height
                 qrView!.frame = barCode.bounds
-                if metadata.stringValue != nil {
-                    // 検出データを取得
-                    let str = metadata.stringValue!
-                    self.payInfo?.bandId = str.substring(from: str.index(str.endIndex, offsetBy: -5))
-                    
-                    performSegue(withIdentifier: "FaceCaptureView", sender: nil)
-                    
+                qrView!.frame.origin.y = qrView!.frame.origin.y + navHeight! + 20
+                
+                if let str = metadata.stringValue {
+                    LoadingProxy.on()
                     DispatchQueue.global(qos: .userInitiated).async {
                         self.captureSesssion.stopRunning()
                     }
+                    
+                    // 検出データを取得
+                    let yeahRange = str.range(of: "yeah")!
+                    let yeahIndex = str.index(after: yeahRange.upperBound)
+                    let bandId = str.substring(from: yeahIndex)
+                    
+                    FirebaseClient.isActiveBand(bandId: bandId, onActive: {
+                        self.payInfo?.bandId = bandId
+                        self.performSegue(withIdentifier: "FaceCaptureView", sender: nil)
+                        LoadingProxy.off()
+                    }, onNotActive: {
+                        let alert = self.i18n.alert(titleKey: "titleNotActive", messageKey: "msgNotActive", handler: {
+                            self.qrView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                            LoadingProxy.off()
+                            DispatchQueue.global(qos: .userInitiated).async {
+                                self.captureSesssion.startRunning()
+                            }
+                        })
+                        self.present(alert, animated: true)
+                    }, onError: {
+                        let alert = self.i18n.alert(titleKey: "titleCaptureError", messageKey: "msgCaptureError", handler: {
+                            self.qrView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                            LoadingProxy.off()
+                            DispatchQueue.global(qos: .userInitiated).async {
+                                self.captureSesssion.startRunning()
+                            }
+                        })
+                        self.present(alert, animated: true)
+                    })
                 }
             }
         }

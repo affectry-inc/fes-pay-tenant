@@ -23,12 +23,12 @@ class I18n: NSObject {
         return NSLocalizedString(key, tableName: self.tableName, comment: "")
     }
     
-    func alert(titleKey: String, titleVals: Array<Any>? = nil, messageKey: String, messageVals: Array<Any>? = nil) -> UIAlertController {
+    func alert(titleKey: String, titleVals: Array<Any>? = nil, messageKey: String, messageVals: Array<Any>? = nil, handler: @escaping () -> () = {}) -> UIAlertController {
         let title = (titleVals != nil) ? String(format: localize(key: titleKey), arguments: titleVals as! [CVarArg]) : localize(key: titleKey)
         let message = (messageVals != nil) ? String(format: localize(key: messageKey), arguments: messageVals as! [CVarArg]) : localize(key: messageKey)
         
         let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in handler() })
         alert.addAction(okAction)
         
         return alert

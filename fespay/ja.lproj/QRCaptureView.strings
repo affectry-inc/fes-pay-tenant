@@ -7,3 +7,7 @@
 */
 
 "qrCode" = "QRコード";
+"titleNotActive" = "無効なQRコード";
+"msgNotActive" = "QRコードが有効化されていない、もしくはクレジットカードの登録がされていません。";
+"titleCaptureError" = "エラー";
+"msgCaptureError" = "エラーが発生しました。QRコードを再スキャンしてください。";
