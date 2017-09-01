@@ -140,13 +140,10 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             
             self.payInfo?.confidence = (veriRes["confidence"] as! Double) * 100
             
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "FaceConfirmView") as! FaceConfirmViewController
-            
-            next.payInfo = self.payInfo
-            
             DispatchQueue.main.async {
-                self.navigationController?.pushViewController(next, animated: true)
+                self.performSegue(withIdentifier: "FaceConfirmView", sender: nil)
             }
+
             self.stopLoading()
         })
     }
@@ -217,11 +214,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         S3Client.uploadBuyerPhoto(eventId: self.tenantInfo.eventId, bandId: (self.payInfo?.bandId)!, image: (self.payInfo?.buyerImage)!, onUpload: self.onUpload)
     }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-    }
-    
     private func startLoading() {
         LoadingProxy.on()
         self.captureButton.isEnabled = false
@@ -232,6 +224,21 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         LoadingProxy.off()
         self.captureButton.isEnabled = true
         self.captureButton.alpha = 1
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "FaceConfirmView" {
+            guard let faceConfirmView = segue.destination as? FaceConfirmViewController else {
+                os_log("The destination is not a FaceConfirmView", log: OSLog.default, type: .debug)
+                return
+            }
+            faceConfirmView.payInfo  = self.payInfo
+        }
     }
 
 }

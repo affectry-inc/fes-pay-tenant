@@ -17,6 +17,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
     // MARK: - Properties
 
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var captureButton: UIButton!
     
     var payInfo: PayInfo?
     
@@ -57,6 +58,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                 if (captureSesssion.canAddOutput(stillImageOutput)) {
                     
                     captureSesssion.addOutput(stillImageOutput)
+                    captureSesssion.startRunning()
                     // QRコードを検出した際のデリゲート設定
                     stillImageOutput?.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                     // QRコードの認識を設定
@@ -66,15 +68,11 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                     previewLayer = AVCaptureVideoPreviewLayer(session: captureSesssion)
                     previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                     
-                    cameraView.layer.addSublayer(previewLayer!)
-                    
                     // ビューのサイズの調整
                     previewLayer?.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
                     previewLayer?.bounds = cameraView.frame
                     
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        self.captureSesssion.startRunning()
-                    }
+                    cameraView.layer.addSublayer(previewLayer!)
                 }
             }
         }
@@ -88,6 +86,21 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
         super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "qrCode")
+        self.captureButton.isHidden = TARGET_OS_SIMULATOR != 1
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        captureSesssion.stopRunning()
+        
+        for output in captureSesssion.outputs {
+            captureSesssion.removeOutput(output as? AVCaptureOutput)
+        }
+        
+        for input in captureSesssion.inputs {
+            captureSesssion.removeInput(input as? AVCaptureInput)
+        }
+        
+        captureSesssion = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,9 +121,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                 
                 if let str = metadata.stringValue {
                     LoadingProxy.on()
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        self.captureSesssion.stopRunning()
-                    }
+                    captureSesssion.stopRunning()
                     
                     // 検出データを取得
                     let yeahRange = str.range(of: "yeah")!
@@ -125,18 +136,14 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
                         let alert = self.i18n.alert(titleKey: "titleNotActive", messageKey: "msgNotActive", handler: {
                             self.qrView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                             LoadingProxy.off()
-                            DispatchQueue.global(qos: .userInitiated).async {
-                                self.captureSesssion.startRunning()
-                            }
+                            self.captureSesssion.startRunning()
                         })
                         self.present(alert, animated: true)
                     }, onError: {
                         let alert = self.i18n.alert(titleKey: "titleCaptureError", messageKey: "msgCaptureError", handler: {
                             self.qrView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                             LoadingProxy.off()
-                            DispatchQueue.global(qos: .userInitiated).async {
-                                self.captureSesssion.startRunning()
-                            }
+                            self.captureSesssion.startRunning()
                         })
                         self.present(alert, animated: true)
                     })
