@@ -109,8 +109,9 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         
         // 撮影
         if (captureSesssion.isRunning) {
-            LoadingProxy.on()
             stillImageOutput?.capturePhoto(with: settingsForMonitoring, delegate: self)
+            
+            startLoading()
         } else {
             //  エミュレータの場合
             self.payInfo?.buyerImage = UIImage(named: "katosan")
@@ -146,7 +147,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(next, animated: true)
             }
-            LoadingProxy.off()
+            self.stopLoading()
         })
     }
     
@@ -193,24 +194,18 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 self.payInfo?.buyerPhotoUrl = buyerPhotoUrl
             })
         } else if faces.count == 0 {
-            LoadingProxy.off()
-            let msgNoFaceDetected = i18n.localize(key: "noFaceDetected")
-            let msgReCapture = i18n.localize(key: "reCapture")
-
-            let alert: UIAlertController = UIAlertController(title: msgNoFaceDetected, message: msgReCapture, preferredStyle: .alert)
-            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
+            present(i18n.alert(titleKey: "noFaceDetected", messageKey: "reCapture"), animated: true, completion: {
+                self.stopLoading()
+                
+                self.captureSesssion.startRunning()
+            })
         } else {
             // TODO: 顔選択からのfaceId投げにしたい
-            LoadingProxy.off()
-            let msgMultipleFacesDetected = i18n.localize(key: "multipleFacesDetected")
-            let msgSelectBuyer = i18n.localize(key: "reCapture")
-            
-            let alert: UIAlertController = UIAlertController(title: msgMultipleFacesDetected, message: msgSelectBuyer, preferredStyle: .alert)
-            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: { action -> Void in /* Do nothing */})
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: { self.captureSesssion.startRunning() })
+            present(i18n.alert(titleKey: "multipleFacesDetected", messageKey: "reCapture"), animated: true, completion: {
+                self.stopLoading()
+                
+                self.captureSesssion.startRunning()
+            })
         }
     }
     
@@ -225,6 +220,18 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+    }
+    
+    private func startLoading() {
+        LoadingProxy.on()
+        self.captureButton.isEnabled = false
+        self.captureButton.alpha = 0.8
+    }
+    
+    private func stopLoading() {
+        LoadingProxy.off()
+        self.captureButton.isEnabled = true
+        self.captureButton.alpha = 1
     }
 
 }
