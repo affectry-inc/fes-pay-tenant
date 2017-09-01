@@ -14,7 +14,7 @@ class S3Client: NSObject {
     
     class func uploadBuyerPhoto(eventId: String, bandId: String, image: UIImage, onUpload: @escaping (String) -> ()) {
         let fmt = DateFormatter()
-        fmt.dateFormat = "yyyyMMddHHmmss"
+        fmt.dateFormat = "yyyyMMddHHmmssSSS"
         let ts = fmt.string(from: Date())
         let fileName = "\(ts)_\(bandId).JPG"
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("fespay").appendingPathExtension(fileName)

@@ -152,7 +152,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     func onDetect(photoUrl: String, faces: [[String: Any]]) {
         if faces.count == 1 {
-            // 正常処理
+            // 顔検出
             let faceId = faces[0]["faceId"] as! String
             FirebaseClient.findPerson(bandId: (self.payInfo?.bandId)!, onFind: { personId, personPhotoUrl, uid, cardCustomerId, cardLastDigits in
                 
@@ -166,6 +166,31 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 self.payInfo?.cardLastDigits = cardLastDigits
                 
                 self.verify(faceId: faceId, personId: personId)
+            })
+            
+            // トリム
+            let faceRectangle = faces[0]["faceRectangle"] as! [String: Int]
+            
+            let w: Int = faceRectangle["width"]!
+            let h: Int = faceRectangle["height"]!
+            let l: Int = faceRectangle["left"]!
+            let t: Int = faceRectangle["top"]!
+            let nw = w * 2
+            let nh = nw * 150 / 130
+            let nl = l - (nw - w) / 2
+            let nt = t - (nh - h) / 2
+            
+            let rect = CGRect.init(x: nl, y: nt, width: nw, height: nh)
+            let orgImage = self.payInfo?.buyerImage
+            
+            UIGraphicsBeginImageContextWithOptions(rect.size, false, (orgImage?.scale)!)
+            orgImage?.draw(at: CGPoint(x: -rect.origin.x, y: -rect.origin.y))
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            S3Client.uploadBuyerPhoto(eventId: self.tenantInfo.eventId, bandId: (self.payInfo?.bandId)!, image: image!, onUpload: { buyerPhotoUrl in
+                self.payInfo?.buyerImage = image
+                self.payInfo?.buyerPhotoUrl = buyerPhotoUrl
             })
         } else if faces.count == 0 {
             LoadingProxy.off()
@@ -190,7 +215,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     }
     
     func onUpload(buyerPhotoUrl: String) {
-        self.payInfo?.buyerPhotoUrl = buyerPhotoUrl
         AzureClient.detectFace(photoUrl: buyerPhotoUrl, onDetect: self.onDetect)
     }
     
