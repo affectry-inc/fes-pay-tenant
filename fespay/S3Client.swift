@@ -12,6 +12,9 @@ import AWSS3
 
 class S3Client: NSObject {
     
+    private static let S3_END_POINT = env["S3_END_POINT"]!
+    private static let S3_BUCKET_NAME = env["S3_BUCKET_NAME"]!
+    
     class func uploadBuyerPhoto(eventId: String, bandId: String, image: UIImage, onUpload: @escaping (String) -> ()) {
         let fmt = DateFormatter()
         fmt.dateFormat = "yyyyMMddHHmmssSSS"
@@ -27,7 +30,7 @@ class S3Client: NSObject {
         }
         
         let uploadRequest = AWSS3TransferManagerUploadRequest()
-        uploadRequest?.bucket = "fespay-dev"
+        uploadRequest?.bucket = S3_BUCKET_NAME
         uploadRequest?.key = "buyer_photos/\(eventId)/\(fileName)"
         uploadRequest?.body = fileURL
         uploadRequest?.acl = .publicRead
@@ -40,7 +43,7 @@ class S3Client: NSObject {
                 return nil
             }
             
-            let buyerPhotoUrl = "https://s3-ap-northeast-1.amazonaws.com/fespay-dev/buyer_photos/\(eventId)/\(fileName)"
+            let buyerPhotoUrl = "\(S3_END_POINT)/\(S3_BUCKET_NAME)/buyer_photos/\(eventId)/\(fileName)"
             os_log("photoUrl: %@", log: .default, type: .debug, buyerPhotoUrl)
             
             onUpload(buyerPhotoUrl)

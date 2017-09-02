@@ -9,9 +9,11 @@
 import UIKit
 import AWSCognito
 import Firebase
+import os.log
 
 let primary1Color = UIColor(red: 146.0/255.0, green: 208.0/255.0, blue: 80.0/255.0, alpha:1)
 let title1Color = UIColor(red: 255.0/255.0, green: 225.0/255.0, blue: 255.0/255.0, alpha:1)
+let env = ProcessInfo.processInfo.environment
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,15 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Init AWS
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.APNortheast1,
-                                                                identityPoolId:"ap-northeast-1:b2b5e5a9-6f1d-4317-9891-e55bd751a1cb")
+        let identityPoolId = env["IDENTITY_POOL_ID"]!
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: identityPoolId)
         
         let configuration = AWSServiceConfiguration(region:.APNortheast1, credentialsProvider:credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 
         // Init Firebase
-        FirebaseApp.configure()
+        let plistPath = Bundle.main.path(forResource: env["FIREBASE_PLIST_NAME"]!, ofType: "plist")
+        guard let fileopts = FirebaseOptions.init(contentsOfFile: plistPath!) else {
+            os_log("Couldn't load Firebase config file", log: OSLog.default, type: .debug)
+            return false
+        }
+        FirebaseApp.configure(options: fileopts)
         
         // Design navigation bar
         let attributes: [String: AnyObject] = [

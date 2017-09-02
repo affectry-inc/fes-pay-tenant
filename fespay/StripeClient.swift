@@ -11,7 +11,7 @@ import os.log
 
 class StripeClient: NSObject {
     
-    private static let SKEY = "sk_test_Zoc9xK3qjCA16VP0lOWIeAJH"
+    private static let SKEY = env["STRIPE_SKEY"]!
     
     class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         

@@ -11,7 +11,8 @@ import os.log
 
 class OmiseClient: NSObject {
     
-    private static let SKEY = "skey_test_58mj60m58h9ik5gc021"
+    private static let SKEY = env["OMISE_SKEY"]!
+    private static let VERSION = env["OMISE_VERSION"]!
     
     class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         
@@ -28,7 +29,7 @@ class OmiseClient: NSObject {
         request.addValue("Basic \(encodedKey)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("2015-11-17", forHTTPHeaderField: "Omise-Version")
+        request.addValue(VERSION, forHTTPHeaderField: "Omise-Version")
         request.httpBody = "{\"amount\":\"\(Int(amount))\",\"currency\":\"jpy\",\"customer\":\"\(customerId)\",\"description\":\"\(tenantInfo.tenantId)\"}".data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){ data, response, error in

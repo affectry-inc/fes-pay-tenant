@@ -36,6 +36,7 @@
 		458861EB1EAB240700FF88C6 /* fespayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458861EA1EAB240700FF88C6 /* fespayUITests.swift */; };
 		45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */; };
 		79101F631F54234500F14C99 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79101F621F54234500F14C99 /* LoadingProxy.swift */; };
+		79101F671F5A5F7700F14C99 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */; };
 		7976D3701F205AF80002B877 /* OmiseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976D36F1F205AF80002B877 /* OmiseClient.swift */; };
 		79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B8FE2C1EF8208000E6122B /* Localizable.strings */; };
 		79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A501EF92D03002572D7 /* PayListView.strings */; };
@@ -107,6 +108,7 @@
 		577101B95512F18AAEBF6E13 /* Pods_fespayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fespayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		79101F621F54234500F14C99 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
+		79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		7976D36F1F205AF80002B877 /* OmiseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OmiseClient.swift; sourceTree = "<group>"; };
 		79B8FE2B1EF8208000E6122B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79B8FE2D1EF8209D00E6122B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
 				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
+				79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */,
 				458861D61EAB240600FF88C6 /* Info.plist */,
 				79B8FE2C1EF8208000E6122B /* Localizable.strings */,
 				79D27DA81EF82F8F007B13B9 /* LoginView.strings */,
@@ -406,6 +409,7 @@
 				79C10A781EF93DAA002572D7 /* FaceConfirmView.strings in Resources */,
 				458861D01EAB240600FF88C6 /* Main.storyboard in Resources */,
 				79C10A7E1EF93F69002572D7 /* CompleteView.strings in Resources */,
+				79101F671F5A5F7700F14C99 /* GoogleService-Info-Release.plist in Resources */,
 				79C10A6C1EF93B09002572D7 /* QRCaptureView.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
