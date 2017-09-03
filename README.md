@@ -3,6 +3,8 @@
 Icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
 # Environment Variables
+Add env-Release.plist file to the root folder of the target.
+
 ## AWS
 IDENTITY_POOL_ID  
 S3_END_POINT  

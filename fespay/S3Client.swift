@@ -12,8 +12,8 @@ import AWSS3
 
 class S3Client: NSObject {
     
-    private static let S3_END_POINT = env["S3_END_POINT"]!
-    private static let S3_BUCKET_NAME = env["S3_BUCKET_NAME"]!
+    private static let S3_END_POINT = env["S3_END_POINT"] as! String
+    private static let S3_BUCKET_NAME = env["S3_BUCKET_NAME"] as! String
     
     class func uploadBuyerPhoto(eventId: String, bandId: String, image: UIImage, onUpload: @escaping (String) -> ()) {
         let fmt = DateFormatter()

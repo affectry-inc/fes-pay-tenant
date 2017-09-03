@@ -37,6 +37,8 @@
 		45D4D24A3D70C8FF03F359B7 /* Pods_fespayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCA1D3D59CFA05623DA0AD6 /* Pods_fespayTests.framework */; };
 		79101F631F54234500F14C99 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79101F621F54234500F14C99 /* LoadingProxy.swift */; };
 		79101F671F5A5F7700F14C99 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */; };
+		79101F691F5C459E00F14C99 /* env.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79101F681F5C459E00F14C99 /* env.plist */; };
+		79101F6B1F5C460D00F14C99 /* env-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79101F6A1F5C460D00F14C99 /* env-Release.plist */; };
 		7976D3701F205AF80002B877 /* OmiseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976D36F1F205AF80002B877 /* OmiseClient.swift */; };
 		79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79B8FE2C1EF8208000E6122B /* Localizable.strings */; };
 		79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A501EF92D03002572D7 /* PayListView.strings */; };
@@ -109,6 +111,8 @@
 		6F6ABFCAB042029622833323 /* Pods-fespayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		79101F621F54234500F14C99 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
 		79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
+		79101F681F5C459E00F14C99 /* env.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = env.plist; sourceTree = "<group>"; };
+		79101F6A1F5C460D00F14C99 /* env-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "env-Release.plist"; sourceTree = "<group>"; };
 		7976D36F1F205AF80002B877 /* OmiseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OmiseClient.swift; sourceTree = "<group>"; };
 		79B8FE2B1EF8208000E6122B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79B8FE2D1EF8209D00E6122B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
+				79101F681F5C459E00F14C99 /* env.plist */,
+				79101F6A1F5C460D00F14C99 /* env-Release.plist */,
 				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
 				79101F661F5A5F7700F14C99 /* GoogleService-Info-Release.plist */,
 				458861D61EAB240600FF88C6 /* Info.plist */,
@@ -399,11 +405,13 @@
 				79C10A541EF92F21002572D7 /* AnalyticsView.strings in Resources */,
 				79B8FE2A1EF8208000E6122B /* Localizable.strings in Resources */,
 				79C10A5A1EF93115002572D7 /* PayDetailView.strings in Resources */,
+				79101F6B1F5C460D00F14C99 /* env-Release.plist in Resources */,
 				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
 				456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
 				79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */,
 				79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */,
 				79C10A601EF9331B002572D7 /* NewPayInfoView.strings in Resources */,
+				79101F691F5C459E00F14C99 /* env.plist in Resources */,
 				79C10A661EF93644002572D7 /* SettingsView.strings in Resources */,
 				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
 				79C10A781EF93DAA002572D7 /* FaceConfirmView.strings in Resources */,
@@ -779,6 +787,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENV_FILE_NAME = env;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -830,6 +839,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENV_FILE_NAME = "env-Release";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

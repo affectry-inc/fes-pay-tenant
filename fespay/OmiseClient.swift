@@ -11,8 +11,8 @@ import os.log
 
 class OmiseClient: NSObject {
     
-    private static let SKEY = env["OMISE_SKEY"]!
-    private static let VERSION = env["OMISE_VERSION"]!
+    private static let SKEY = env["OMISE_SKEY"] as! String
+    private static let VERSION = env["OMISE_VERSION"] as! String
     
     class func charge(customerId: String, amount: Double, onCharge: @escaping (Date, String, String) -> (), onError: @escaping () -> ()) {
         

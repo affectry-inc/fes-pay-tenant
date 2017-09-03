@@ -11,8 +11,8 @@ import os.log
 
 class AzureClient: NSObject {
     
-    private static let END_POINT = env["AZURE_END_POINT"]!
-    private static let SUBSCRIPTION_KEY = env["AZURE_SUBSCRIPTION_KEY"]!
+    private static let END_POINT = env["AZURE_END_POINT"] as! String
+    private static let SUBSCRIPTION_KEY = env["AZURE_SUBSCRIPTION_KEY"] as! String
     
     class func detectFace(photoUrl: String, onDetect: @escaping (String, [[String:Any]]) -> ()) {
         var request = URLRequest(url: URL(string: END_POINT + "/detect")!)

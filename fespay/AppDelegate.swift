@@ -13,7 +13,12 @@ import os.log
 
 let primary1Color = UIColor(red: 146.0/255.0, green: 208.0/255.0, blue: 80.0/255.0, alpha:1)
 let title1Color = UIColor(red: 255.0/255.0, green: 225.0/255.0, blue: 255.0/255.0, alpha:1)
-let env = ProcessInfo.processInfo.environment
+
+let infoDict = Bundle.main.infoDictionary! as Dictionary
+let envFileName = infoDict["EnvFileName"] as! String
+let envFilePath = Bundle.main.path(forResource: envFileName, ofType: "plist")
+let env = NSDictionary(contentsOfFile: envFilePath!) as! [String: Any]
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Init AWS
-        let identityPoolId = env["IDENTITY_POOL_ID"]!
+        let identityPoolId = env["IDENTITY_POOL_ID"] as! String
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: identityPoolId)
         
         let configuration = AWSServiceConfiguration(region:.APNortheast1, credentialsProvider:credentialsProvider)
@@ -31,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 
         // Init Firebase
-        let plistPath = Bundle.main.path(forResource: env["FIREBASE_PLIST_NAME"]!, ofType: "plist")
+        let plistPath = Bundle.main.path(forResource: env["FIREBASE_PLIST_NAME"] as? String, ofType: "plist")
         guard let fileopts = FirebaseOptions.init(contentsOfFile: plistPath!) else {
             os_log("Couldn't load Firebase config file", log: OSLog.default, type: .debug)
             return false
