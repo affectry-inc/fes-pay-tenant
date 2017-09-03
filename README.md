@@ -4,20 +4,20 @@ Icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](www.flati
 
 # Environment Variables
 ## AWS
-IDENTITY_POOL_ID
-S3_END_POINT
+IDENTITY_POOL_ID  
+S3_END_POINT  
 S3_BUCKET_NAME
 
 ## Firebase
 FIREBASE_PLIST_NAME
 
 ## Azure
-AZURE_END_POINT
+AZURE_END_POINT  
 AZURE_SUBSCRIPTION_KEY
 
 ## Stripe
 STRIPE_SKEY
 
 ## Omise
-OMISE_SKEY
+OMISE_SKEY  
 OMISE_VERSION
