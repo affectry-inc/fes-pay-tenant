@@ -16,3 +16,7 @@
 "notexecutable" = "人物が一致しません";
 "cardNotRegistered"="クレジットカードが登録されていません";
 "informRegisterCard"="クレジットカード未登録ではフェスペイを利用できない旨を購入者に伝えてください。";
+"titleSaveFailure"="保存エラー";
+"msgSaveFailure"="決済処理は完了しましたが、データベースへの保存に失敗しました。フェスペイ管理者に連絡してください。";
+"titleChargeFailure"="決済失敗";
+"msgChargeFailure"="決済処理に失敗しました。再度返金処理を実行してください。";

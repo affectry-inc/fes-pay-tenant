@@ -16,3 +16,7 @@
 "notexecutable" = "Not executable";
 "cardNotRegistered"="Card not registered";
 "informRegisterCard"="Please inform the customer to register a card to FesPay before use.";
+"titleSaveFailure"="Save failed";
+"msgSaveFailure"="A charge is completed but save failed. Please contact the FesPay admin.";
+"titleChargeFailure"="Charge failed";
+"msgChargeFailure"="A charge operation failed. Please try again.";
