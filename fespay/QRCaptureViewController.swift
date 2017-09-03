@@ -17,6 +17,7 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
     // MARK: - Properties
 
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var captureLabel: UILabel!
     @IBOutlet weak var captureButton: UIButton!
     
     var payInfo: PayInfo?
@@ -86,7 +87,11 @@ class QRCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate, 
         super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "qrCode")
+        self.captureLabel.text = i18n.localize(key: "msgCaptureQR")
         self.captureButton.isHidden = TARGET_OS_SIMULATOR != 1
+        
+        self.captureLabel.layer.borderColor = UIColor.red.cgColor
+        self.captureLabel.layer.borderWidth = 3
     }
     
     override func viewDidDisappear(_ animated: Bool) {

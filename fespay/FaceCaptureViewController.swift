@@ -20,6 +20,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     let tenantInfo = TenantInfo.sharedInstance
     
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var captureLabel: UILabel!
     @IBOutlet weak var captureButton: UIButton!
     
     var captureSesssion: AVCaptureSession!
@@ -76,7 +77,11 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "captureFace")
+        self.captureLabel.text = i18n.localize(key: "msgCaptureFace")
         self.captureButton.setTitle(i18n.localize(key: "capture"), for: .normal)
+        
+        self.captureLabel.layer.borderColor = UIColor.red.cgColor
+        self.captureLabel.layer.borderWidth = 3
     }
     
     override func viewDidDisappear(_ animated: Bool) {

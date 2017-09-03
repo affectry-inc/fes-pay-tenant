@@ -7,6 +7,7 @@
 */
 
 "captureFace" = "Capture Face";
+"msgCaptureFace" = "No Sunglasses, No Hut, No Mask.";
 "capture" = "Capture";
 "noFaceDetected" = "No face detected";
 "multipleFacesDetected" = "Multiple faces detected";

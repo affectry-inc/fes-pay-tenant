@@ -572,15 +572,27 @@
                                     <segue destination="5HI-mF-aEa" kind="show" identifier="FaceCaptureView" id="2fp-8u-aiy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture the QR code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPO-u0-twL">
+                                <rect key="frame" x="26" y="488" width="323" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="cnN-1J-HE5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="W15-fY-bhS" secondAttribute="bottom" id="2W0-Z0-wMr"/>
+                            <constraint firstItem="XA7-eY-dyl" firstAttribute="top" secondItem="zPO-u0-twL" secondAttribute="bottom" constant="5" id="Eqq-LE-AHT"/>
                             <constraint firstItem="W15-fY-bhS" firstAttribute="top" secondItem="VQy-NF-6SV" secondAttribute="bottom" id="Kcx-Cq-NH3"/>
                             <constraint firstItem="W15-fY-bhS" firstAttribute="leading" secondItem="TfZ-Ln-ecn" secondAttribute="leading" id="SXh-uq-2op"/>
                             <constraint firstItem="Zfq-NT-emN" firstAttribute="top" secondItem="XA7-eY-dyl" secondAttribute="bottom" constant="50" id="Uak-7e-7tS"/>
+                            <constraint firstItem="zPO-u0-twL" firstAttribute="leading" secondItem="TfZ-Ln-ecn" secondAttribute="leadingMargin" constant="10" id="VUH-Rd-f67"/>
                             <constraint firstItem="XA7-eY-dyl" firstAttribute="centerX" secondItem="TfZ-Ln-ecn" secondAttribute="centerX" id="WyZ-hR-0P4"/>
                             <constraint firstAttribute="trailing" secondItem="W15-fY-bhS" secondAttribute="trailing" id="XdL-Tr-bBF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zPO-u0-twL" secondAttribute="trailing" constant="10" id="l7i-fk-gvc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="QR Code" id="Ky4-dN-u29">
@@ -593,6 +605,7 @@
                     <connections>
                         <outlet property="cameraView" destination="W15-fY-bhS" id="v6O-Ez-88G"/>
                         <outlet property="captureButton" destination="XA7-eY-dyl" id="XOr-8k-zp0"/>
+                        <outlet property="captureLabel" destination="zPO-u0-twL" id="CIA-kA-kEE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5g-Vm-fwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -630,14 +643,26 @@
                                     <action selector="captureButtonTapped:" destination="5HI-mF-aEa" eventType="touchUpInside" id="tck-od-73F"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Sunglasses, No Hut, No Mask" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xc-FD-Fxl">
+                                <rect key="frame" x="26" y="383" width="323" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="fiO-gG-CjY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AXK-3x-30v" firstAttribute="top" secondItem="d9a-1m-Xqb" secondAttribute="bottom" constant="80" id="4We-RM-cgW"/>
+                            <constraint firstItem="d9a-1m-Xqb" firstAttribute="top" secondItem="4xc-FD-Fxl" secondAttribute="bottom" constant="15" id="CJk-Xc-6HW"/>
                             <constraint firstItem="h3Q-3B-ZP4" firstAttribute="leading" secondItem="SSY-48-vMR" secondAttribute="leading" id="Dgr-we-vCy"/>
+                            <constraint firstItem="4xc-FD-Fxl" firstAttribute="leading" secondItem="SSY-48-vMR" secondAttribute="leadingMargin" constant="10" id="EtI-1L-bML"/>
                             <constraint firstItem="d9a-1m-Xqb" firstAttribute="centerX" secondItem="SSY-48-vMR" secondAttribute="centerX" id="FhV-Gw-m6U"/>
                             <constraint firstAttribute="bottom" secondItem="h3Q-3B-ZP4" secondAttribute="bottom" id="YCq-g4-NDy"/>
                             <constraint firstAttribute="trailing" secondItem="h3Q-3B-ZP4" secondAttribute="trailing" id="btZ-Zk-5h4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4xc-FD-Fxl" secondAttribute="trailing" constant="10" id="nUv-lg-7dR"/>
                             <constraint firstItem="h3Q-3B-ZP4" firstAttribute="top" secondItem="9VY-gm-NcA" secondAttribute="bottom" id="vA8-oe-JlJ"/>
                         </constraints>
                     </view>
@@ -651,6 +676,7 @@
                     <connections>
                         <outlet property="cameraView" destination="h3Q-3B-ZP4" id="VIi-fq-zcr"/>
                         <outlet property="captureButton" destination="d9a-1m-Xqb" id="MmY-Du-U8r"/>
+                        <outlet property="captureLabel" destination="4xc-FD-Fxl" id="iOH-EZ-jZK"/>
                         <segue destination="OIC-vT-xqL" kind="show" identifier="FaceConfirmView" id="Zq3-RK-TON"/>
                     </connections>
                 </viewController>
