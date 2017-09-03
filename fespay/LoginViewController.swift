@@ -89,6 +89,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.addBorderBottom(height: 1.0, color: UIColor.white)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let user = FirebaseClient.findCurrentUser()
+        
+        if user != nil && TenantInfo.sharedInstance.restore() {
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            
+            self.present(next, animated: true, completion: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
