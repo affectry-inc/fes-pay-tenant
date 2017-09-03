@@ -42,6 +42,17 @@ class FaceConfirmViewController: UIViewController {
         confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
         wristbandValueLabel.text = self.payInfo?.bandId
         amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
+        
+        if (self.payInfo?.verified())! {
+            confidenceTitleLabel.textColor = .blue
+            confidenceValueLabel.textColor = .blue
+            execPayButton.isEnabled = true
+        } else {
+            confidenceTitleLabel.textColor = .red
+            confidenceValueLabel.textColor = .red
+            execPayButton.isEnabled = false
+            execPayButton.backgroundColor = .lightGray
+        }
 
         LoadingProxy.set(self)
     }
@@ -56,6 +67,7 @@ class FaceConfirmViewController: UIViewController {
         self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
         self.amountTitleLabel.text = i18n.localize(key: "amount")
         self.execPayButton.setTitle(i18n.localize(key: "execute"), for: .normal)
+        self.execPayButton.setTitle(i18n.localize(key: "notexecutable"), for: .disabled)
         
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

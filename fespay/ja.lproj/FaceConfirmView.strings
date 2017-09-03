@@ -13,5 +13,6 @@
 "wristbandId" = "リストバンドID";
 "amount" = "金額";
 "execute" = "決済実行";
+"notexecutable" = "人物が一致しません";
 "cardNotRegistered"="クレジットカードが登録されていません";
 "informRegisterCard"="クレジットカード未登録ではフェスペイを利用できない旨を購入者に伝えてください。";

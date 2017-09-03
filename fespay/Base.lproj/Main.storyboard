@@ -727,11 +727,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-97-zuF">
-                                <rect key="frame" x="122" y="478" width="130" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-97-zuF">
+                                <rect key="frame" x="37" y="478" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.57254901960000004" green="0.81568627449999997" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="BQi-Pc-fgK"/>
+                                    <constraint firstAttribute="width" constant="300" id="BQi-Pc-fgK"/>
                                     <constraint firstAttribute="height" constant="60" id="uNh-Ta-Oon"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>

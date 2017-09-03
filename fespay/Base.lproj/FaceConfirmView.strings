@@ -13,5 +13,6 @@
 "wristbandId" = "Wristband ID";
 "amount" = "Amount";
 "execute" = "Execute";
+"notexecutable" = "Not executable";
 "cardNotRegistered"="Card not registered";
 "informRegisterCard"="Please inform the customer to register a card to FesPay before use.";
