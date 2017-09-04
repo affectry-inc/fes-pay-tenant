@@ -360,7 +360,7 @@
 				TargetAttributes = {
 					458861C61EAB240600FF88C6 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 89JE6S34N2;
+						DevelopmentTeam = J4476N235N;
 						ProvisioningStyle = Automatic;
 					};
 					458861DA1EAB240700FF88C6 = {
@@ -861,10 +861,10 @@
 			baseConfigurationReference = BD08BB84338C439D8B8B1F83 /* Pods-fespay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 89JE6S34N2;
+				DEVELOPMENT_TEAM = J4476N235N;
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.app.tenant;
 				PRODUCT_NAME = FesPay;
 				SWIFT_VERSION = 3.0;
 			};
@@ -875,10 +875,10 @@
 			baseConfigurationReference = 4990684102F33833A6DA7470 /* Pods-fespay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 89JE6S34N2;
+				DEVELOPMENT_TEAM = J4476N235N;
 				INFOPLIST_FILE = fespay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.tenant;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fespay.app.tenant;
 				PRODUCT_NAME = FesPay;
 				SWIFT_VERSION = 3.0;
 			};

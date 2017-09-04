@@ -8,3 +8,6 @@ Pods/*
 GoogleService-Info-Release.plist
 
 env*.plist
+
+FesPay.app.dSYM.zip
+FesPay.ipa
