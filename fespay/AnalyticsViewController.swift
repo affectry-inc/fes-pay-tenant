@@ -8,16 +8,18 @@
 
 import UIKit
 
-class AnalyticsViewController: UIViewController {
+class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let i18n = I18n(tableName: "AnalyticsView")
     let tenantInfo = TenantInfo.sharedInstance
+    var summaryList: [String: [String: Double]] = [:]
+    var dateList: [String] = []
     
     // MARK: - Properties
     
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var tenantNameLabel: UILabel!
-    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var datePicker: UIPickerView!
     @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var totalTitleLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
@@ -29,6 +31,22 @@ class AnalyticsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        datePicker.delegate = self
+        datePicker.dataSource = self
+        
+        FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
+            var list: [String] = []
+            for summary in summaries! {
+                let date = summary.key.replacingOccurrences(of: "-", with: "/")
+                self.summaryList[date] = summary.value as? [String: Double]
+                list.append(date)
+            }
+            
+            self.dateList = list.sorted()
+            self.datePicker.reloadAllComponents()
+            self.datePicker.selectRow(self.dateList.count-1, inComponent: 0, animated: true)
+            self.dispSummary(row: self.dateList.count-1)
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +66,32 @@ class AnalyticsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dispSummary(row: Int) {
+        let summary = summaryList[dateList[row]]!
+        totalValueLabel.text =  "¥ " + String(format: "%.0f", summary["totalAmount"]!)
+        countValueLabel.text = String(format: "%.0f", summary["totalCount"]!)
+    }
+    
+    // MARK: - UIPickerViewDataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dateList.count
+    }
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dateList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        dispSummary(row: row)
     }
     
     /*
