@@ -44,7 +44,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor.lightGray.cgColor
-        border.frame = CGRect(x: 0, y: 0, width:  historyTable.frame.size.width, height: width)
+        border.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.size.width, height: width)
         border.borderWidth = width
         historyTable.layer.addSublayer(border)
         
