@@ -25,6 +25,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     
     var captureSesssion: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput?
+    var previewLayer: AVCaptureVideoPreviewLayer?
     
     // MARK: - Events
     
@@ -54,13 +55,9 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                     captureSesssion.startRunning()
                     
                     // アスペクト比、カメラの向き(縦)
-                    let previewLayer = AVCaptureVideoPreviewLayer(session: captureSesssion)
+                    previewLayer = AVCaptureVideoPreviewLayer(session: captureSesssion)
                     previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
                     previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
-                    
-                    // ビューのサイズの調整
-                    previewLayer?.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
-                    previewLayer?.bounds = cameraView.frame
                     
                     cameraView.layer.addSublayer(previewLayer!)
                 }
@@ -82,6 +79,14 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         
         self.captureLabel.layer.borderColor = UIColor.red.cgColor
         self.captureLabel.layer.borderWidth = 3
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // ビューのサイズの調整
+        if let previewLayer = previewLayer {
+            previewLayer.position = CGPoint(x: self.cameraView.frame.width / 2, y: self.cameraView.frame.height / 2)
+            previewLayer.bounds = cameraView.frame
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
