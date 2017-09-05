@@ -1400,9 +1400,9 @@ Comming Soon...</string>
         </scene>
     </scenes>
     <resources>
-        <image name="addIcon" width="32" height="32"/>
-        <image name="configIcon" width="32" height="32"/>
-        <image name="listIcon" width="32" height="32"/>
+        <image name="addIcon" width="25" height="25"/>
+        <image name="configIcon" width="25" height="25"/>
+        <image name="listIcon" width="25" height="25"/>
         <image name="logoWhite" width="215" height="68"/>
     </resources>
 </document>
