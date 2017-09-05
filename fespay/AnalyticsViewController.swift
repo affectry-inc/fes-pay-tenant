@@ -56,13 +56,14 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.totalTitleLabel.text = i18n.localize(key: "total")
         self.countTitleLabel.text = i18n.localize(key: "count")
         
-        self.totalBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        self.countBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        
         self.eventNameLabel.text = tenantInfo.eventName
         self.tenantNameLabel.text = "\(tenantInfo.tenantName)(\(tenantInfo.tenantId))"
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.totalBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.countBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

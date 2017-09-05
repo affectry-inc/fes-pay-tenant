@@ -40,14 +40,6 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryButton.layer.borderWidth = 1;
         summaryButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        // History table setting
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGray.cgColor
-        border.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.size.width, height: width)
-        border.borderWidth = width
-        historyTable.layer.addSublayer(border)
-        
         loadOrders()
     }
     
@@ -55,6 +47,16 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         
         summaryTitleLabel.text = "\(i18n.localize(key: "total"))(\(i18n.localize(key: "today")))"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // History table setting
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: 0, width:  historyTable.frame.size.width, height: width)
+        border.borderWidth = width
+        historyTable.layer.addSublayer(border)
     }
 
     override func didReceiveMemoryWarning() {

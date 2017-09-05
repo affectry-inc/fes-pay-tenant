@@ -359,9 +359,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMV-rb-pfb">
-                                <rect key="frame" x="16" y="234" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMV-rb-pfb">
+                                <rect key="frame" x="16" y="264" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -407,10 +406,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9go-Qu-Adt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="2Bt-ry-Tfw"/>
+                            <constraint firstItem="xuZ-sW-ClP" firstAttribute="top" secondItem="DMV-rb-pfb" secondAttribute="bottom" constant="40" id="7J8-Zr-nma"/>
                             <constraint firstItem="xuZ-sW-ClP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9iV-7y-6oW"/>
                             <constraint firstItem="9go-Qu-Adt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CRd-Rj-APE"/>
+                            <constraint firstItem="DMV-rb-pfb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cGU-or-tOJ"/>
                             <constraint firstItem="xuZ-sW-ClP" firstAttribute="top" secondItem="9go-Qu-Adt" secondAttribute="bottom" constant="40" id="hrd-j0-OqH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9go-Qu-Adt" secondAttribute="trailing" id="ich-AF-guC"/>
+                            <constraint firstItem="DMV-rb-pfb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="saT-DU-cM6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Amount" id="GuF-7k-ODx">

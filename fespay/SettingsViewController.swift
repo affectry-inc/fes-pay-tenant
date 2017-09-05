@@ -53,13 +53,15 @@ class SettingsViewController: UIViewController, UINavigationBarDelegate {
         self.tenantNameTitleLabel.text = i18n.localize(key: "tenantName")
         self.logoutButton.setTitle(i18n.localize(key: "logout"), for: .normal)
         
-        self.eventBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        self.tenantIdBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        self.tenantNameBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        
         self.eventValueLabel.text = tenantInfo.eventName
         self.tenantIdValueLabel.text = tenantInfo.tenantId
         self.tenantNameValueLabel.text = tenantInfo.tenantName
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.eventBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.tenantIdBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.tenantNameBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
 
     override func didReceiveMemoryWarning() {

@@ -68,7 +68,9 @@ class FaceConfirmViewController: UIViewController {
         self.amountTitleLabel.text = i18n.localize(key: "amount")
         self.execPayButton.setTitle(i18n.localize(key: "execute"), for: .normal)
         self.execPayButton.setTitle(i18n.localize(key: "notexecutable"), for: .disabled)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }

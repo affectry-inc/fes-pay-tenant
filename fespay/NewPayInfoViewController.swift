@@ -38,9 +38,11 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         self.amountTextField.placeholder = i18n.localize(key: "inputAmountPh")
         self.goNextButton.setTitle(i18n.localize(key: "next"), for: .normal)
         
-        amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
-        
         amountTextField.becomeFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
     
     override func didReceiveMemoryWarning() {

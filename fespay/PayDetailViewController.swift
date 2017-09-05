@@ -106,7 +106,9 @@ class PayDetailViewController: UIViewController {
         self.dateTitleLabel.text = i18n.localize(key: "date")
         self.refundButton.setTitle(self.i18n.localize(key: "refund"), for: .normal)
         self.refundButton.setTitle(self.i18n.localize(key: "refunded"), for: .disabled)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.dateBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)

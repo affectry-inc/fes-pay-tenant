@@ -66,7 +66,9 @@ class CompleteViewController: UIViewController, UINavigationBarDelegate {
         self.amountTitleLabel.text = i18n.localize(key: "amount")
         self.dateTitleLabel.text = i18n.localize(key: "date")
         self.backToTopButton.setTitle(i18n.localize(key: "backToTop"), for: .normal)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.dateBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
