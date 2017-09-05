@@ -66,7 +66,10 @@ class PayDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        LoadingProxy.set(self)
+        
+        LoadingProxy.on()
         FirebaseClient.findCharge(key: payInfo!.key, onLoad: { charge in
             
             self.payInfo?.chargeId = charge["chargeId"] as? String
@@ -90,9 +93,10 @@ class PayDetailViewController: UIViewController {
                 self.refundButton.isEnabled = false
                 self.refundButton.alpha = 0.2
             }
+            
+            LoadingProxy.off()
         })
         
-        LoadingProxy.set(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {

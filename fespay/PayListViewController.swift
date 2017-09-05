@@ -40,6 +40,8 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryButton.layer.borderWidth = 1;
         summaryButton.layer.borderColor = UIColor.lightGray.cgColor
         
+        LoadingProxy.set(self)
+        
         loadOrders()
     }
     
@@ -96,33 +98,20 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Actions
     
     @IBAction func unwindToPayList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? CompleteViewController, let payInfo = sourceViewController.payInfo {
-            
-            // Add a new payment
-            let newIndexPath = IndexPath(row: 0, section: 0)
-            
-            payInfos.insert(payInfo, at: 0)
-            historyTable.insertRows(at: [newIndexPath], with: .automatic)
-            
-            self.totalAmount += payInfo.amount!
-            self.summaryTotalLabel.text = String(format: "%.0f", totalAmount)
-        } else if let sourceViewController = sender.source as? PayDetailViewController, let payInfo = sourceViewController.payInfo {
-            if let selectedIndexPath = historyTable.indexPathForSelectedRow {
-                
-                if sourceViewController.isNewRefunded {
-                    self.totalAmount = self.totalAmount - payInfo.amount!
-                    self.summaryTotalLabel.text = "¥ " + String(format: "%.0f", self.totalAmount)
-                }
-                
-                historyTable.reloadRows(at: [selectedIndexPath], with: .none)
-            }
+        if sender.source is CompleteViewController {
+            loadOrders()
+        } else if sender.source is PayDetailViewController {
+            loadOrders()
         }
-        
     }
     
     // MARK: - Private Methods
     
     private func loadOrders() {
+        LoadingProxy.on()
+        self.totalAmount = Double(0)
+        self.payInfos = [PayInfo]()
+        
         FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -154,7 +143,31 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.payInfos.insert(payInfo, at: 0)
             }
             self.historyTable.reloadData()
+            
+            LoadingProxy.off()
         })
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        switch identifier {
+        case "DetailsView":
+            guard let selectedCell = sender as? PayInfoTableViewCell else {
+                fatalError("Unexpected sender: \(sender!)")
+            }
+            
+            guard let indexPath = historyTable.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            if (indexPath.row >= payInfos.count) {
+                return false
+            }
+
+        default:
+            return true
+        }
+        
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
