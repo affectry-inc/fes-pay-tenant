@@ -13,6 +13,7 @@ class PayDetailViewController: UIViewController {
     let i18n = I18n(tableName: "PayDetailView")
     
     var payInfo: PayInfo?
+    var isNewRefunded = false
     
     // MARK: - Properties
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -41,6 +42,7 @@ class PayDetailViewController: UIViewController {
                 FirebaseClient.refundCharge(payInfo: self.payInfo!, refundedAt: refundedAt, refundId: refundId, onRefund: {
                     self.payInfo?.isRefunded = true
                     self.payInfo?.refundedAt = refundedAt
+                    self.isNewRefunded = true
                     
                     LoadingProxy.off()
                     

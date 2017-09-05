@@ -108,7 +108,12 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.summaryTotalLabel.text = String(format: "%.0f", totalAmount)
         } else if let sourceViewController = sender.source as? PayDetailViewController, let payInfo = sourceViewController.payInfo {
             if let selectedIndexPath = historyTable.indexPathForSelectedRow {
-                payInfos[selectedIndexPath.row] = payInfo
+                
+                if sourceViewController.isNewRefunded {
+                    self.totalAmount = self.totalAmount - payInfo.amount!
+                    self.summaryTotalLabel.text = "¥ " + String(format: "%.0f", self.totalAmount)
+                }
+                
                 historyTable.reloadRows(at: [selectedIndexPath], with: .none)
             }
         }
