@@ -32,6 +32,12 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        LoadingProxy.set(self)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         captureSesssion = AVCaptureSession()
         stillImageOutput = AVCapturePhotoOutput()
         
@@ -66,12 +72,6 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
         catch {
             print(error)
         }
-        
-        LoadingProxy.set(self)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         self.navigationItem.title = i18n.localize(key: "captureFace")
         self.captureLabel.text = i18n.localize(key: "msgCaptureFace")
@@ -151,10 +151,9 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             self.payInfo?.confidence = (veriRes["confidence"] as! Double) * 100
             
             DispatchQueue.main.async {
+                self.stopLoading()
                 self.performSegue(withIdentifier: "FaceConfirmView", sender: nil)
             }
-
-            self.stopLoading()
         })
     }
     
@@ -248,6 +247,11 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
                 return
             }
             faceConfirmView.payInfo  = self.payInfo
+        }
+    }
+    
+    @IBAction func unwindToCaptureFace(sender: UIStoryboardSegue) {
+        if sender.source is FaceConfirmViewController {
         }
     }
 

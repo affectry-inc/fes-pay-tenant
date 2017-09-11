@@ -23,6 +23,7 @@ class FaceConfirmViewController: UIViewController {
     @IBOutlet weak var equalLabel: UILabel!
     @IBOutlet weak var confidenceTitleLabel: UILabel!
     @IBOutlet weak var confidenceValueLabel: UILabel!
+    @IBOutlet weak var verifyMsgLabel: UILabel!
     @IBOutlet weak var wristbandBorderLabel: UILabel!
     @IBOutlet weak var wristbandTitleLabel: UILabel!
     @IBOutlet weak var wristbandValueLabel: UILabel!
@@ -46,11 +47,9 @@ class FaceConfirmViewController: UIViewController {
         if (self.payInfo?.verified())! {
             confidenceTitleLabel.textColor = .blue
             confidenceValueLabel.textColor = .blue
-            execPayButton.isEnabled = true
         } else {
             confidenceTitleLabel.textColor = .red
             confidenceValueLabel.textColor = .red
-            execPayButton.isEnabled = false
             execPayButton.backgroundColor = .lightGray
         }
 
@@ -66,8 +65,15 @@ class FaceConfirmViewController: UIViewController {
         self.confidenceTitleLabel.text = i18n.localize(key: "confidence")
         self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
         self.amountTitleLabel.text = i18n.localize(key: "amount")
-        self.execPayButton.setTitle(i18n.localize(key: "execute"), for: .normal)
-        self.execPayButton.setTitle(i18n.localize(key: "notexecutable"), for: .disabled)
+        if (self.payInfo?.verified())! {
+            self.execPayButton.setTitle(i18n.localize(key: "execute"), for: .normal)
+            self.verifyMsgLabel.text = i18n.localize(key: "msgSamePerson")
+        } else {
+            self.execPayButton.setTitle(i18n.localize(key: "back"), for: .normal)
+            self.verifyMsgLabel.text = i18n.localize(key: "msgNotSamePerson")
+        }
+        self.verifyMsgLabel.layer.borderColor = UIColor.red.cgColor
+        self.verifyMsgLabel.layer.borderWidth = 3
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,7 +86,7 @@ class FaceConfirmViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func execPayButtonTapped(_ sender: UIButton) {
+    func execPay() {
         self.payInfo?.amountCoupon = Double(0)
         self.payInfo?.amountCard = self.payInfo?.amount
         
@@ -120,6 +126,18 @@ class FaceConfirmViewController: UIViewController {
         } else {
             // カード登録なし
             self.present(self.i18n.alert(titleKey: "cardNotRegistered", messageKey: "informRegisterCard"), animated: true)
+        }
+    }
+    
+    func backToCaptureFace() {
+        self.performSegue(withIdentifier: "unwindToCaptureFace", sender: self)
+    }
+    
+    @IBAction func execPayButtonTapped(_ sender: UIButton) {
+        if (self.payInfo?.verified())! {
+            execPay()
+        } else {
+            backToCaptureFace()
         }
     }
     

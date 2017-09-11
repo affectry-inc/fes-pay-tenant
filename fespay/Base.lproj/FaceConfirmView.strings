@@ -13,7 +13,9 @@
 "wristbandId" = "Wristband ID";
 "amount" = "Amount";
 "execute" = "Execute";
-"notexecutable" = "Not executable";
+"back" = "Recapture";
+"msgSamePerson" = "CAUTION\nPlease check with your eyes carefully the buyer is the very same person as the registered person.";
+"msgNotSamePerson" = "The buyer is not the same as the registered person.";
 "cardNotRegistered"="Card not registered";
 "informRegisterCard"="Please inform the customer to register a card to FesPay before use.";
 "titleSaveFailure"="Save failed";
