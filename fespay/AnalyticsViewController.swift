@@ -71,7 +71,7 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func dispSummary(row: Int) {
         let summary = summaryList[dateList[row]]!
-        totalValueLabel.text =  "¥ " + String(format: "%.0f", summary["totalAmount"]!)
+        totalValueLabel.text =  summary["totalAmount"]?.toJPY()
         countValueLabel.text = String(format: "%.0f", summary["totalCount"]!)
     }
     

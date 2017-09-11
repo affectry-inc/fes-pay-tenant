@@ -79,16 +79,12 @@ class PayDetailViewController: UIViewController {
             self.payInfo?.buyerImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.buyerPhotoUrl)!)!, options: .mappedIfSafe))
             self.payInfo?.confidence = charge["confidence"] as? Double
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-            
             self.personImageView.image = self.payInfo?.personImage
             self.buyerImageView.image = self.payInfo?.buyerImage
-            self.confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+            self.confidenceValueLabel.text = self.payInfo?.dispConfidence()
             self.wristbandValueLabel.text = self.payInfo?.bandId
-            self.amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
-            self.dateValueLabel.text = formatter.string(from: (self.payInfo?.paidAt)!)
+            self.amountValueLabel.text = self.payInfo?.amount?.toJPY()
+            self.dateValueLabel.text = self.payInfo?.paidAt?.toTokyoTime()
             if (self.payInfo?.isRefunded)! {
                 self.refundButton.isEnabled = false
                 self.refundButton.alpha = 0.2

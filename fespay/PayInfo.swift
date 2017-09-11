@@ -42,4 +42,11 @@ class PayInfo: NSObject {
         return confidence != nil && confidence! > 50.0
     }
     
+    func dispConfidence() -> String {
+        if let val = confidence {
+            return String(format: "%.1f", val)
+        } else {
+            return "--.-"
+        }
+    }
 }

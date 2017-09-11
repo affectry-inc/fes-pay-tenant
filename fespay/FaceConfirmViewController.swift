@@ -40,9 +40,9 @@ class FaceConfirmViewController: UIViewController {
         personImageView.image = self.payInfo?.personImage
         buyerImageView.image = self.payInfo?.buyerImage
         equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
-        confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+        confidenceValueLabel.text = self.payInfo?.dispConfidence()
         wristbandValueLabel.text = self.payInfo?.bandId
-        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
+        amountValueLabel.text = self.payInfo?.amount?.toJPY()
         
         if (self.payInfo?.verified())! {
             confidenceTitleLabel.textColor = .blue

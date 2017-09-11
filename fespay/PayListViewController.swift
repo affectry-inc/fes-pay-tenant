@@ -83,14 +83,11 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Fetches the appropriate payInfo for the data source layout.
         let payInfo = payInfos[indexPath.row]
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        
         let refundedText = payInfo.isRefunded ? ("  " + i18n.localize(key: "refunded")) : ""
         
-        cell.paidAtLabel.text = dateFormatter.string(from: payInfo.paidAt!)
+        cell.paidAtLabel.text = payInfo.paidAt?.toTokyoTime()
         cell.payerLabel.text = "ID: " + payInfo.bandId!
-        cell.amountLabel.text = "¥" + String(format: "%.0f", payInfo.amount!) + refundedText
+        cell.amountLabel.text = payInfo.amount!.toJPY() + refundedText
         
         return cell
     }
@@ -113,16 +110,13 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.payInfos = [PayInfo]()
         
         FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-            let dateKey = dateFormatter.string(from: Date())
+            let dateKey = Date().toTokyoDate()
             
             if let summary = summaries?[dateKey] as? [String: Any] {
                 self.totalAmount = summary["totalAmount"] as! Double
             }
             
-            self.summaryTotalLabel.text = "¥ " + String(format: "%.0f", self.totalAmount)
+            self.summaryTotalLabel.text = self.totalAmount.toJPY()
         })
         
         FirebaseClient.loadOrders(tenantId: tenantInfo.tenantId, onLoad: { snapshots in

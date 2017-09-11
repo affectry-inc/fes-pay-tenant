@@ -28,6 +28,35 @@ extension String {
     }
 }
 
+extension Double {
+    func toJPY() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.currency
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.currencyGroupingSeparator = ","
+        
+        return formatter.string(from: self as NSNumber)!
+    }
+}
+
+extension Date {
+    func toTokyoTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        
+        return formatter.string(from: self)
+    }
+    
+    func toTokyoDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        
+        return formatter.string(from: self)
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

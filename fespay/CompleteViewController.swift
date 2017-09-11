@@ -43,16 +43,13 @@ class CompleteViewController: UIViewController, UINavigationBarDelegate {
         // UINavigationBarDelegate setting
         navBar.delegate = self
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        
         personImageView.image = self.payInfo?.personImage
         buyerImageView.image = self.payInfo?.buyerImage
         equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
-        confidenceValueLabel.text = "\(String(format: "%.1f", (self.payInfo?.confidence)!))%"
+        confidenceValueLabel.text = self.payInfo?.dispConfidence()
         wristbandValueLabel.text = self.payInfo?.bandId
-        amountValueLabel.text = "¥" + String(format: "%.0f", (self.payInfo?.amount)!)
-        dateValueLabel.text = dateFormatter.string(from: (self.payInfo?.paidAt)!)
+        amountValueLabel.text = self.payInfo?.amount?.toJPY()
+        dateValueLabel.text = self.payInfo?.paidAt?.toTokyoTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
