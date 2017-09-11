@@ -75,11 +75,10 @@ class PayDetailViewController: UIViewController {
             self.payInfo?.chargeId = charge["chargeId"] as? String
             self.payInfo?.personPhotoUrl = charge["personPhotoUrl"] as? String
             self.payInfo?.buyerPhotoUrl = charge["buyerPhotoUrl"] as? String
-            self.payInfo?.personImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.personPhotoUrl)!)!, options: .mappedIfSafe))
             self.payInfo?.buyerImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.buyerPhotoUrl)!)!, options: .mappedIfSafe))
             self.payInfo?.confidence = charge["confidence"] as? Double
             
-            self.personImageView.image = self.payInfo?.personImage
+            self.personImageView.image = self.payInfo?.getPersonImage()
             self.buyerImageView.image = self.payInfo?.buyerImage
             self.confidenceValueLabel.text = self.payInfo?.dispConfidence()
             self.wristbandValueLabel.text = self.payInfo?.bandId

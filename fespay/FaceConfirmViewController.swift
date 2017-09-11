@@ -37,7 +37,7 @@ class FaceConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        personImageView.image = self.payInfo?.personImage
+        personImageView.image = self.payInfo?.getPersonImage()
         buyerImageView.image = self.payInfo?.buyerImage
         equalLabel.text = (self.payInfo?.verified())! ? "=" : "≠"
         confidenceValueLabel.text = self.payInfo?.dispConfidence()

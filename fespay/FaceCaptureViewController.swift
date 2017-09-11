@@ -163,10 +163,7 @@ class FaceCaptureViewController: UIViewController, AVCapturePhotoCaptureDelegate
             let faceId = faces[0]["faceId"] as! String
             FirebaseClient.findPerson(bandId: (self.payInfo?.bandId)!, onFind: { personId, personPhotoUrl, uid, cardCustomerId, cardLastDigits in
                 
-                let personImageData = try? Data(contentsOf: URL(string: personPhotoUrl)!, options: .mappedIfSafe)
-                
                 self.payInfo?.bandUid = uid
-                self.payInfo?.personImage = UIImage(data: personImageData!)
                 self.payInfo?.personId = personId
                 self.payInfo?.personPhotoUrl = personPhotoUrl
                 self.payInfo?.cardCustomerId = cardCustomerId

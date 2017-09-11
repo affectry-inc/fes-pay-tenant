@@ -20,7 +20,7 @@ class PayInfo: NSObject {
     var amountCard: Double?
     var personId: String?
     var personPhotoUrl: String?
-    var personImage: UIImage?
+    private var personImage: UIImage?
     var buyerPhotoUrl: String?
     var buyerImage: UIImage?
     var confidence: Double?
@@ -40,6 +40,15 @@ class PayInfo: NSObject {
     
     func verified() -> Bool {
         return confidence != nil && confidence! > 50.0
+    }
+    
+    func getPersonImage() -> UIImage {
+        if let image = personImage {
+            return image
+        } else {
+            personImage = UIImage(data: try! Data(contentsOf: URL(string: personPhotoUrl!)!, options: .mappedIfSafe))
+            return personImage!
+        }
     }
     
     func dispConfidence() -> String {
