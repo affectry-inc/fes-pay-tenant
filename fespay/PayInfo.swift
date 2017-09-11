@@ -53,9 +53,9 @@ class PayInfo: NSObject {
     
     func dispConfidence() -> String {
         if let val = confidence {
-            return String(format: "%.1f", val)
+            return String(format: "%.1f", val) + "%"
         } else {
-            return "--.-"
+            return "----%"
         }
     }
 }
