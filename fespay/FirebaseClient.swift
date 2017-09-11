@@ -268,6 +268,33 @@ class FirebaseClient: NSObject {
         })
     }
     
+    class func agreeTerms(tenantId: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateStr = dateFormatter.string(from: Date())
+        
+        let fbRef = Database.database().reference()
+        fbRef.child("tenants/\(tenantId)/isAgreed").setValue(true)
+        fbRef.child("tenants/\(tenantId)/agreedAt").setValue(dateStr)
+    }
+    
+    class func isAgreed(tenantId: String, onAgreed: @escaping () -> (), onNotAgreed: @escaping () -> (), onError: @escaping () -> ()) {
+        let fbRef = Database.database().reference()
+        fbRef.child("tenants").child(tenantId).observeSingleEvent(of: .value, with: { (snapshot) in
+            let tenant = snapshot.value as? [String: Any]
+            
+            if (tenant?["isAgreed"] != nil && tenant?["isAgreed"] as! Bool) {
+                onAgreed()
+            } else {
+                onNotAgreed()
+            }
+        }) { (error) in
+            os_log("isAgreed error: %@", log: .default, type: .error, error.localizedDescription)
+            onError()
+        }
+    }
+    
     class func setTenantInfo(user: User, onSuccess: @escaping () -> (), onError: @escaping () -> ()) {
         let tenantInfo = TenantInfo.sharedInstance
         

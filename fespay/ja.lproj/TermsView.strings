@@ -1,0 +1,12 @@
+/* 
+  TermsView.strings
+  fespay
+
+  Created by Shizuka Kakimoto on 2017/09/11.
+  Copyright © 2017年 KakimotoShizuka. All rights reserved.
+*/
+
+"agree" = "同意する";
+"cancel" = "同意しない";
+"failToLoad" = "利用規約の取得に失敗しました";
+"tryAgain" = "再度お試しください。";

@@ -53,10 +53,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         LoadingProxy.on()
         FirebaseClient.signInAsTenant(tenantId: tenantIdTextField.text!, password: passwordTextField.text!, onSignIn: {
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-            
-            LoadingProxy.off()
-            self.present(next, animated: true, completion: nil)
+            FirebaseClient.isAgreed(tenantId: self.tenantIdTextField.text!, onAgreed: {
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                
+                LoadingProxy.off()
+                self.present(next, animated: true, completion: nil)
+            }, onNotAgreed: {
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController")
+                
+                LoadingProxy.off()
+                self.present(next!, animated: true, completion: nil)
+            }, onError: {
+                LoadingProxy.off()
+                self.present(self.i18n.alert(titleKey: "loginFailed", messageKey: "tryAgain"), animated: true)
+            })
         }, onError: {
             LoadingProxy.off()
             self.present(self.i18n.alert(titleKey: "invalidIdOrPassword", messageKey: "tryAgain"), animated: true)
@@ -93,9 +103,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let user = FirebaseClient.findCurrentUser()
         
         if user != nil && TenantInfo.sharedInstance.restore() {
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-            
-            self.present(next, animated: true, completion: nil)
+            LoadingProxy.on()
+            let tenantId = TenantInfo.sharedInstance.tenantId
+            FirebaseClient.isAgreed(tenantId: tenantId, onAgreed: {
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                
+                LoadingProxy.off()
+                self.present(next, animated: true, completion: nil)
+            }, onNotAgreed: {
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController")
+                
+                LoadingProxy.off()
+                self.present(next!, animated: true, completion: nil)
+            }, onError: {
+                LoadingProxy.off()
+            })
+//            let next = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+//            
+//            self.present(next, animated: true, completion: nil)
         }
     }
     

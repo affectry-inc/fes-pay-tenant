@@ -1184,7 +1184,85 @@ Comming Soon...</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p36-4I-nhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="728.79999999999995" y="15.742128935532236"/>
+            <point key="canvasLocation" x="66" y="16"/>
+        </scene>
+        <!--Terms View Controller-->
+        <scene sceneID="b9Z-aa-Fyy">
+            <objects>
+                <viewController storyboardIdentifier="TermsViewController" modalPresentationStyle="overCurrentContext" id="ykV-Zd-MHU" customClass="TermsViewController" customModule="FesPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8v4-wQ-2c2"/>
+                        <viewControllerLayoutGuide type="bottom" id="hA9-7A-4To"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zN9-ok-PnA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-HT-Jvd">
+                                <rect key="frame" x="22" y="97" width="330" height="472"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-OC-lid">
+                                        <rect key="frame" x="180" y="392" width="130" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Fqp-tV-Hfc"/>
+                                            <constraint firstAttribute="width" constant="130" id="dLu-62-1oL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="ykV-Zd-MHU" eventType="touchUpInside" id="MfI-b0-FMj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bb-tP-p2O">
+                                        <rect key="frame" x="20" y="392" width="130" height="60"/>
+                                        <color key="backgroundColor" red="0.57254901960000004" green="0.81568627449999997" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="3Nk-qj-2Me"/>
+                                            <constraint firstAttribute="width" constant="130" id="CG8-ej-4Gx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Agree"/>
+                                        <connections>
+                                            <action selector="agreeTapped:" destination="ykV-Zd-MHU" eventType="touchUpInside" id="RTc-OB-AZe"/>
+                                        </connections>
+                                    </button>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrL-6h-xgW">
+                                        <rect key="frame" x="8" y="8" width="314" height="364"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vrL-6h-xgW" firstAttribute="top" secondItem="PcO-HT-Jvd" secondAttribute="top" constant="8" id="5mF-sL-a6a"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sar-OC-lid" secondAttribute="bottom" constant="20" id="7Kj-xr-j0O"/>
+                                    <constraint firstItem="3Bb-tP-p2O" firstAttribute="leading" secondItem="PcO-HT-Jvd" secondAttribute="leading" constant="20" id="Bs4-mS-M2w"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Bb-tP-p2O" secondAttribute="bottom" constant="20" id="G0A-hl-PQ4"/>
+                                    <constraint firstItem="3Bb-tP-p2O" firstAttribute="top" secondItem="vrL-6h-xgW" secondAttribute="bottom" constant="20" id="GzY-Vr-3TJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sar-OC-lid" secondAttribute="trailing" constant="20" id="hEa-Ze-x3Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="vrL-6h-xgW" secondAttribute="trailing" constant="8" id="mZQ-FW-Mgh"/>
+                                    <constraint firstItem="Sar-OC-lid" firstAttribute="leading" secondItem="3Bb-tP-p2O" secondAttribute="trailing" constant="30" id="rYm-Pi-mlG"/>
+                                    <constraint firstItem="vrL-6h-xgW" firstAttribute="leading" secondItem="PcO-HT-Jvd" secondAttribute="leading" constant="8" id="slt-Iz-IO0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PcO-HT-Jvd" firstAttribute="centerY" secondItem="zN9-ok-PnA" secondAttribute="centerY" id="EPA-KO-lQ3"/>
+                            <constraint firstItem="PcO-HT-Jvd" firstAttribute="top" secondItem="8v4-wQ-2c2" secondAttribute="bottom" constant="77" id="ES3-0K-Vn9"/>
+                            <constraint firstItem="PcO-HT-Jvd" firstAttribute="centerX" secondItem="zN9-ok-PnA" secondAttribute="centerX" id="nPi-SD-BAx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="agreeButton" destination="3Bb-tP-p2O" id="nWF-oa-CI5"/>
+                        <outlet property="cancelButton" destination="Sar-OC-lid" id="1SQ-gc-NgO"/>
+                        <outlet property="webView" destination="vrL-6h-xgW" id="XJx-e0-oWw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nsn-lW-3Bv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.60000000000002" y="15.742128935532236"/>
         </scene>
         <!--New-->
         <scene sceneID="Pqx-I3-GQR">

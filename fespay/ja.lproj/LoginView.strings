@@ -13,5 +13,6 @@
 "enterTenantId" = "";
 "emptyPassword" = "パスワードを入力してください";
 "enterPassword" = "";
-"invalidIdOrPassword" = "ログインエラー";
-"tryAgain" = "テナントIDもしくはパスワードが正しくありません。";
+"loginFailed" = "ログインに失敗しました";
+"invalidIdOrPassword" = "IDもしくはパスワードが正しくありません";
+"tryAgain" = "再入力してください。";

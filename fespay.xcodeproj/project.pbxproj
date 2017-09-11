@@ -50,8 +50,11 @@
 		79C10A721EF93C02002572D7 /* FaceCaptureView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A741EF93C02002572D7 /* FaceCaptureView.strings */; };
 		79C10A781EF93DAA002572D7 /* FaceConfirmView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A7A1EF93DAA002572D7 /* FaceConfirmView.strings */; };
 		79C10A7E1EF93F69002572D7 /* CompleteView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C10A801EF93F69002572D7 /* CompleteView.strings */; };
+		79C2084A1F6678B700F18693 /* TermsView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C2084C1F6678B700F18693 /* TermsView.strings */; };
 		79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79D27DA81EF82F8F007B13B9 /* LoginView.strings */; };
 		79D27DAB1EF830AD007B13B9 /* I18n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D27DAA1EF830AD007B13B9 /* I18n.swift */; };
+		79D2F8031F6658B700C07C54 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2F8021F6658B700C07C54 /* TermsViewController.swift */; };
+		79D2F8051F666CF800C07C54 /* terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = 79D2F8041F666CF800C07C54 /* terms_of_use.html */; };
 		79E0DDF91F2F3DA300048C74 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0DDF81F2F3DA300048C74 /* StripeClient.swift */; };
 		9B13BEF2BA670F3EC68C38CB /* Pods_fespay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F69931FBB206E916A638757 /* Pods_fespay.framework */; };
 /* End PBXBuildFile section */
@@ -134,9 +137,13 @@
 		79C10A7B1EF93DAC002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FaceConfirmView.strings; sourceTree = "<group>"; };
 		79C10A7F1EF93F69002572D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/CompleteView.strings; sourceTree = "<group>"; };
 		79C10A811EF93F6A002572D7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CompleteView.strings; sourceTree = "<group>"; };
+		79C2084B1F6678B700F18693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/TermsView.strings; sourceTree = "<group>"; };
+		79C2084D1F6678ED00F18693 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TermsView.strings; sourceTree = "<group>"; };
 		79D27DA71EF82F8F007B13B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DA91EF82F95007B13B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LoginView.strings; sourceTree = "<group>"; };
 		79D27DAA1EF830AD007B13B9 /* I18n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18n.swift; sourceTree = "<group>"; };
+		79D2F8021F6658B700C07C54 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		79D2F8041F666CF800C07C54 /* terms_of_use.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_of_use.html; sourceTree = "<group>"; };
 		79E0DDF81F2F3DA300048C74 /* StripeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		9A89249BA9F66B00DB162FC4 /* Pods-fespayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayTests/Pods-fespayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE03AA4F153F5CBC6EB5EACC /* Pods-fespayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fespayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fespayUITests/Pods-fespayUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +216,7 @@
 			children = (
 				458861CA1EAB240600FF88C6 /* AppDelegate.swift */,
 				456467341EE92137001DC574 /* LoginViewController.swift */,
+				79D2F8021F6658B700C07C54 /* TermsViewController.swift */,
 				455E32DD1EEFAB3C009AC2D3 /* MainTabBarController.swift */,
 				456467361EE94E70001DC574 /* PayListViewController.swift */,
 				4535C4431EB47E64000C72D6 /* PayInfoTableViewCell.swift */,
@@ -232,6 +240,7 @@
 				458861D11EAB240600FF88C6 /* Assets.xcassets */,
 				458861CE1EAB240600FF88C6 /* Main.storyboard */,
 				458861D31EAB240600FF88C6 /* LaunchScreen.storyboard */,
+				79D2F8041F666CF800C07C54 /* terms_of_use.html */,
 				79101F681F5C459E00F14C99 /* env.plist */,
 				79101F6A1F5C460D00F14C99 /* env-Release.plist */,
 				456CDF261EDEA1AB00A01485 /* GoogleService-Info.plist */,
@@ -239,6 +248,7 @@
 				458861D61EAB240600FF88C6 /* Info.plist */,
 				79B8FE2C1EF8208000E6122B /* Localizable.strings */,
 				79D27DA81EF82F8F007B13B9 /* LoginView.strings */,
+				79C2084C1F6678B700F18693 /* TermsView.strings */,
 				79C10A501EF92D03002572D7 /* PayListView.strings */,
 				79C10A561EF92F21002572D7 /* AnalyticsView.strings */,
 				79C10A5C1EF93115002572D7 /* PayDetailView.strings */,
@@ -408,9 +418,11 @@
 				79101F6B1F5C460D00F14C99 /* env-Release.plist in Resources */,
 				458861D51EAB240600FF88C6 /* LaunchScreen.storyboard in Resources */,
 				456CDF271EDEA1AB00A01485 /* GoogleService-Info.plist in Resources */,
+				79C2084A1F6678B700F18693 /* TermsView.strings in Resources */,
 				79C10A4E1EF92D03002572D7 /* PayListView.strings in Resources */,
 				79D27DA61EF82F8F007B13B9 /* LoginView.strings in Resources */,
 				79C10A601EF9331B002572D7 /* NewPayInfoView.strings in Resources */,
+				79D2F8051F666CF800C07C54 /* terms_of_use.html in Resources */,
 				79101F691F5C459E00F14C99 /* env.plist in Resources */,
 				79C10A661EF93644002572D7 /* SettingsView.strings in Resources */,
 				458861D21EAB240600FF88C6 /* Assets.xcassets in Resources */,
@@ -598,6 +610,7 @@
 				456467371EE94E70001DC574 /* PayListViewController.swift in Sources */,
 				458861CB1EAB240600FF88C6 /* AppDelegate.swift in Sources */,
 				7976D3701F205AF80002B877 /* OmiseClient.swift in Sources */,
+				79D2F8031F6658B700C07C54 /* TermsViewController.swift in Sources */,
 				4541625E1EB98B7900DD0F7B /* QRCaptureViewController.swift in Sources */,
 				456467351EE92137001DC574 /* LoginViewController.swift in Sources */,
 				4535C4441EB47E64000C72D6 /* PayInfoTableViewCell.swift in Sources */,
@@ -745,6 +758,15 @@
 				79C10A811EF93F6A002572D7 /* ja */,
 			);
 			name = CompleteView.strings;
+			sourceTree = "<group>";
+		};
+		79C2084C1F6678B700F18693 /* TermsView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C2084B1F6678B700F18693 /* Base */,
+				79C2084D1F6678ED00F18693 /* ja */,
+			);
+			name = TermsView.strings;
 			sourceTree = "<group>";
 		};
 		79D27DA81EF82F8F007B13B9 /* LoginView.strings */ = {

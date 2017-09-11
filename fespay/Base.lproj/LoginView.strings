@@ -13,5 +13,6 @@
 "enterTenantId" = "Please enter your tenant ID.";
 "emptyPassword" = "Empty password";
 "enterPassword" = "Please enter the password for your tenant ID.";
+"loginFailed" = "Login failed";
 "invalidIdOrPassword" = "Invalid tenant ID or password";
 "tryAgain" = "Please try again.";
