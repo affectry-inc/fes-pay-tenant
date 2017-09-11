@@ -51,6 +51,11 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        let amountText = amountTextField.text!
+        if amountText.characters.count > 6 {
+            amountTextField.text = amountText.substring(to: amountText.index(amountText.startIndex, offsetBy: 6))
+        }
+        
         updatePayButtonState()
     }
 
@@ -84,8 +89,12 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
     private func updatePayButtonState() {
         // Disable the Pay button if the text field is empty.
-        let text = amountTextField.text ?? ""
-        goNextButton.isEnabled = !text.isEmpty
+        let text = amountTextField.text!
+        if text.isNumber() && Double(text)! > Double(0) {
+            goNextButton.isEnabled = true
+        } else {
+            goNextButton.isEnabled = false
+        }
     }
 }
 

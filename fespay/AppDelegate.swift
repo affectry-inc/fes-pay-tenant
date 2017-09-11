@@ -19,6 +19,14 @@ let envFileName = infoDict["EnvFileName"] as! String
 let envFilePath = Bundle.main.path(forResource: envFileName, ofType: "plist")
 let env = NSDictionary(contentsOfFile: envFilePath!) as! [String: Any]
 
+extension String {
+    func isNumber() -> Bool {
+        let pattern = "^[\\d]+$"
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return false }
+        let matches = regex.matches(in: self, range: NSRange(location: 0, length: characters.count))
+        return matches.count > 0
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
