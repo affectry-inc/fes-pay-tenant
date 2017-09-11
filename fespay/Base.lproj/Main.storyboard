@@ -1198,13 +1198,12 @@ Please check with your eyes carefully the buyer is the very same person as the r
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-HT-Jvd">
-                                <rect key="frame" x="22.5" y="97" width="330" height="473"/>
+                                <rect key="frame" x="10" y="97" width="355" height="473"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-OC-lid">
-                                        <rect key="frame" x="180" y="393" width="130" height="60"/>
+                                        <rect key="frame" x="192.5" y="393" width="142.5" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Fqp-tV-Hfc"/>
-                                            <constraint firstAttribute="width" constant="130" id="dLu-62-1oL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1214,11 +1213,10 @@ Please check with your eyes carefully the buyer is the very same person as the r
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bb-tP-p2O">
-                                        <rect key="frame" x="20" y="393" width="130" height="60"/>
+                                        <rect key="frame" x="20" y="393" width="142.5" height="60"/>
                                         <color key="backgroundColor" red="0.57254901960000004" green="0.81568627449999997" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="3Nk-qj-2Me"/>
-                                            <constraint firstAttribute="width" constant="130" id="CG8-ej-4Gx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1228,18 +1226,20 @@ Please check with your eyes carefully the buyer is the very same person as the r
                                         </connections>
                                     </button>
                                     <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrL-6h-xgW">
-                                        <rect key="frame" x="8" y="8" width="314" height="365"/>
+                                        <rect key="frame" x="8" y="8" width="339" height="365"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </webView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Sar-OC-lid" firstAttribute="width" secondItem="3Bb-tP-p2O" secondAttribute="width" id="2fg-Kf-Aj3"/>
                                     <constraint firstItem="vrL-6h-xgW" firstAttribute="top" secondItem="PcO-HT-Jvd" secondAttribute="top" constant="8" id="5mF-sL-a6a"/>
                                     <constraint firstAttribute="bottom" secondItem="Sar-OC-lid" secondAttribute="bottom" constant="20" id="7Kj-xr-j0O"/>
                                     <constraint firstItem="3Bb-tP-p2O" firstAttribute="leading" secondItem="PcO-HT-Jvd" secondAttribute="leading" constant="20" id="Bs4-mS-M2w"/>
                                     <constraint firstAttribute="bottom" secondItem="3Bb-tP-p2O" secondAttribute="bottom" constant="20" id="G0A-hl-PQ4"/>
                                     <constraint firstItem="3Bb-tP-p2O" firstAttribute="top" secondItem="vrL-6h-xgW" secondAttribute="bottom" constant="20" id="GzY-Vr-3TJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Sar-OC-lid" secondAttribute="trailing" constant="20" id="hEa-Ze-x3Y"/>
+                                    <constraint firstItem="Sar-OC-lid" firstAttribute="height" secondItem="3Bb-tP-p2O" secondAttribute="height" id="lPR-06-jQ3"/>
                                     <constraint firstAttribute="trailing" secondItem="vrL-6h-xgW" secondAttribute="trailing" constant="8" id="mZQ-FW-Mgh"/>
                                     <constraint firstItem="Sar-OC-lid" firstAttribute="leading" secondItem="3Bb-tP-p2O" secondAttribute="trailing" constant="30" id="rYm-Pi-mlG"/>
                                     <constraint firstItem="vrL-6h-xgW" firstAttribute="leading" secondItem="PcO-HT-Jvd" secondAttribute="leading" constant="8" id="slt-Iz-IO0"/>
@@ -1250,6 +1250,8 @@ Please check with your eyes carefully the buyer is the very same person as the r
                         <constraints>
                             <constraint firstItem="PcO-HT-Jvd" firstAttribute="centerY" secondItem="zN9-ok-PnA" secondAttribute="centerY" id="EPA-KO-lQ3"/>
                             <constraint firstItem="PcO-HT-Jvd" firstAttribute="top" secondItem="8v4-wQ-2c2" secondAttribute="bottom" constant="77" id="ES3-0K-Vn9"/>
+                            <constraint firstItem="PcO-HT-Jvd" firstAttribute="leading" secondItem="zN9-ok-PnA" secondAttribute="leading" constant="10" id="Qxd-RX-DXx"/>
+                            <constraint firstAttribute="trailing" secondItem="PcO-HT-Jvd" secondAttribute="trailing" constant="10" id="d1a-cw-jrS"/>
                             <constraint firstItem="PcO-HT-Jvd" firstAttribute="centerX" secondItem="zN9-ok-PnA" secondAttribute="centerX" id="nPi-SD-BAx"/>
                         </constraints>
                     </view>
