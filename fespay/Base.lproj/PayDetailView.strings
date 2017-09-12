@@ -13,7 +13,8 @@
 "confidence" = "Conf.";
 "wristbandId" = "Wristband ID";
 "amount" = "Amount";
-"date" = "Date";
+"date" = "Paid";
+"refundedAt" = "Refunded";
 "refund"="Refund";
 "refunded"="Refunded";
 "caution"="Caution";

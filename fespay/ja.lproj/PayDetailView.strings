@@ -14,6 +14,7 @@
 "wristbandId" = "リストバンドID";
 "amount" = "金額";
 "date" = "購入日時";
+"refundedAt" = "返金日時";
 "refund"="返金";
 "refunded"="返金済み";
 "caution"="注意してください";

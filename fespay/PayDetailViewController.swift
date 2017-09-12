@@ -33,6 +33,9 @@ class PayDetailViewController: UIViewController {
     @IBOutlet weak var dateBorderLabel: UILabel!
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
+    @IBOutlet weak var refundedBorderLabel: UILabel!
+    @IBOutlet weak var refundedTitleLabel: UILabel!
+    @IBOutlet weak var refundedValueLabel: UILabel!
     @IBOutlet weak var refundButton: UIButton!
     
     @IBAction func refundButtonTapped(_ sender: UIButton) {
@@ -72,11 +75,16 @@ class PayDetailViewController: UIViewController {
         LoadingProxy.on()
         FirebaseClient.findCharge(key: payInfo!.key, onLoad: { charge in
             
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            
             self.payInfo?.chargeId = charge["chargeId"] as? String
             self.payInfo?.personPhotoUrl = charge["personPhotoUrl"] as? String
             self.payInfo?.buyerPhotoUrl = charge["buyerPhotoUrl"] as? String
             self.payInfo?.buyerImage = UIImage(data: try! Data(contentsOf: URL(string: (self.payInfo?.buyerPhotoUrl)!)!, options: .mappedIfSafe))
             self.payInfo?.confidence = charge["confidence"] as? Double
+            self.payInfo?.refundedAt = charge["refundedAt"] != nil ? formatter.date(from: charge["refundedAt"] as! String) : nil
             
             self.personImageView.image = self.payInfo?.getPersonImage()
             self.buyerImageView.image = self.payInfo?.buyerImage
@@ -84,6 +92,7 @@ class PayDetailViewController: UIViewController {
             self.wristbandValueLabel.text = self.payInfo?.bandId
             self.amountValueLabel.text = self.payInfo?.amount?.toJPY()
             self.dateValueLabel.text = self.payInfo?.paidAt?.toTokyoTime()
+            self.refundedValueLabel.text = self.payInfo?.refundedAt != nil ? self.payInfo?.refundedAt?.toTokyoTime() : "---"
             if (self.payInfo?.isRefunded)! {
                 self.refundButton.isEnabled = false
                 self.refundButton.alpha = 0.2
@@ -105,6 +114,7 @@ class PayDetailViewController: UIViewController {
         self.wristbandTitleLabel.text = i18n.localize(key: "wristbandId")
         self.amountTitleLabel.text = i18n.localize(key: "amount")
         self.dateTitleLabel.text = i18n.localize(key: "date")
+        self.refundedTitleLabel.text = i18n.localize(key: "refundedAt")
         self.refundButton.setTitle(self.i18n.localize(key: "refund"), for: .normal)
         self.refundButton.setTitle(self.i18n.localize(key: "refunded"), for: .disabled)
     }
@@ -113,6 +123,7 @@ class PayDetailViewController: UIViewController {
         self.wristbandBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.amountBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
         self.dateBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.refundedBorderLabel.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
 
     override func didReceiveMemoryWarning() {
