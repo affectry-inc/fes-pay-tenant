@@ -13,6 +13,7 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     let i18n = I18n(tableName: "PayListView")
     let tenantInfo = TenantInfo.sharedInstance
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Properties
     
@@ -40,7 +41,8 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryButton.layer.borderWidth = 1;
         summaryButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        LoadingProxy.set(self)
+        historyTable.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
         
         loadOrders()
     }
@@ -105,9 +107,9 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Private Methods
     
     private func loadOrders() {
-        LoadingProxy.on()
         self.totalAmount = Double(0)
-        self.payInfos = [PayInfo]()
+        self.payInfos.removeAll()
+        self.historyTable.reloadData()
         
         FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
             let dateKey = Date().toTokyoDate()
@@ -138,8 +140,12 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             self.historyTable.reloadData()
             
-            LoadingProxy.off()
+            self.refreshControl.endRefreshing()
         })
+    }
+    
+    func refresh(sender: UIRefreshControl) {
+        loadOrders()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
