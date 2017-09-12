@@ -39,15 +39,10 @@ class TermsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let htmlData = Bundle.main.path(forResource: "terms_of_use", ofType: "html") {
-            webView.loadRequest(URLRequest(url: URL(fileURLWithPath: htmlData)))
-        } else {
-            let alert = self.i18n.alert(titleKey: "failToLoad", messageKey: "tryAgain", handler: {
-                self.dismiss(animated: true, completion: nil)
-            })
-            self.present(alert, animated: true)
-        }
-
+        let pathToTerms = URL(string: "https://s3-ap-northeast-1.amazonaws.com/fespay-prd/legal/terms_of_use_tenant.html")
+        let urlRequest = URLRequest(url: pathToTerms!)
+        webView.loadRequest(urlRequest as URLRequest)
+        
         let border = CALayer()
         border.frame = CGRect(x: 0, y: 0, width: webView.frame.width, height: webView.frame.height)
         border.borderColor = UIColor.lightGray.cgColor
