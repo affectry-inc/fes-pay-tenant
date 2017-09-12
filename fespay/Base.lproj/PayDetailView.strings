@@ -21,8 +21,8 @@
 "msgSureToRefund"="A refund can NOT be canceled. Are you sure to refund?";
 "execRefund"="Execute Refund";
 "titleRefundSuccess"="Refund successful";
-"msgRefundSuccess"="A refund is finished successfully.";
+"msgRefundSuccess"="A refund completed successfully.";
 "titleRefundIncomplete"="Refund incomplete";
-"msgRefundIncomplete"="A refund is NOT finished. Please contact the FesPay admin.";
+"msgRefundIncomplete"="A refund is NOT completed. Please contact the FesPay admin.";
 "titleRefundFailure"="Refund failed";
 "msgRefundFailure"="A refund operation failed. Please try again.";
