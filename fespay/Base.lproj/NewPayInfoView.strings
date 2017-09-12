@@ -8,4 +8,5 @@
 
 "amount" = "Amount";
 "inputAmountPh" = "Input amount";
+"moreThan50" = "* Amount must be at least ¥50";
 "next" = "Next";

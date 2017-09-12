@@ -17,6 +17,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var amountBorderLabel: UILabel!
+    @IBOutlet weak var moreThan50Label: UILabel!
     @IBOutlet weak var goNextButton: UIButton!
     
     // MARK: - Events
@@ -36,6 +37,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.title = i18n.localize(key: "amount")
         self.amountTextField.placeholder = i18n.localize(key: "inputAmountPh")
+        self.moreThan50Label.text = i18n.localize(key: "moreThan50")
         self.goNextButton.setTitle(i18n.localize(key: "next"), for: .normal)
         
         amountTextField.becomeFirstResponder()
@@ -90,7 +92,7 @@ class NewPayInfoViewController: UIViewController, UITextFieldDelegate {
     private func updatePayButtonState() {
         // Disable the Pay button if the text field is empty.
         let text = amountTextField.text!
-        if text.isNumber() && Double(text)! > Double(0) {
+        if text.isNumber() && Double(text)! >= Double(50) {
             goNextButton.isEnabled = true
         } else {
             goNextButton.isEnabled = false

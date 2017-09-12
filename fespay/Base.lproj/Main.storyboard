@@ -394,13 +394,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMV-rb-pfb">
-                                <rect key="frame" x="16" y="264" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="244" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9go-Qu-Adt">
-                                <rect key="frame" x="16" y="234" width="343" height="30"/>
+                                <rect key="frame" x="16" y="214" width="343" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-nF-HnO">
                                         <rect key="frame" x="0.0" y="0.0" width="15.5" height="30"/>
@@ -423,7 +423,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuZ-sW-ClP">
-                                <rect key="frame" x="122.5" y="304" width="130" height="60"/>
+                                <rect key="frame" x="122.5" y="298.5" width="130" height="60"/>
                                 <color key="backgroundColor" red="0.57254901960000004" green="0.81568627449999997" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="Pqe-Pu-7Xl"/>
@@ -436,17 +436,25 @@
                                     <segue destination="r4C-E3-mi0" kind="show" identifier="CaptureView" id="Ccl-GV-Xwj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Amount must be at least ¥50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPb-Me-gEi">
+                                <rect key="frame" x="16" y="252" width="248" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9go-Qu-Adt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="2Bt-ry-Tfw"/>
-                            <constraint firstItem="xuZ-sW-ClP" firstAttribute="top" secondItem="DMV-rb-pfb" secondAttribute="bottom" constant="40" id="7J8-Zr-nma"/>
+                            <constraint firstItem="9go-Qu-Adt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="150" id="2Bt-ry-Tfw"/>
+                            <constraint firstItem="SPb-Me-gEi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="32F-ee-rym"/>
                             <constraint firstItem="xuZ-sW-ClP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9iV-7y-6oW"/>
                             <constraint firstItem="9go-Qu-Adt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CRd-Rj-APE"/>
+                            <constraint firstItem="SPb-Me-gEi" firstAttribute="top" secondItem="9go-Qu-Adt" secondAttribute="bottom" constant="8" id="Mlp-Vn-XPI"/>
+                            <constraint firstItem="DMV-rb-pfb" firstAttribute="top" secondItem="9go-Qu-Adt" secondAttribute="bottom" id="TWj-xO-0tv"/>
                             <constraint firstItem="DMV-rb-pfb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cGU-or-tOJ"/>
-                            <constraint firstItem="xuZ-sW-ClP" firstAttribute="top" secondItem="9go-Qu-Adt" secondAttribute="bottom" constant="40" id="hrd-j0-OqH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9go-Qu-Adt" secondAttribute="trailing" id="ich-AF-guC"/>
                             <constraint firstItem="DMV-rb-pfb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="saT-DU-cM6"/>
+                            <constraint firstItem="xuZ-sW-ClP" firstAttribute="top" secondItem="SPb-Me-gEi" secondAttribute="bottom" constant="25" id="zek-92-zHs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Amount" id="GuF-7k-ODx">
@@ -460,6 +468,7 @@
                         <outlet property="amountBorderLabel" destination="DMV-rb-pfb" id="eGd-e1-LpN"/>
                         <outlet property="amountTextField" destination="4eW-CQ-hOH" id="YfT-ez-hTc"/>
                         <outlet property="goNextButton" destination="xuZ-sW-ClP" id="I6O-E6-ZbP"/>
+                        <outlet property="moreThan50Label" destination="SPb-Me-gEi" id="0zf-aS-Zs0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
