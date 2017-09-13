@@ -43,14 +43,14 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         historyTable.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
-        
-        loadOrders()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         summaryTitleLabel.text = "\(i18n.localize(key: "total"))(\(i18n.localize(key: "today")))"
+        
+        loadOrders()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,15 +98,14 @@ class PayListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func unwindToPayList(sender: UIStoryboardSegue) {
         if sender.source is CompleteViewController {
-            loadOrders()
         } else if sender.source is PayDetailViewController {
-            loadOrders()
         }
     }
     
     // MARK: - Private Methods
     
     private func loadOrders() {
+        self.refreshControl.beginRefreshing()
         self.totalAmount = Double(0)
         self.payInfos.removeAll()
         self.historyTable.reloadData()
