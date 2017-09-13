@@ -20,7 +20,6 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var tenantNameLabel: UILabel!
     @IBOutlet weak var datePicker: UIPickerView!
-    @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var totalTitleLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
     @IBOutlet weak var totalBorderLabel: UILabel!
@@ -35,17 +34,19 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         datePicker.dataSource = self
         
         FirebaseClient.loadReceiptSummaries(tenantId: tenantInfo.tenantId, onLoad: { summaries in
-            var list: [String] = []
-            for summary in summaries! {
-                let date = summary.key.replacingOccurrences(of: "-", with: "/")
-                self.summaryList[date] = summary.value as? [String: Double]
-                list.append(date)
+            if (summaries != nil) {
+                var list: [String] = []
+                for summary in summaries! {
+                    let date = summary.key.replacingOccurrences(of: "-", with: "/")
+                    self.summaryList[date] = summary.value as? [String: Double]
+                    list.append(date)
+                }
+                
+                self.dateList = list.sorted()
+                self.datePicker.reloadAllComponents()
+                self.datePicker.selectRow(self.dateList.count-1, inComponent: 0, animated: true)
+                self.dispSummary(row: self.dateList.count-1)
             }
-            
-            self.dateList = list.sorted()
-            self.datePicker.reloadAllComponents()
-            self.datePicker.selectRow(self.dateList.count-1, inComponent: 0, animated: true)
-            self.dispSummary(row: self.dateList.count-1)
         })
     }
 
