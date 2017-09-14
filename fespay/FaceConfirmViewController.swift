@@ -92,7 +92,7 @@ class FaceConfirmViewController: UIViewController {
         
         if let cardCustomerId = self.payInfo?.cardCustomerId {
             // カード登録あり
-            LoadingProxy.on()
+            startLoading()
             StripeClient.charge(customerId: cardCustomerId, amount: (self.payInfo?.amount)!, onCharge: { paidAt, chargeId, transactionId in
                 self.payInfo?.paidAt = paidAt
                 self.payInfo?.chargeId = chargeId
@@ -104,7 +104,7 @@ class FaceConfirmViewController: UIViewController {
                     next.payInfo = self.payInfo
                     
                     self.present(next, animated: true, completion: nil)
-                    LoadingProxy.off()
+                    self.stopLoading()
                 }, onError: {
                     let alert = self.i18n.alert(titleKey: "titleSaveFailure", messageKey: "msgSaveFailure", handler: {
                         let next = self.storyboard?.instantiateViewController(withIdentifier: "CompleteView") as! CompleteViewController
@@ -113,13 +113,13 @@ class FaceConfirmViewController: UIViewController {
                         
                         self.present(next, animated: true, completion: nil)
                         
-                        LoadingProxy.off()
+                        self.stopLoading()
                     })
                     self.present(alert, animated: true)
                 })
             }, onError: {
                 let alert = self.i18n.alert(titleKey: "titleChargeFailure", messageKey: "msgChargeFailure", handler: {
-                    LoadingProxy.off()
+                    self.stopLoading()
                 })
                 self.present(alert, animated: true)
             })
@@ -141,6 +141,18 @@ class FaceConfirmViewController: UIViewController {
         }
     }
     
+    private func startLoading() {
+        LoadingProxy.on()
+        self.execPayButton.isEnabled = false
+        self.execPayButton.alpha = 0.8
+    }
+    
+    private func stopLoading() {
+        LoadingProxy.off()
+        self.execPayButton.isEnabled = true
+        self.execPayButton.alpha = 1
+    }
+
     //MARK: - Actions
     
     /*
