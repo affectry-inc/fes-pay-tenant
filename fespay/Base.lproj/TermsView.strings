@@ -8,3 +8,5 @@
 
 "agree" = "Agree";
 "cancel" = "Cancel";
+"loadFailed" = "Failed to load";
+"tryAgain" = "Please try again.";
